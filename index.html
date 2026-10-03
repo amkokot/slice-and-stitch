@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5c982" />
+    <meta
+      name="description"
+      content="Slice & Stitch — playable pizza, fashion, prep, and service minigame prototype."
+    />
+    <title>Slice &amp; Stitch — Workshop Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="fashion-workshop.css" />
+    <link rel="stylesheet" href="hub.css" />
+    <link rel="stylesheet" href="economy.css" />
+    <link rel="stylesheet" href="character-creator.css" />
+    <link rel="stylesheet" href="character-v3/painted-paper-doll.css" />
+    <link rel="stylesheet" href="character-v2/renderer.css" />
+    <link rel="stylesheet" href="scene-character-layout.css" />
+    <link rel="stylesheet" href="game-panel.css" />
+    <link rel="stylesheet" href="kitchen-service.css" />
+    <link rel="stylesheet" href="minigame-actions.css" />
+    <link rel="stylesheet" href="coop-ui.css" />
+  </head>
+  <body data-phase="morning">
+    <div class="ambient-glow" aria-hidden="true"></div>
+    <div class="street-silhouette" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="Slice and Stitch prototype home">
+          <span class="brand-stamp" aria-hidden="true"><i>✂</i><b>◆</b></span>
+          <span>
+            <span class="eyebrow">A kitchen &amp; clothier story</span>
+            <span class="brand-name">Slice <em>&amp;</em> Stitch</span>
+          </span>
+        </a>
+
+        <div class="day-track" aria-label="Automatic town clock">
+          <span class="day-label" data-game-day>Day 1</span>
+          <strong data-game-time>06:00 · Morning</strong>
+          <button class="phase-button" data-clock-toggle type="button">Pause clock</button>
+        </div>
+
+        <div class="wallet" aria-label="Player progress">
+          <span><i aria-hidden="true">●</i><b id="coinCount">120</b> coins</span>
+          <span><i aria-hidden="true">♥</i><b id="reputationCount">0</b> rep</span>
+        </div>
+      </header>
+
+      <section class="game-frame">
+        <aside class="left-rail paper-panel">
+          <div class="avatar-card">
+            <div class="avatar-scene" aria-hidden="true">
+              <span class="avatar-hair"></span>
+              <span class="avatar-head"></span>
+              <span class="avatar-body" id="avatarBody"></span>
+              <span class="avatar-apron" id="avatarApron"></span>
+            </div>
+            <div>
+              <span class="mini-label">Today's look</span>
+              <strong id="outfitName">House apron</strong>
+              <p id="outfitCopy">No presentation bonus yet.</p>
+            </div>
+          </div>
+
+          <nav class="workshop-tabs" aria-label="Prototype activities">
+            <button class="workshop-tab is-active" data-workshop="pizza" type="button">
+              <span class="tab-icon" aria-hidden="true">◒</span>
+              <span><b>Pizza shift</b><small>Cook an order</small></span>
+            </button>
+            <button class="workshop-tab" data-workshop="fashion" type="button">
+              <span class="tab-icon needle-icon" aria-hidden="true">⌁</span>
+              <span><b>Fashion studio</b><small>Craft an outfit</small></span>
+            </button>
+            <button class="workshop-tab" data-workshop="kitchen" type="button">
+              <span class="tab-icon kitchen-icon" aria-hidden="true">♨</span>
+              <span><b>Extra stations</b><small>Prep &amp; service games</small></span>
+            </button>
+          </nav>
+
+          <div class="day-note">
+            <span class="mini-label">Today's rhythm</span>
+            <strong id="phaseTitle">Morning prep</strong>
+            <p id="phaseCopy">A gentle first order. The kitchen is all pale gold and cool shadows.</p>
+          </div>
+
+          <button class="quiet-button" id="resetProgressButton" type="button">Reset prototype</button>
+        </aside>
+
+        <section class="workspace" aria-live="polite">
+          <section class="activity is-active" id="pizzaActivity" aria-labelledby="pizzaTitle">
+            <header class="activity-heading">
+              <div>
+                <span class="section-kicker" id="pizzaOrderKicker">Pizzeria · Order 01</span>
+                <h1 id="pizzaTitle">The garden table</h1>
+                <p id="pizzaSubtitle">Build the pizza one tactile step at a time.</p>
+              </div>
+              <div class="step-pips" id="pizzaStepPips" aria-label="Pizza progress"></div>
+            </header>
+
+            <section class="shift-queue" aria-labelledby="shiftQueueTitle">
+              <div class="shift-queue-heading">
+                <span class="mini-label">Live dining room</span>
+                <strong id="shiftQueueTitle">Customer order queue</strong>
+                <small id="shiftQueueSummary">Neighbors are walking in from Via Bellavista.</small>
+              </div>
+              <div class="shift-customer-list" id="shiftCustomerQueue" aria-live="polite"></div>
+              <div class="shift-maintenance" aria-label="Kitchen maintenance">
+                <span><i aria-hidden="true">◌</i><small>Dish pit</small><b id="shiftDirtyDishes">Rack clear</b></span>
+                <span><i aria-hidden="true">♨</i><small>Sauce pot</small><b id="shiftSauceStatus">Prep the batch</b></span>
+              </div>
+            </section>
+
+            <section class="upgrade-lab" aria-labelledby="upgradeLabTitle">
+              <div class="upgrade-lab-copy">
+                <span class="mini-label">Equipment counter</span>
+                <strong id="upgradeLabTitle">Upgrade every work station</strong>
+                <p>Milestones raise the atelier level. Spend service earnings on equipment that changes the pizza, tailoring, prep, drinks, and dish minigames.</p>
+              </div>
+              <div class="upgrade-counter-summary" id="upgradeCounterSummary" aria-live="polite"></div>
+              <div class="upgrade-counter-grid" id="upgradeCounterGrid" aria-label="Equipment upgrades"></div>
+              <div class="installed-counter-row">
+                <span class="mini-label">Installed pizza counters</span>
+                <div class="upgrade-tier-selector" id="pizzaTierSelector" role="group" aria-label="Pizza station tier"></div>
+              </div>
+            </section>
+
+            <section class="menu-board" aria-labelledby="menuBoardTitle">
+              <div class="menu-board-copy">
+                <span class="mini-label">Pre-shift menu</span>
+                <strong id="menuBoardTitle">Today's menu</strong>
+                <p>Choose the house recipes customers may order. Custom pies are always available.</p>
+              </div>
+              <div class="menu-recipe-selector" id="pizzaMenuSelector" role="group" aria-label="Today's pizza menu"></div>
+              <button class="recipe-book-button" data-open-recipe-book type="button"><span aria-hidden="true">▤</span> Recipe book</button>
+            </section>
+
+            <div class="activity-grid">
+              <div class="play-card">
+                <div class="canvas-wrap" id="pizzaCanvasWrap">
+                  <canvas id="pizzaCanvas" width="1200" height="1200" aria-label="Interactive pizza work surface"></canvas>
+                  <div id="pizzaBadge" hidden aria-hidden="true"></div>
+                </div>
+                <section class="counter-ticket" id="pizzaOrderTicket" aria-label="Full order ticket">
+                  <div class="counter-ticket-heading">
+                    <span><small id="pizzaTableLabel">Table 7</small><strong id="pizzaTicketName">Garden pie</strong></span>
+                    <span class="ticket-heading-actions"><button data-open-recipe-book type="button">Recipe book</button><b id="pizzaOrderNumber">Order 01</b></span>
+                  </div>
+                  <div class="ticket-items" id="ticketItems"></div>
+                  <p>Read the kitchen words here. Exact targets live in the recipe book.</p>
+                </section>
+                <div class="tool-dock" id="pizzaTools"></div>
+              </div>
+
+              <aside class="task-card">
+                <div class="ticket-top">
+                  <span class="ticket-pin" aria-hidden="true"></span>
+                  <span class="mini-label">Table seven</span>
+                  <strong id="pizzaTaskName">Garden pie</strong>
+                  <p id="pizzaTaskCopy">Even sauce, a light blanket of cheese, then match the illustrated topping counts.</p>
+                </div>
+                <div class="instruction-card">
+                  <span class="step-number" id="pizzaStepNumber">1</span>
+                  <div>
+                    <span class="mini-label" id="pizzaVerb">Spread</span>
+                    <strong id="pizzaInstruction">Drag the spoon in spirals. Leave the golden crust clean.</strong>
+                  </div>
+                </div>
+                <div class="score-preview">
+                  <span><small>Current craft</small><b id="pizzaLiveScore">—</b></span>
+                  <span><small>Outfit tip</small><b id="pizzaOutfitBonus">+0%</b></span>
+                </div>
+                <button class="primary-button" id="pizzaNextButton" type="button" disabled>Finish sauce</button>
+                <button class="secondary-button" id="pizzaUndoButton" type="button" hidden>Undo last topping</button>
+              </aside>
+            </div>
+          </section>
+
+          <section class="activity" id="fashionActivity" aria-labelledby="fashionTitle" hidden>
+            <header class="activity-heading">
+              <div>
+                <span class="section-kicker">Tailor · Daily atelier</span>
+                <h1 id="fashionTitle">From pattern to wardrobe</h1>
+                <p id="fashionSubtitle">Choose an owned pattern and suitable cloth, cut the silhouette, guide the seams, and make your own piece.</p>
+              </div>
+              <div class="step-pips" id="fashionStepPips" aria-label="Fashion progress"></div>
+            </header>
+
+            <section class="fashion-pattern-board" aria-labelledby="fashionPatternBoardTitle">
+              <div class="fashion-pattern-copy">
+                <span class="mini-label">Optional studio details</span>
+                <strong id="fashionPatternBoardTitle">Accents &amp; alterations</strong>
+                <p id="fashionInventoryNote">Buy a pattern once, then craft it as often as you like.</p>
+              </div>
+              <div class="fashion-pattern-selector" id="fashionPatternSelector" role="group" aria-label="Owned patterns for crafting"></div>
+              <div class="fashion-style-controls" id="fashionStyleControls" aria-label="Garment customization"></div>
+              <div class="fashion-modification-bench" id="fashionModificationBench" aria-label="Pattern alterations and clothing modifications"></div>
+            </section>
+
+            <div class="activity-grid">
+              <div class="play-card fashion-card">
+                <div class="canvas-wrap" id="fashionCanvasWrap">
+                  <canvas id="fashionCanvas" width="1200" height="1200" aria-label="Interactive tailoring work surface"></canvas>
+                  <div class="canvas-badge plum" id="fashionBadge">Choose a fabric</div>
+                </div>
+                <div class="tool-dock fabric-dock" id="fashionTools"></div>
+              </div>
+
+              <aside class="task-card tailor-card">
+                <div class="ticket-top">
+                  <span class="ticket-pin plum-pin" aria-hidden="true"></span>
+                  <span class="mini-label">Studio project</span>
+                  <strong id="garmentName">Service apron</strong>
+                  <p id="fashionTaskCopy">Start with an everyday pattern. Better fabric costs more but raises the garment's potential.</p>
+                </div>
+                <div class="quality-estimate" id="qualityEstimate">
+                  <span><i aria-hidden="true">▧</i> Material <b id="materialRating">—</b></span>
+                  <span><i aria-hidden="true">◎</i> Precision <b id="precisionRating">—</b></span>
+                  <span><i aria-hidden="true">✦</i> Finish <b id="finishRating">—</b></span>
+                  <span><i aria-hidden="true">◆</i> Value <b id="valueRating">—</b></span>
+                </div>
+                <div class="instruction-card plum-card">
+                  <span class="step-number" id="fashionStepNumber">1</span>
+                  <div>
+                    <span class="mini-label" id="fashionVerb">Plan</span>
+                    <strong id="fashionInstruction">Choose one fabric. Its cost and quality will carry into the final piece.</strong>
+                  </div>
+                </div>
+                <button class="primary-button plum-button" id="fashionNextButton" type="button" disabled>Start cutting</button>
+                <button class="secondary-button" id="fashionClearButton" type="button" hidden>Clear line</button>
+              </aside>
+            </div>
+          </section>
+
+          <section class="activity kitchen-activity" id="kitchenActivity" aria-labelledby="kitchenTitle" hidden>
+            <header class="activity-heading">
+              <div>
+                <span class="section-kicker">Kitchen rhythm · Four prototypes</span>
+                <h1 id="kitchenTitle">Prep &amp; service stations</h1>
+                <p>Short, tactile jobs that can interrupt or support the main pizza shift.</p>
+              </div>
+              <div class="station-phase-stamp" id="kitchenPhaseStamp">Morning prep</div>
+            </header>
+
+            <div class="station-launcher" id="kitchenGameSelector" role="group" aria-label="Kitchen minigames">
+              <button class="station-card is-active" data-kitchen-game="saucePot" type="button">
+                <span class="station-card-icon" aria-hidden="true">♨</span>
+                <span><b>Sauce pot</b><small>Cook &amp; mind the batch</small></span>
+                <em data-kitchen-status="saucePot">Morning prep</em>
+              </button>
+              <button class="station-card" data-kitchen-game="doughToss" type="button">
+                <span class="station-card-icon dough-icon" aria-hidden="true">◯</span>
+                <span><b>Dough tossing</b><small>Shape five pizza skins</small></span>
+                <em data-kitchen-status="doughToss">0/5 doughs</em>
+              </button>
+              <button class="station-card" data-kitchen-game="dishwashing" type="button">
+                <span class="station-card-icon dish-icon" aria-hidden="true">◌</span>
+                <span><b>Dishwashing</b><small>Scrub, then rinse</small></span>
+                <em data-kitchen-status="dishwashing">Dish 1/3</em>
+              </button>
+              <button class="station-card" data-kitchen-game="drinkPour" type="button">
+                <span class="station-card-icon drink-icon" aria-hidden="true">▥</span>
+                <span><b>Soda fountain</b><small>Pour to the order line</small></span>
+                <em data-kitchen-status="drinkPour">Drink 1/4</em>
+              </button>
+            </div>
+
+            <div class="activity-grid kitchen-grid">
+              <div class="play-card kitchen-play-card">
+                <div class="canvas-wrap kitchen-canvas-wrap">
+                  <canvas id="kitchenCanvas" class="station-canvas" width="1600" height="1200" aria-label="Interactive kitchen minigame surface"></canvas>
+                  <div class="canvas-badge kitchen-badge" id="kitchenBadge">Sauce pot</div>
+                </div>
+                <div class="station-hint-strip" id="kitchenHintStrip">Click each ingredient bowl to begin the morning batch.</div>
+              </div>
+
+              <aside class="task-card kitchen-task-card">
+                <div class="ticket-top">
+                  <span class="ticket-pin kitchen-pin" aria-hidden="true"></span>
+                  <span class="mini-label">Active station</span>
+                  <strong id="kitchenTaskName">Sauce pot</strong>
+                  <p id="kitchenTaskCopy">The morning batch becomes a live maintenance task during service.</p>
+                </div>
+                <div class="station-readout" id="kitchenReadout">
+                  <span><small>Batch</small><b>0/4 ingredients</b></span>
+                  <span><small>Goal</small><b>5 portions</b></span>
+                </div>
+                <div class="instruction-card kitchen-instruction-card">
+                  <span class="step-number" id="kitchenStepIcon">1</span>
+                  <div>
+                    <span class="mini-label" id="kitchenVerb">Build the sauce</span>
+                    <strong id="kitchenInstruction">Click each bowl to tip tomatoes, garlic, basil, and salt into the pot.</strong>
+                  </div>
+                </div>
+                <button class="secondary-button" id="kitchenResetButton" type="button">Restart this station</button>
+              </aside>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <dialog class="result-dialog" id="resultDialog">
+      <div class="result-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <button class="dialog-close" id="resultCloseButton" type="button" aria-label="Close result">×</button>
+      <span class="result-kicker" id="resultKicker">Order served</span>
+      <div class="result-hero" id="resultHero" aria-hidden="true"></div>
+      <h2 id="resultTitle">A lovely result</h2>
+      <p id="resultCopy"></p>
+      <div class="result-breakdown" id="resultBreakdown"></div>
+      <div class="result-actions" id="resultActions"></div>
+    </dialog>
+
+    <dialog class="recipe-book-dialog" id="recipeBookDialog" aria-labelledby="recipeBookTitle">
+      <button class="dialog-close" id="recipeBookCloseButton" type="button" aria-label="Close recipe book">×</button>
+      <span class="result-kicker">Kitchen reference</span>
+      <h2 id="recipeBookTitle">The house recipe book</h2>
+      <p id="recipeBookIntro"></p>
+      <div class="recipe-book-pages" id="recipeBookPages"></div>
+      <button class="primary-button recipe-book-done" id="recipeBookDoneButton" type="button">Back to the order</button>
+    </dialog>
+
+    <script type="module" src="game.js"></script>
+    <script type="module" src="hub.js"></script>
+    <script type="module" src="coop-ui.js"></script>
+  </body>
+</html>

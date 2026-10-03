@@ -1,0 +1,449 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "mode": "built-in image_gen",
+  "intent": "generate new versioned wearable sprites using existing pose/style references",
+  "assetRoot": "assets/characters-v3/modular-v4/source/",
+  "references": [
+    "assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+    "assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+  ],
+  "assets": [
+    {
+      "key": "shirt-dress",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-major-shirt-dress-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production wearable sprite for Slice & Stitch's painted-cartoon modular human wardrobe.\nInput images: Image 1 is canonical standing body/pose and garment placement reference ONLY. Image 2 is garment painting style reference ONLY. Do not copy the person or reference clothing.\nOutput: ONE isolated garment on a genuinely transparent 1024 by 1536 portrait canvas. No person, head, skin, hands, mannequin, hanger, label, floor, drop shadow, background glow, stray fragments or other items.\nStyle: detailed warm hand-painted cartoon, soft matte shading, fine sewn construction, small readable folds, soft taupe painted contours, not a hard black outline, not photorealistic, not glossy plastic or 3D.\nPalette: neutral pale ivory fabric, restrained warm taupe shadows. Keep fabric neutral for runtime dye; small natural brass or wooden hardware can remain brown/gold. No patterned print: textile motifs will be applied separately in the game.\nView/registration: straight-on front view with relaxed arms angled down, exactly like Image 1. Keep the garment in its wearable position, not centered vertically or enlarged to fill the whole canvas. Shared body coordinates: center x512; neck y335; shoulders x320 and700 at y355; waist x350 to674 at y690; hips y790; wrists x267 and757 at y805; knees y1030; ankles x394 and630 at y1300; feet ground y1410. Neck and arm openings completely transparent, no rear collar floating across the neck, no empty-insole skin painted in. Keep all edges within the canvas with at least 24px clear margin.\nGarment specification: A belted knee-length shirt dress, short folded sleeves, small open pointed collar, centered button placket, slim tied self-fabric waist belt, softly flared skirt hem at knees y1090. No trousers, no shoes. Real readable shirt-dress construction, not a generic shift dress.",
+      "generatedOriginal": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-cc591ccc-4ace-4e3d-a387-520a429fb939.png",
+      "registration": {
+        "family": "major-shirt-dress",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-major-shirt-dress-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "onePiece": true,
+        "fit": [
+          [
+            0,
+            180,
+            0.82
+          ],
+          [
+            214,
+            315,
+            0.82
+          ],
+          [
+            320,
+            365,
+            0.91
+          ],
+          [
+            505,
+            505,
+            0.8
+          ],
+          [
+            690,
+            690,
+            1.1
+          ],
+          [
+            1000,
+            910,
+            0.84
+          ],
+          [
+            1339,
+            1100,
+            0.8
+          ],
+          [
+            1536,
+            1230,
+            0.8
+          ]
+        ],
+        "thumbnailBox": "155 190 720 1175",
+        "neutralTrim": "M517 516m-17 0a17 17 0 1 0 34 0a17 17 0 1 0-34 0ZM517 578m-17 0a17 17 0 1 0 34 0a17 17 0 1 0-34 0ZM517 762m-17 0a17 17 0 1 0 34 0a17 17 0 1 0-34 0ZM517 872m-17 0a17 17 0 1 0 34 0a17 17 0 1 0-34 0ZM517 994m-17 0a17 17 0 1 0 34 0a17 17 0 1 0-34 0ZM517 1130m-17 0a17 17 0 1 0 34 0a17 17 0 1 0-34 0Z"
+      }
+    },
+    {
+      "key": "sundress",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-major-sundress-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production wearable sprite for Slice & Stitch's painted-cartoon modular human wardrobe.\nInput images: Image 1 is canonical standing body/pose and garment placement reference ONLY. Image 2 is garment painting style reference ONLY. Do not copy the person or reference clothing.\nOutput: ONE isolated garment on a genuinely transparent 1024 by 1536 portrait canvas. No person, head, skin, hands, mannequin, hanger, label, floor, drop shadow, background glow, stray fragments or other items.\nStyle: detailed warm hand-painted cartoon, soft matte shading, fine sewn construction, small readable folds, soft taupe painted contours, not a hard black outline, not photorealistic, not glossy plastic or 3D.\nPalette: neutral pale ivory fabric, restrained warm taupe shadows. Keep fabric neutral for runtime dye; small natural brass or wooden hardware can remain brown/gold. No patterned print: textile motifs will be applied separately in the game.\nView/registration: straight-on front view with relaxed arms angled down, exactly like Image 1. Keep the garment in its wearable position, not centered vertically or enlarged to fill the whole canvas. Shared body coordinates: center x512; neck y335; shoulders x320 and700 at y355; waist x350 to674 at y690; hips y790; wrists x267 and757 at y805; knees y1030; ankles x394 and630 at y1300; feet ground y1410. Neck and arm openings completely transparent, no rear collar floating across the neck, no empty-insole skin painted in. Keep all edges within the canvas with at least 24px clear margin.\nGarment specification: A sleeveless square-neck cotton sundress with wide shoulder straps, shaped bodice, waist seam and softly gathered flared midi skirt to y1160. Clean continuous dress including bodice and skirt. Transparent bare arms and neck opening. No jacket or shoes.",
+      "generatedOriginal": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-036249ff-3483-45ba-9adf-148d695ed610.png",
+      "registration": {
+        "family": "major-sundress",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-major-sundress-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "onePiece": true,
+        "fit": [
+          [
+            0,
+            230,
+            1.1
+          ],
+          [
+            171,
+            335,
+            1.1
+          ],
+          [
+            310,
+            425,
+            1.12
+          ],
+          [
+            550,
+            690,
+            1.25
+          ],
+          [
+            850,
+            900,
+            0.95
+          ],
+          [
+            1366,
+            1170,
+            0.76
+          ],
+          [
+            1536,
+            1280,
+            0.76
+          ]
+        ],
+        "thumbnailBox": "90 150 840 1240"
+      }
+    },
+    {
+      "key": "sweatshirt",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-major-sweatshirt-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production wearable sprite for Slice & Stitch's painted-cartoon modular human wardrobe.\nInput images: Image 1 is canonical standing body/pose and garment placement reference ONLY. Image 2 is garment painting style reference ONLY. Do not copy the person or reference clothing.\nOutput: ONE isolated garment on a genuinely transparent 1024 by 1536 portrait canvas. No person, head, skin, hands, mannequin, hanger, label, floor, drop shadow, background glow, stray fragments or other items.\nStyle: detailed warm hand-painted cartoon, soft matte shading, fine sewn construction, small readable folds, soft taupe painted contours, not a hard black outline, not photorealistic, not glossy plastic or 3D.\nPalette: neutral pale ivory fabric, restrained warm taupe shadows. Keep fabric neutral for runtime dye; small natural brass or wooden hardware can remain brown/gold. No patterned print: textile motifs will be applied separately in the game.\nView/registration: straight-on front view with relaxed arms angled down, exactly like Image 1. Keep the garment in its wearable position, not centered vertically or enlarged to fill the whole canvas. Shared body coordinates: center x512; neck y335; shoulders x320 and700 at y355; waist x350 to674 at y690; hips y790; wrists x267 and757 at y805; knees y1030; ankles x394 and630 at y1300; feet ground y1410. Neck and arm openings completely transparent, no rear collar floating across the neck, no empty-insole skin painted in. Keep all edges within the canvas with at least 24px clear margin.\nGarment specification: A relaxed loopback crewneck sweatshirt, round ribbed neck, drop shoulder with full sleeves ending at wrists y805, ribbed cuffs and hem at y775, subtle soft jersey folds and tiny V insert below neck. Matte smooth cotton jersey, NOT a cable-knit sweater. No pants or shoes.",
+      "generatedOriginal": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-09faf94a-98e0-4b31-84cf-c59ccb7157aa.png",
+      "registration": {
+        "family": "major-sweatshirt",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-major-sweatshirt-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            140,
+            0.7,
+            140
+          ],
+          [
+            334,
+            345,
+            0.7,
+            345
+          ],
+          [
+            450,
+            390,
+            0.7,
+            390
+          ],
+          [
+            850,
+            630,
+            0.72,
+            650,
+            0.62
+          ],
+          [
+            1085,
+            790,
+            0.74,
+            805,
+            0.56
+          ],
+          [
+            1536,
+            1030,
+            0.74,
+            1000,
+            0.56
+          ]
+        ],
+        "thumbnailBox": "15 310 995 830",
+        "coversArms": true,
+        "visibleContour": "M0 0H399V364Q512 375 635 364V0H1024V1536H0Z"
+      }
+    },
+    {
+      "key": "culottes",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-major-culottes-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production wearable sprite for Slice & Stitch's painted-cartoon modular human wardrobe.\nInput images: Image 1 is canonical standing body/pose and garment placement reference ONLY. Image 2 is garment painting style reference ONLY. Do not copy the person or reference clothing.\nOutput: ONE isolated garment on a genuinely transparent 1024 by 1536 portrait canvas. No person, head, skin, hands, mannequin, hanger, label, floor, drop shadow, background glow, stray fragments or other items.\nStyle: detailed warm hand-painted cartoon, soft matte shading, fine sewn construction, small readable folds, soft taupe painted contours, not a hard black outline, not photorealistic, not glossy plastic or 3D.\nPalette: neutral pale ivory fabric, restrained warm taupe shadows. Keep fabric neutral for runtime dye; small natural brass or wooden hardware can remain brown/gold. No patterned print: textile motifs will be applied separately in the game.\nView/registration: straight-on front view with relaxed arms angled down, exactly like Image 1. Keep the garment in its wearable position, not centered vertically or enlarged to fill the whole canvas. Shared body coordinates: center x512; neck y335; shoulders x320 and700 at y355; waist x350 to674 at y690; hips y790; wrists x267 and757 at y805; knees y1030; ankles x394 and630 at y1300; feet ground y1410. Neck and arm openings completely transparent, no rear collar floating across the neck, no empty-insole skin painted in. Keep all edges within the canvas with at least 24px clear margin.\nGarment specification: High-waisted wide-leg culottes, waistband at y690, front pleats and pocket seams, two clearly separated loose legs ending halfway between knees and ankles at y1160. Cut as cropped trousers from outset, not compressed full-length pants. No upper garment, no skin, no shoes.",
+      "generatedOriginal": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-ec5a45a6-efe7-45ff-a8fe-adab5ae3d992.png",
+      "registration": {
+        "family": "major-culottes",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-major-culottes-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            535,
+            0.97
+          ],
+          [
+            304,
+            690,
+            0.97
+          ],
+          [
+            600,
+            835,
+            0.88
+          ],
+          [
+            710,
+            885,
+            0.82
+          ],
+          [
+            1000,
+            1030,
+            0.77
+          ],
+          [
+            1258,
+            1150,
+            0.74
+          ],
+          [
+            1536,
+            1290,
+            0.74
+          ]
+        ],
+        "thumbnailBox": "115 285 795 995",
+        "neutralTrim": "M529 354m-16 0a16 16 0 1 0 32 0a16 16 0 1 0-32 0Z"
+      }
+    },
+    {
+      "key": "bucket-hat",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-major-bucket-hat-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production wearable sprite for Slice & Stitch's painted-cartoon modular human wardrobe.\nInput images: Image 1 is canonical standing body/pose and garment placement reference ONLY. Image 2 is garment painting style reference ONLY. Do not copy the person or reference clothing.\nOutput: ONE isolated garment on a genuinely transparent 1024 by 1536 portrait canvas. No person, head, skin, hands, mannequin, hanger, label, floor, drop shadow, background glow, stray fragments or other items.\nStyle: detailed warm hand-painted cartoon, soft matte shading, fine sewn construction, small readable folds, soft taupe painted contours, not a hard black outline, not photorealistic, not glossy plastic or 3D.\nPalette: neutral pale ivory fabric, restrained warm taupe shadows. Keep fabric neutral for runtime dye; small natural brass or wooden hardware can remain brown/gold. No patterned print: textile motifs will be applied separately in the game.\nView/registration: straight-on front view with relaxed arms angled down, exactly like Image 1. Keep the garment in its wearable position, not centered vertically or enlarged to fill the whole canvas. Shared body coordinates: center x512; neck y335; shoulders x320 and700 at y355; waist x350 to674 at y690; hips y790; wrists x267 and757 at y805; knees y1030; ankles x394 and630 at y1300; feet ground y1410. Neck and arm openings completely transparent, no rear collar floating across the neck, no empty-insole skin painted in. Keep all edges within the canvas with at least 24px clear margin.\nGarment specification: A classic stitched cotton bucket hat fitting a human crown, center x512, dome top y100, head-width about310 pixels, crown band y210, gently sloped floppy brim spanning x295 to729 at y270. Visible horizontal stitching rows on brim, no cloche shape, no ribbon or feather. Only the hat, with all remaining canvas transparent.",
+      "generatedOriginal": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-7f48f141-a96b-48c3-b86a-b7f4e85b2bca.png",
+      "registration": {
+        "family": "major-bucket-hat",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-major-bucket-hat-v1.png",
+        "transform": "translate(261.12 -11) scale(.49 .29)",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "thumbnailBox": "100 180 825 510",
+        "coversCrown": true
+      }
+    },
+    {
+      "key": "western-shirt",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-major-western-shirt-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production wearable sprite for Slice & Stitch's painted-cartoon modular human wardrobe.\nInput images: Image 1 is canonical standing body/pose and garment placement reference ONLY. Image 2 is garment painting style reference ONLY. Do not copy the person or reference clothing.\nOutput: ONE isolated garment on a genuinely transparent 1024 by 1536 portrait canvas. No person, head, skin, hands, mannequin, hanger, label, floor, drop shadow, background glow, stray fragments or other items.\nStyle: detailed warm hand-painted cartoon, soft matte shading, fine sewn construction, small readable folds, soft taupe painted contours, not a hard black outline, not photorealistic, not glossy plastic or 3D.\nPalette: neutral pale ivory fabric, restrained warm taupe shadows. Keep fabric neutral for runtime dye; small natural brass or wooden hardware can remain brown/gold. No patterned print: textile motifs will be applied separately in the game.\nView/registration: straight-on front view with relaxed arms angled down, exactly like Image 1. Keep the garment in its wearable position, not centered vertically or enlarged to fill the whole canvas. Shared body coordinates: center x512; neck y335; shoulders x320 and700 at y355; waist x350 to674 at y690; hips y790; wrists x267 and757 at y805; knees y1030; ankles x394 and630 at y1300; feet ground y1410. Neck and arm openings completely transparent, no rear collar floating across the neck, no empty-insole skin painted in. Keep all edges within the canvas with at least 24px clear margin.\nGarment specification: A fitted pearl-snap western shirt, open pointed collar, curved double shoulder yokes, two pointed chest flap pockets, centered small pearl snaps, full sleeves ending at wrists y805, gently curved untucked hem y795. Subtle readable seam detailing. No jacket, pants, skin or shoes.",
+      "generatedOriginal": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-35f51ba9-b8ec-408a-a8b2-6bfae2d7e56f.png",
+      "registration": {
+        "family": "major-western-shirt",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-major-western-shirt-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            150,
+            0.64,
+            150
+          ],
+          [
+            299,
+            315,
+            0.64,
+            315
+          ],
+          [
+            435,
+            365,
+            0.64,
+            365
+          ],
+          [
+            900,
+            690,
+            0.68,
+            690
+          ],
+          [
+            1120,
+            800,
+            0.7,
+            805,
+            0.53
+          ],
+          [
+            1183,
+            845,
+            0.7,
+            835,
+            0.53
+          ],
+          [
+            1536,
+            1035,
+            0.7,
+            1020,
+            0.53
+          ]
+        ],
+        "thumbnailBox": "5 280 1015 930",
+        "coversArms": true,
+        "neutralTrim": "M362 631m-12 0a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM674 632m-12 0a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM521 630m-12 0a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM521 733m-12 0a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM521 839m-12 0a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM521 945m-12 0a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM521 1048m-12 0a12 12 0 1 0 24 0a12 12 0 1 0-24 0Z"
+      }
+    },
+    {
+      "key": "puffer-jacket",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-major-puffer-jacket-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production wearable sprite for Slice & Stitch's painted-cartoon modular human wardrobe.\nInput images: Image 1 is canonical standing body/pose and garment placement reference ONLY. Image 2 is garment painting style reference ONLY. Do not copy the person or reference clothing.\nOutput: ONE isolated garment on a genuinely transparent 1024 by 1536 portrait canvas. No person, head, skin, hands, mannequin, hanger, label, floor, drop shadow, background glow, stray fragments or other items.\nStyle: detailed warm hand-painted cartoon, soft matte shading, fine sewn construction, small readable folds, soft taupe painted contours, not a hard black outline, not photorealistic, not glossy plastic or 3D.\nPalette: neutral pale ivory fabric, restrained warm taupe shadows. Keep fabric neutral for runtime dye; small natural brass or wooden hardware can remain brown/gold. No patterned print: textile motifs will be applied separately in the game.\nView/registration: straight-on front view with relaxed arms angled down, exactly like Image 1. Keep the garment in its wearable position, not centered vertically or enlarged to fill the whole canvas. Shared body coordinates: center x512; neck y335; shoulders x320 and700 at y355; waist x350 to674 at y690; hips y790; wrists x267 and757 at y805; knees y1030; ankles x394 and630 at y1300; feet ground y1410. Neck and arm openings completely transparent, no rear collar floating across the neck, no empty-insole skin painted in. Keep all edges within the canvas with at least 24px clear margin.\nGarment specification: An open-front waist-length quilted puffer jacket with large softly rounded horizontal padded baffles, full sleeves ending at wrists y805, small stand collar with transparent neck opening, central front split wide enough to see a shirt worn underneath, two angled welt pockets. Jacket torso ends y775. Soft matte ivory nylon, no extreme shine. No inner shirt, body or pants.",
+      "generatedOriginal": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-74182944-8191-4f1d-8dd5-3264255a2cfa.png",
+      "registration": {
+        "family": "major-puffer-jacket",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-major-puffer-jacket-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            150,
+            0.64,
+            150
+          ],
+          [
+            292,
+            305,
+            0.64,
+            305
+          ],
+          [
+            440,
+            365,
+            0.64,
+            365
+          ],
+          [
+            840,
+            675,
+            0.7,
+            675,
+            0.59
+          ],
+          [
+            1080,
+            795,
+            0.7,
+            805,
+            0.54
+          ],
+          [
+            1536,
+            1050,
+            0.7,
+            1075,
+            0.54
+          ]
+        ],
+        "thumbnailBox": "5 270 1015 875",
+        "coversArms": true,
+        "cropped": true,
+        "visibleContour": "M0 0H452V365H575V0H1024V1536H0Z",
+        "neutralTrim": "M442 370H458L449 1088H427ZM568 370H581L608 1088H590Z"
+      }
+    },
+    {
+      "key": "leggings",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-major-leggings-v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: one production wearable sprite for Slice & Stitch's painted-cartoon modular human wardrobe.\nInput images: Image 1 is canonical standing body/pose and garment placement reference ONLY. Image 2 is garment painting style reference ONLY. Do not copy the person or reference clothing.\nOutput: ONE isolated garment on a genuinely transparent 1024 by 1536 portrait canvas. No person, head, skin, hands, mannequin, hanger, label, floor, drop shadow, background glow, stray fragments or other items.\nStyle: detailed warm hand-painted cartoon, soft matte shading, fine sewn construction, small readable folds, soft taupe painted contours, not a hard black outline, not photorealistic, not glossy plastic or 3D.\nPalette: neutral pale ivory fabric, restrained warm taupe shadows. Keep fabric neutral for runtime dye; small natural brass or wooden hardware can remain brown/gold. No patterned print: textile motifs will be applied separately in the game.\nView/registration: straight-on front view with relaxed arms angled down, exactly like Image 1. Keep the garment in its wearable position, not centered vertically or enlarged to fill the whole canvas. Shared body coordinates: center x512; neck y335; shoulders x320 and700 at y355; waist x350 to674 at y690; hips y790; wrists x267 and757 at y805; knees y1030; ankles x394 and630 at y1300; feet ground y1410. Neck and arm openings completely transparent, no rear collar floating across the neck, no empty-insole skin painted in. Keep all edges within the canvas with at least 24px clear margin.\nGarment specification: A pair of fitted ankle-length jersey leggings, wide high-waisted band at y690, natural crotch at y875, two narrow legs at knees y1030, elastic ankle hems y1300. Soft matte stretch fabric with discreet seams, no pockets, no shoes, no bare skin, no upper garment.",
+      "generatedOriginal": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-7373179e-c40f-40d5-9524-be9e2db7a1f6.png",
+      "registration": {
+        "family": "major-leggings",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-major-leggings-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            555,
+            1.02
+          ],
+          [
+            240,
+            690,
+            1.02
+          ],
+          [
+            365,
+            755,
+            0.95
+          ],
+          [
+            600,
+            875,
+            0.82
+          ],
+          [
+            990,
+            1090,
+            0.7
+          ],
+          [
+            1288,
+            1320,
+            0.72
+          ],
+          [
+            1536,
+            1460,
+            0.72
+          ]
+        ],
+        "thumbnailBox": "250 220 525 1090",
+        "coversLegs": true
+      }
+    }
+  ],
+  "designContract": "garment-design.js",
+  "assignmentSnapshot": "assets/characters-v3/modular-v4/catalogue-design-v1.json",
+  "coverage": {
+    "catalogueEntries": 409,
+    "registeredEntries": 409,
+    "sharedPaintedBases": 106,
+    "typesWithNewPaintings": 8,
+    "newCatalogueEntries": 4,
+    "supportedTextileRecipes": 22
+  },
+  "qualityControl": {
+    "tests": 152,
+    "failures": 0,
+    "visualChecks": [
+      "Six major-cut outfits on light, medium and deep buckets",
+      "Six textile motifs at torso scale",
+      "Four-piece puffer outfit in the game fitting room"
+    ],
+    "savedPlayerChanged": false,
+    "consoleErrors": 0,
+    "contours": "A single inward, feathered alpha contour per assembled garment; no exterior halo or hard black stroke.",
+    "proofFolder": "artifacts/clothing-major-2026-10-03/"
+  },
+  "limitations": [
+    "Other ornate catalogue cuts still share silhouette-family artwork. This is not 409 bespoke paintings.",
+    "Visual QC covers representative combinations, not every possible outfit permutation.",
+    "The sheer textile recipe supplies a fine woven surface; it does not turn existing opaque blouse paintings into true transparent organza."
+  ]
+}

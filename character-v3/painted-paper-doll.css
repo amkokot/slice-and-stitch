@@ -1,0 +1,161 @@
+.painted-paper-doll {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.painted-paper-doll__body,
+.painted-paper-doll__feet,
+.painted-paper-doll__garment,
+.painted-paper-doll__garment > img,
+.painted-paper-doll__paint,
+.painted-paper-doll__tint,
+.painted-paper-doll__pattern {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.painted-paper-doll__body,
+.painted-paper-doll__feet,
+.painted-paper-doll__garment > img {
+  object-fit: contain;
+  object-position: center;
+  user-select: none;
+}
+
+.painted-paper-doll__body { z-index: 2; }
+.painted-paper-doll__feet { z-index: 4; }
+.painted-paper-doll__garment { z-index: 10; isolation: isolate; }
+.painted-paper-doll__garment--dress-bottom,
+.painted-paper-doll__garment--bottom { z-index: 8; }
+/* Trouser hems cover the collars of closed shoes; toes and soles remain
+   visible below. Footwear must not paint over a long/wide trouser hem. */
+.painted-paper-doll__garment--shoes { z-index: 6; }
+/* Tall shafts tuck inside full-length trousers. Their calf silhouette must
+   not stick out beside the trouser leg; retain the entire ankle/heel/toe. */
+.painted-paper-doll__garment--shoes[data-under-long-hem='true'] { clip-path: inset(83% 0 0); }
+.painted-paper-doll__garment--top { z-index: 15; }
+.painted-paper-doll__garment--outer { z-index: 18; }
+.painted-paper-doll__garment--apron { z-index: 22; }
+.painted-paper-doll__garment--accessory { z-index: 35; }
+/* Neck fabric sits over the outfit, but below the jaw and front hair.
+   Hats and other accessories retain their separate foreground layer. */
+.painted-paper-doll__garment--accessory[data-paper-family='woven-scarf'] { z-index: 26; }
+.painted-paper-doll__garment--accessory[data-paper-depth='neck'] { z-index: 26; }
+
+/* A long-sleeved outer layer supplies the visible sleeves. Keep the selected
+   shirt's collar, chest and hem, but do not let rolled/puffed inner sleeves
+   protrude outside the fitted jacket. Sleeveless outerwear keeps shirt arms. */
+.painted-paper-doll__garment--top[data-under-outerwear='long-sleeves'] {
+  clip-path: polygon(40% 18%, 60% 18%, 60% 24%, 57% 30%, 57% 50%, 61% 56%, 39% 56%, 43% 50%, 43% 30%, 40% 24%);
+}
+/* Below a cropped jacket, keep the complete shirt torso and hem. The narrow
+   inset used inside long lapels must not become a dangling centre strip. */
+.painted-paper-doll__garment--top[data-under-outerwear='cropped-sleeves'] {
+  clip-path: polygon(40% 18%, 60% 18%, 60% 24%, 57% 30%, 57% 41%, 70% 41%, 70% 56%, 30% 56%, 30% 41%, 43% 41%, 43% 30%, 40% 24%);
+}
+/* Rolled jackets hide inner upper sleeves but retain the forearms, cuffs,
+   and complete shirt hem. This is independent of bare-arm skin masking. */
+.painted-paper-doll__garment--top[data-under-outerwear='rolled-sleeves'] {
+  clip-path: polygon(40% 18%, 60% 18%, 60% 24%, 57% 30%, 57% 39.5%, 80% 39.5%, 80% 56%, 20% 56%, 20% 39.5%, 43% 39.5%, 43% 30%, 40% 24%);
+}
+
+/* A dress/jumpsuit keeps its whole skirt/legs when its sleeves sit inside
+   outerwear. The shirt-only inset must never truncate a one-piece hem. */
+.painted-paper-doll__garment--top[data-paper-one-piece][data-under-outerwear],
+.painted-paper-doll__garment--top[data-paper-long-top][data-under-outerwear] {
+  clip-path: polygon(40% 18%, 60% 18%, 60% 24%, 57% 30%, 57% 43%, 90% 43%, 90% 100%, 10% 100%, 10% 43%, 43% 43%, 43% 30%, 40% 24%);
+}
+
+/* A cape covers shoulders, not the full arms. Hide tall inner straps/puffs
+   above its shoulder line while keeping the collar, sleeves and full hem. */
+.painted-paper-doll__garment--top[data-under-outerwear='cape-shoulders'] {
+  clip-path: polygon(0 27%, 45% 27%, 45% 18%, 55% 18%, 55% 27%, 100% 27%, 100% 100%, 0 100%);
+}
+
+/* The rolled-sleeve blouse plate was authored a few pixels right of the
+   canonical torso. Register the complete layer—not the avatar—to the shared
+   centerline. */
+.painted-paper-doll__garment--top[data-paper-family='blouse'] { transform: translate(-.8%, -2.2%); }
+
+/* Keep only the worn portion of the clean apron plate. The source includes
+   long display ties meant for a catalogue cutout, which otherwise read as
+   stray garment colour beside the arms at avatar scale. */
+.painted-paper-doll__garment--apron {
+  clip-path: polygon(38% 18%, 62% 18%, 66% 41%, 68% 48%, 69% 61%, 70% 69%, 30% 69%, 31% 61%, 32% 48%, 34% 41%);
+}
+.painted-paper-doll__garment--apron[data-paper-family='waist-apron'],
+.painted-paper-doll__garment--apron[data-paper-family='crossback-apron'],
+.painted-paper-doll__garment--apron[data-paper-family='bib-apron'],
+.painted-paper-doll__garment--apron[data-registered-painting] { clip-path: none; }
+
+.painted-paper-doll__garment > img { z-index: 0; filter: saturate(.18) contrast(1.04); }
+.painted-paper-doll__garment--apron > img { filter: grayscale(.48) saturate(.08) contrast(.86) brightness(.97); }
+.painted-paper-doll__tint,
+.painted-paper-doll__pattern {
+  z-index: 1;
+  background: var(--paper-primary);
+  -webkit-mask-image: var(--paper-layer-image);
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: var(--paper-layer-image);
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mix-blend-mode: color;
+  opacity: .92;
+}
+
+.painted-paper-doll__pattern {
+  z-index: 2;
+  opacity: .18;
+  mix-blend-mode: multiply;
+}
+
+.painted-paper-doll__garment.pattern-pinstripe .painted-paper-doll__pattern,
+.painted-paper-doll__garment.pattern-stripe .painted-paper-doll__pattern {
+  background: repeating-linear-gradient(90deg, transparent 0 18px, var(--paper-secondary) 19px 23px, transparent 24px 42px);
+}
+.painted-paper-doll__garment.pattern-check .painted-paper-doll__pattern {
+  background: repeating-linear-gradient(90deg, transparent 0 34px, var(--paper-secondary) 35px 39px), repeating-linear-gradient(0deg, transparent 0 34px, var(--paper-secondary) 35px 39px);
+}
+.painted-paper-doll__garment.pattern-floral .painted-paper-doll__pattern {
+  background: radial-gradient(circle at 22% 28%, var(--paper-secondary) 0 4px, transparent 5px), radial-gradient(circle at 69% 61%, var(--paper-secondary) 0 5px, transparent 6px), radial-gradient(circle at 43% 82%, var(--paper-secondary) 0 3px, transparent 4px);
+  background-size: 70px 82px;
+}
+.painted-paper-doll__garment.pattern-herringbone .painted-paper-doll__pattern,
+.painted-paper-doll__garment.pattern-twill .painted-paper-doll__pattern,
+.painted-paper-doll__garment.pattern-denim .painted-paper-doll__pattern {
+  background: repeating-linear-gradient(135deg, transparent 0 8px, var(--paper-secondary) 9px 11px, transparent 12px 20px);
+}
+
+.painted-paper-doll__head {
+  position: absolute;
+  top: .5%;
+  left: 50%;
+  z-index: 1;
+  display: block;
+  width: 46%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+}
+.painted-paper-doll__head--front { z-index: 30; }
+.painted-paper-doll__head > .modular-head-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.painted-paper-doll__accessories { position: absolute; inset: 0; z-index: 35; display: block; width: 100%; height: 100%; overflow: visible; }
+.painted-paper-doll__accessories--neck { z-index: 26; }
+.painted-paper-doll__hands { position:absolute; inset:0; width:100%; height:100%; z-index:21; pointer-events:none; }
+/* Fitted coats tuck high waist gathers inside their narrow side seams, while
+   preserving the waistband visible through an open front and all lower hems. */
+.painted-paper-doll__garment[data-tucked-waist='true'] {
+  clip-path: polygon(38% 0, 62% 0, 62% 47%, 68% 52%, 73% 56%, 100% 60%, 100% 100%, 0 100%, 0 60%, 27% 56%, 32% 52%, 38% 47%);
+}
+

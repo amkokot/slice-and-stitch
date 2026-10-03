@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-10-03",
+  "scope": "Canonical front-view modular body: footwear heel openings, hidden rear straps, calf coverage, trouser hems, hat crowns and hair/skin occlusion.",
+  "method": "Native SVG registration, source-coordinate deletion masks and depth/coverage rules. Existing painted PNGs and catalogue colours/textiles are preserved; no generated or pixel-edited source images.",
+  "sourceImagesModified": false,
+  "coverage": {
+    "catalogueEntries": 409,
+    "sharedPaintedBases": 106,
+    "distinctFootwearSources": 17,
+    "distinctHeadwearSources": 8,
+    "skinBuckets": ["light", "medium", "deep"],
+    "visualHairPairings": ["shoulder-waves", "buzz", "afro"],
+    "automatedHairPairings": ["shoulder-waves", "buzz", "afro", "curls", "bob"],
+    "hemPairings": ["pencil skirt / exposed ankles", "wide-leg trousers / long hems"],
+    "regressionTests": "checks/wearable-fit.spec.js"
+  },
+  "repairs": [
+    {"family": "shoes-sandal", "change": "Right heel moved 52 canonical pixels left onto the ankle; hidden back arcs removed while retaining front bands, side straps and buckles."},
+    {"family": "shoes-t-strap", "change": "Hidden rear ankle-band arc removed from equipped view; front band and vertical strap remain."},
+    {"family": "shoes-slingback", "change": "Small rear heel-strap segment removed where the ankle occupies the source opening."},
+    {"family": "shoes-tall-boot", "change": "Upper empty collar segments removed; calf and ankle-bridge skin masked inside shafts. Upper shafts tuck beneath long trouser hems, but remain visible with skirts and shorts."},
+    {"family": "penny-loafers", "change": "Product thumbnail widened to 170 1230 680 230, retaining both complete toes, soles and heels."},
+    {"family": "major-bucket-hat", "change": "Crown raised without clipping the top of the source painting: translate(261.12 -56) scale(.49 .29). Brim clears the eyes."},
+    {"family": "turban", "change": "Restored crown height: translate(199.68 -89) scale(.61 .34). Style-specific afro tuck keeps the painting's natural side outline."},
+    {"family": "headband", "change": "Buzz-cut-specific compact fit: translate(307.2 -64) scale(.4 .27). Product registration and other hairstyles are unchanged."},
+    {"family": "all crown-covering headwear", "change": "Removed whole-head 25% clipping. Hair tucks independently, upper scalp trims only the top 24/240 pixels, and forehead, brows and eyes remain available beneath curved hat openings."}
+  ],
+  "runtimeSources": [
+    "character-v3/registered-garments.js",
+    "character-v3/catalogue-garments.js",
+    "character-v3/major-garments.js",
+    "character-v3/painted-paper-doll.js",
+    "character-v3/painted-paper-doll.css",
+    "character-v3/modular-head.js"
+  ],
+  "proofDirectory": "artifacts/wearables-fit-2026-10-03",
+  "finalProofs": [
+    "sandals-medium-final.png",
+    "sandals-light-final.png",
+    "sandals-deep-final.png",
+    "t-straps-deep-final.png",
+    "slingbacks-light-final.png",
+    "knee-boots-medium-verified.png",
+    "knee-boots-trousers-final.png",
+    "hats-medium-buzz-final.png",
+    "hats-medium-waves-1.png",
+    "hats-deep-afro-final-2.png",
+    "turban-deep-afro-verified.png",
+    "in-game-shoes-hat-final.png"
+  ],
+  "verification": "Every source was visually inspected equipped and as a product. Repaired sandal openings were checked on all three skin buckets. All footwear families were checked with long trouser hems. Live wardrobe used temporary catalogue try-on only, then restored the original worn outfit; Mia and 156 coins were retained.",
+  "limitations": "This pass audits the existing stationary front-view attachment rig. It does not add rear-view, profile-view or animated footwear/headwear sprite sets. Baseline and intermediate screenshots are retained separately and are not final approvals."
+}

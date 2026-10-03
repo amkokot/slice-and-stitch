@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "generationMode": "built-in image generation",
+  "coverage": {
+    "catalogueEntries": 389,
+    "registeredFamilyArtwork": 389,
+    "sharedPaintedSources": 77,
+    "newPaintedSources": 51,
+    "bespokeArtworkForEveryCut": false
+  },
+  "commonPrompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput one isolated garment on a genuinely transparent 1024 x 1536 portrait canvas. Image 1 is the CANONICAL CLOTHED BODY reference for exact front-view relaxed pose, canvas scale and garment fit ONLY. Image 2 is an approved painted garment for matte cloth texture, soft folded edges, seams and illustration style ONLY. Do not render the reference body or other clothes.\nLOCK REGISTRATION: body center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently out to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent, NEVER enlarge/recenter to fill the canvas.\nWarm richly detailed hand-painted game illustration matching references, matte soft material shading, refined stitchwork. Opaque fabric where appropriate. No hard vector outline, no shiny 3D render, no photograph.\nStrict transparency: no human, neck, face, skin, hands, feet, mannequin, background, halo, shadow outside fabric, label, text, floating fragment. Every neck or sleeve opening transparent. All fabric within canvas with clear transparent margins.\nGARMENT: ",
+  "referencedImages": [
+    "assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+    "assets/characters-v3/modular-v4/source/top-wrap-blouse-v1.png"
+  ],
+  "transparentBackground": true,
+  "qualityAssurance": {
+    "command": "npm run check",
+    "passingTests": 133,
+    "visualReview": "All 51 new painted families reviewed equipped on the shared body. Representative coats, dresses, aprons, footwear and accessory combinations checked in the fitting room. Open shoes checked at close range on medium and deep skin; all three buckets covered by automated tests.",
+    "correctedDuringReview": ["continuous dress fitting without strip seams", "open-shoe skin gaps", "satchel strap attachment", "cloche brow clearance", "hoodie and bomber shoulder registration", "glove hand occlusion", "capelet occlusion of inner shoulder straps", "source-based footwear thumbnails"],
+    "uiReview": "Live game search retains focus. Multiword search, empty recovery, collections, sorting and full catalogue pagination verified. Saved outfit and 156-coin balance remained unchanged. No horizontal overflow at the game panel's existing 600px viewport.",
+    "proofDirectory": "artifacts/clothing-catalogue-expansion-2026-10-03",
+    "finalProofs": ["searchable-chest.jpg", "new-arrivals.jpg"],
+    "exhaustiveCombinationReview": false
+  },
+  "registration": {
+    "canvas": [
+      1024,
+      1536
+    ],
+    "configuration": "character-v3/catalogue-garments.js",
+    "renderer": "character-v3/registered-garments.js",
+    "method": "Shared body anchors; affine transforms for separates, continuous piecewise-affine SVG meshes for one-piece garments and long coats. No changes to head placement or body rig.",
+    "cleanup": "Runtime alpha threshold suppresses faint generation halos. Source PNGs are preserved. Open shoes sample opaque skin inside the selected body bucket, independently of fabric dye."
+  },
+  "wardrobe": {
+    "entry": "Home clothing chest opens Wardrobe; home mirror opens Face",
+    "presentation": "Cedar chest with linen drawers, brass handles and category rails",
+    "search": [
+      "name",
+      "color words in catalogue names",
+      "fabric",
+      "cut",
+      "style tags",
+      "collection",
+      "handmade"
+    ],
+    "filters": [
+      "owned / full catalogue",
+      "equipment slot",
+      "collection"
+    ],
+    "sort": [
+      "name",
+      "quality",
+      "price",
+      "handmade first"
+    ],
+    "pageSize": 24,
+    "unowned": "Preview only. Does not grant ownership, charge coins, equip saved profile or change progression."
+  },
+  "knownFamilyAdaptations": [
+    "Shell tops and halters share the camisole painting; neckline details are not bespoke.",
+    "Tea dresses share wrap-dress art; sundresses use a shorter fitted gown.",
+    "Paperbag, sailor, jodhpur, jogger, tuxedo and bespoke trousers share tailored-trouser art. Their specialty fastenings and leg shapes remain future refinements.",
+    "Mermaid and godet skirts share maxi art; bustle skirts share tiered art.",
+    "T-strap heels share Mary Jane art. Monk shoes share Oxfords. Slingback, ribbon, spectator and sculpted heels share pumps without their bespoke straps, ribbons or two-tone panels. Mules share clogs.",
+    "Bucket hats share cloche art; pillbox and veiled berets share beret art without a veil. Doctor/frame/top-handle bags share the frame handbag painting.",
+    "Tuxedo and bespoke jackets share the existing blazer painting. Several premium coat and apron cuts share a painted silhouette.",
+    "All catalogue items keep their existing gameplay, cut, palette, pattern, quality and provenance records. Registered family coverage is not a claim of 389 individually painted silhouettes.",
+    "Arbitrary player-crafted future cuts retain the explicit existing fallback until registered. Static front-view clothing rig, not a new animated clothing system."
+  ],
+  "sources": [
+    {
+      "key": "dress-shift",
+      "brief": "An ivory cotton clean SHIFT DRESS: soft scoop neckline at y350, narrow short sleeves end y510, gentle shaped waist y690, straight relaxed skirt with slight flare ending y1040. Modest hem, subtle front darts and single side seam; no belt, buttons or pockets. Whole continuous dress, not a shirt plus skirt.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-d252e6e1-c297-4c5d-918f-9a52c1061ca9.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-dress-shift-v1.png"
+    },
+    {
+      "key": "dress-wrap",
+      "brief": "An ivory matte crepe WRAP MIDI DRESS: modest diagonal overlapping V neckline, elbow-length sleeves end y570, softly tied waist at y690 with small side knot, softly flowing A-line wrap skirt ends y1150. Continuous complete dress, opaque chest, restrained natural folds, no skin or huge bow.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-b320c129-0e0e-4ac4-be68-e175d5d4286d.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-dress-wrap-v1.png"
+    },
+    {
+      "key": "dress-gown",
+      "brief": "An ivory matte silk COLUMN EVENING GOWN: broad shoulder straps from y350, elegant modest soft V bodice, fitted waist y690, flowing gently flared long skirt to y1375, refined diagonal draped folds. No train, no slit, no skin, no extra jewelry. Whole continuous gown; skirt encloses both legs.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-c42e1e29-b756-4081-8531-e4d6cc304dc2.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-dress-gown-v1.png"
+    },
+    {
+      "key": "suit-jumpsuit",
+      "brief": "An oatmeal cotton UTILITY JUMPSUIT: short collar at y340, short sleeves end y510, fitted upper torso, central button placket, waist y690 with matching flat fabric waistband, two straight trouser legs ending y1320 with transparent gap between legs. Simple chest and hip pockets, refined seams, no shoes, no skin. Whole one-piece garment.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-1dd67930-d49f-44be-9a8a-bfc5a52fb5a9.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-suit-jumpsuit-v1.png"
+    },
+    {
+      "key": "top-camisole",
+      "brief": "An ivory matte satin CAMISOLE, thin shoulder straps x385 and x635 y350, modest softly draped scoop neckline y390, fitted opaque torso and hem y770. No sleeves, neckline and underarms truly transparent, delicate bias folds and stitched hems. No lace or skin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-1f6587ba-75dd-4fb3-8e09-494484ecb2cd.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-top-camisole-v1.png"
+    },
+    {
+      "key": "top-peasant",
+      "brief": "An ivory cotton PEASANT BLOUSE: modest gathered rounded neckline y350, full but restrained elbow puff sleeves to y590, gently bloused torso, hem y785, narrow smocked cuffs and delicate pin-tucks. Clear shoulder fit, no transparent cloth, no skin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-d96ca66d-7ff2-4e3d-9c1e-bbd875a1f5cd.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-top-peasant-v1.png"
+    },
+    {
+      "key": "top-turtleneck",
+      "brief": "An ivory fine-gauge TURTLENECK PULLOVER: upright fitted neck collar x455..569 y305..365 with no skin, long sleeves to wrists y785, softly shaped torso, hem y785. Fine ribs, restrained natural knit folds, no huge cable stitches. Do not fill the neckline opening.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-20acbb19-6371-4a7b-b72d-0fdc227de4a7.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-top-turtleneck-v1.png"
+    },
+    {
+      "key": "top-henley",
+      "brief": "An ivory cotton long-sleeve HENLEY SHIRT: modest ribbed round neckline y350, short centered three-button placket to y485, fitted long sleeves to y780, softly draped torso, hem y785. Opaque cotton, fine stitchwork, no skin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-8067960c-a4cb-4100-8af7-ccdae7e05c53.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-top-henley-v1.png"
+    },
+    {
+      "key": "outer-hoodie",
+      "brief": "An oatmeal cotton ZIP HOODIE, open center revealing transparency x455..570 y410..785, empty folded hood at collar y330..410 (no head), long sleeves ending y785, rib waistband y800, two pockets, metal zipper teeth. Worn front view, no body, no underlayer; transparent interior opening.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-3b4255ff-b944-4588-8ba8-df0ee6399d5f.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-outer-hoodie-v1.png"
+    },
+    {
+      "key": "outer-bomber",
+      "brief": "An ivory matte SATIN BOMBER JACKET, slim rib neckline y340, closed front with zipper, subtle gathered waist ending y785, relaxed long sleeves to y785, rib cuffs, discreet welt pockets. Soft low-gloss satin, opaque fabric, no skin or logos.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-1a52a1b1-5e41-404d-b238-e362711076f0.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-outer-bomber-v1.png"
+    },
+    {
+      "key": "outer-trench",
+      "brief": "An oatmeal cotton OPEN TRENCH COAT, lapels y340, long sleeves to y785, softly fitted waist y690 with belt tied neatly at sides but NOT across transparent center, double-breasted buttons, shoulder storm flap, two panels extending to y1130. Interior opening x455..565 from y420 widening to x420..605 at hem must be transparent so inner outfit shows. No body, no undershirt.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-e05f8d57-ebec-4d16-a8a0-4fa6c94b748f.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-outer-trench-v1.png"
+    },
+    {
+      "key": "outer-coat",
+      "brief": "An ivory wool OPEN COCOON OVERCOAT, soft broad lapels y335, slightly rounded shoulders x300..715 y365, long sleeves to y785, broad tailored front panels to y1110, subtle wool nap and warm matte folds. Center opening x450..575 from y440 to hem must be transparent. Refined seams and two welt pockets. No body or underlayer.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-1be005ce-362a-4dd5-801c-b8f1763f1aa7.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-outer-coat-v1.png"
+    },
+    {
+      "key": "bottom-denim",
+      "brief": "Neutral mid-grey COTTON DENIM JEANS, waistband y690 x350..674, classic straight legs with separate hems y1320, left hem x350..445 and right hem x580..675. Five pockets, visible twin topstitching, metal fly button, restrained denim twill and worn folds. No shoes, legs, belt or skin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-734f3b9c-49d2-4b50-8364-596318dff59c.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bottom-denim-v1.png"
+    },
+    {
+      "key": "bottom-tailored",
+      "brief": "Ivory wool TAILORED TROUSERS, waist y690 x350..674, softly pleated hips to y790, neatly tapered legs to hems y1320, left hem x355..445 and right hem x580..670. Refined front crease, belt loops, slim side pockets. No feet, belt or skin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-644cbfd0-3468-4de8-8f72-2d31e0aa370f.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bottom-tailored-v1.png"
+    },
+    {
+      "key": "bottom-wrap",
+      "brief": "Ivory cotton WRAP MIDI SKIRT, waist y690 x345..679, neat side wrap tie at hip, softly draped overlapping front and a gently asymmetric hem y1160. Subtle seam and natural folds; a continuous modest opaque silhouette. No body, legs or skin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-16cd4bff-ed89-446e-b1f6-531f7dc05747.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bottom-wrap-v1.png"
+    },
+    {
+      "key": "bottom-tiered",
+      "brief": "Ivory cotton TIERED MIDI SKIRT, waist y690 x345..679, softly gathered three continuous fabric tiers, hip y790, flared hem y1180 x255..770. Fine tier stitching, soft drape, no stiff ruffles or detached panels. No body, legs or skin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-80181686-f1c6-47a9-81be-56eaf24abb41.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bottom-tiered-v1.png"
+    },
+    {
+      "key": "bottom-circle",
+      "brief": "Ivory twill FULL CIRCLE SKIRT, fitted waistband y690 x345..679, continuous circular flare to y1090 x240..784, beautiful rounded folds and stitched curved hem, no pleats or waist tabs. No body or skin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-6fed8c9e-9e7b-4531-bf5a-8034f9ad78ef.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bottom-circle-v1.png"
+    },
+    {
+      "key": "bottom-maxi",
+      "brief": "Ivory crepe PANELLED MAXI SKIRT, waist y690 x345..679, fitted upper hips with continuous vertical seam panels, graceful long flare and hem y1370 x265..759. Soft matte draped folds, no skin, no slit, no train.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-8a2c7a6b-934e-4418-a0c4-dbd15794c93d.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bottom-maxi-v1.png"
+    },
+    {
+      "key": "shoes-oxford",
+      "brief": "ONE PAIR ivory taupe leather OXFORD SHOES, as worn on canonical feet, slightly splayed mirrored toes. Left shoe around x300..450 y1300..1420, right around x575..725 y1300..1420. Full lace vamp, low brown welt soles, fine leather seams and little brogue perforations. No socks, legs, feet or skin; collar openings transparent. Preserve huge unused transparent upper canvas.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-584ead18-67b4-434a-b948-ab4c8fa143db.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-shoes-oxford-v1.png"
+    },
+    {
+      "key": "shoes-mary-jane",
+      "brief": "ONE PAIR ivory matte leather MARY JANE SHOES, canonical slightly splayed mirrored feet. Left shoe around x300..450 y1300..1420, right around x575..725 y1300..1420. Rounded closed toes, one thin leather instep strap with brass buckle, low separate heel and stitched sole. No legs, feet or skin; instep openings transparent. Preserve unused transparent upper canvas.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-bd711cc6-d484-4351-9023-57e58bc4e886.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-shoes-mary-jane-v1.png"
+    },
+    {
+      "key": "shoes-pump",
+      "brief": "ONE PAIR ivory matte suede EVENING PUMPS, canonical slightly splayed mirrored feet. Left around x300..450 y1300..1420, right around x575..725 y1300..1420. Elegant softly pointed closed toe, modest sculpted block heels, fine stitched topline. No legs, feet, skin or socks; upper foot openings transparent. Preserve unused transparent upper canvas.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-9f2d2901-6f28-4af5-8fb4-7cfd78154f21.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-shoes-pump-v1.png"
+    },
+    {
+      "key": "shoes-sandal",
+      "brief": "ONE PAIR ivory leather STRAPPED SANDALS, canonical slightly splayed mirrored feet. Left around x285..450 y1290..1420, right around x575..740 y1290..1420. Low cork platform sole, two soft broad crossing toe straps, slim ankle strap and small buckles. Every gap genuinely transparent for independent foot skin. No feet, skin, legs or socks. Preserve unused upper canvas.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-92d98212-8e5f-4682-a0a4-0a062d620002.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-shoes-sandal-v1.png"
+    },
+    {
+      "key": "shoes-tall-boot",
+      "brief": "ONE PAIR ivory taupe leather KNEE RIDING BOOTS, canonical mirrored slightly splayed feet. Shafts from y1030 to y1340, left shaft x355..445, right x580..670. Left toe extends x300..445 to y1420, right toe extends x580..725 to y1420. Tall refined matte leather shaft, low heel, restrained side seam and small strap. No legs, skin or socks. Upper canvas remains transparent.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-b5cc0351-f655-4746-bd15-614faf36955e.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-shoes-tall-boot-v1.png"
+    },
+    {
+      "key": "shoes-clog",
+      "brief": "ONE PAIR natural oatmeal leather KITCHEN CLOGS, canonical mirrored slightly splayed feet. Left x285..450 y1300..1420, right x575..740 y1300..1420. Smooth closed rounded toe, open heel, rich warm wooden low sole, visible metal rivets at side. No legs, feet, skin or socks. Foot openings genuinely transparent, preserve unused upper canvas.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-4f782cf9-0931-442d-84a8-e8d7c7d99b85.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-shoes-clog-v1.png"
+    },
+    {
+      "key": "top-corset",
+      "brief": "Ivory COTTON CORSET TOP, sleeveless with two substantial shoulder straps, modest sweetheart neckline, shaped seams and refined vertical boning channels, softly curved waist hem. One continuous opaque top.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-3cf12e94-5197-4c6f-9de0-94946b66d5a2.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-top-corset-v1.png"
+    },
+    {
+      "key": "outer-capelet",
+      "brief": "Ivory wool CAPELET, fitted rounded shoulder cape with open front, small neck clasp and softly scalloped lower edge ending at the elbows. No arms or mannequin, transparent center opening.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-38973600-419c-4c91-aaa9-42dc3d8d201f.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-outer-capelet-v1.png"
+    },
+    {
+      "key": "apron-smock",
+      "brief": "Ivory cotton COBBLER STUDIO SMOCK APRON, square neckline, wide straps, simple straight front to above the knee, generous divided patch pockets, side tie loops, no body underneath.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-ab835951-3087-4d91-b4bf-fbbddfb936a6.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-apron-smock-v1.png"
+    },
+    {
+      "key": "bottom-petal",
+      "brief": "Ivory crepe PETAL MIDI SKIRT, fitted waistband, layered overlapping rounded petal panels with softly curled ends, continuous modest fabric coverage, couture folded drape.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-e36c04ad-98cf-4c4f-823f-a44181127c22.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bottom-petal-v1.png"
+    },
+    {
+      "key": "hat-beret",
+      "brief": "Oatmeal wool BERET, softly rounded asymmetric crown, narrow dark rim. Front view, isolated, no head, no hair. Hat occupies x260..765 y30..230, no outside shadow.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-09cd6b44-244e-44d4-bace-e07d5ff74568.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-hat-beret-v1.png"
+    },
+    {
+      "key": "hat-brim",
+      "brief": "Ivory woven WIDE-BRIM SUN HAT, softly rounded crown and slightly asymmetric brim seen from front. Thin neutral fabric ribbon and tiny flower at side. No head or hair.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-9f7255a8-b309-418c-863f-aeb2f0860bb6.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-hat-brim-v1.png"
+    },
+    {
+      "key": "hat-cloche",
+      "brief": "Ivory felt CLOCHE HAT, bell crown and narrow gently rolled brim, narrow ribbon and side fabric rosette. Front view, no head or hair.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-f9819930-eae9-45f2-b2aa-73199cd2ff2e.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-hat-cloche-v1.png"
+    },
+    {
+      "key": "hat-cap",
+      "brief": "Ivory tweed NEWSBOY CAP, rounded soft segmented eight-panel crown with small front visor, visible stitches, no head or hair. Front view.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-02c56eb1-631b-426c-ba22-8d5a2069a49d.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-hat-cap-v1.png"
+    },
+    {
+      "key": "headband",
+      "brief": "Ivory fabric HEADBAND, curved broad cloth-covered arc with small folded knot at top, front view. Only the headband, open transparent middle, no hair or head.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-159d1157-dc2a-472e-9331-9a56ac20e1ab.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-headband-v1.png"
+    },
+    {
+      "key": "turban",
+      "brief": "Ivory SILK TURBAN, matte soft wrapped folds, rounded crown and elegant central twist, front view no hair or head. Bottom edge curves slightly upward above the brow, no dangling fabric.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-25d336f2-c2ea-4d87-b0e6-35d4010e1a2b.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-turban-v1.png"
+    },
+    {
+      "key": "bag-tote",
+      "brief": "Ivory canvas MARKET TOTE BAG, two soft long handles, sturdy fabric square pouch, visible pockets and reinforced seams, front view slightly angled. One bag, no hand or mannequin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-06327d2b-cea2-4c01-a6e7-20d3316a9708.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bag-tote-v1.png"
+    },
+    {
+      "key": "bag-satchel",
+      "brief": "Ivory taupe leather SATCHEL BAG, rounded small shoulder bag with flap, metal buckle, long thin curved strap, front view slightly angled. One isolated bag, no human.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-f3ed0a1e-a59c-48fe-ad8d-5f5e6b715bb1.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bag-satchel-v1.png"
+    },
+    {
+      "key": "bag-clutch",
+      "brief": "Ivory embroidered EVENING CLUTCH, small wide box-shaped pouch, softly rounded corners, metal frame clasp and a small fabric bow. No hand, no shoulder strap, no other objects.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-258e473d-3c77-481e-b6c7-0478e4423667.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bag-clutch-v1.png"
+    },
+    {
+      "key": "tie",
+      "brief": "Ivory silk NECKTIE, front view compact knot and long tapered pointed front blade, only a short visible collar-side strip each side of knot; NO full rear neck ring.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-da09bff5-b295-48ce-8ab6-e8f5700834bb.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-tie-v1.png"
+    },
+    {
+      "key": "bow",
+      "brief": "Ivory silk BOW TIE, compact natural folded bow with central knot and no neck strap or rear loop. One isolated bow.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-5c7e0eaf-db4e-4703-bae4-2b4f0670fc00.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bow-v1.png"
+    },
+    {
+      "key": "gloves",
+      "brief": "ONE PAIR ivory satin OPERA GLOVES, relaxed downward hands with separate fingers, canonical mirrored arm angle, from elbow y610 to fingertips y850, left x235..305 and right x719..789, transparent upper canvas. No skin or arms.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-5f428d11-ceef-4d56-b12d-1606d497e931.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-gloves-v1.png"
+    },
+    {
+      "key": "brooch",
+      "brief": "One antique brass FLOWER BROOCH, detailed sculpted overlapping petals and small central stone, matte hand-painted metal, no glare. Small isolated jewelry only.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-2607519e-1821-4f8e-9242-7df44f43434d.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-brooch-v1.png"
+    },
+    {
+      "key": "collar",
+      "brief": "Ivory pearl BEADED COLLAR NECKLACE, front-facing U shaped modest strand and small floral center bead. Only the visible FRONT curved strand, no back neck loop or clasp, transparent inside.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-d1d7344d-4b76-4976-bb98-8d799e02991f.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-collar-v1.png"
+    },
+    {
+      "key": "fascinator",
+      "brief": "Ivory felt FASCINATOR, small angled oval hatlet, soft organza bow and one curled feather, front view from slightly above. No veil over a face, no hair or head.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-e48f636b-1531-4851-ac56-e424a923ddc4.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-fascinator-v1.png"
+    },
+    {
+      "key": "dress-shirt",
+      "brief": "Ivory cotton SHIRT DRESS, front view, short cuffed sleeves, open point collar, real full front button placket, belt at waist and softly flared knee-to-midi skirt. Whole continuous one-piece garment, no body or skin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-1518278a-f86f-462f-8c74-01b8b3f6f9d1.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-dress-shirt-v1.png"
+    },
+    {
+      "key": "top-tunic",
+      "brief": "Ivory cotton TUNIC BLOUSE, V notch neck, three-quarter length cuffed sleeves, soft relaxed long straight hem to upper thigh. Rich embroidery around V neck and hem, modest, no body or skin.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-76d8ecce-4dd8-452b-989a-2bc248420c0b.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-top-tunic-v1.png"
+    },
+    {
+      "key": "shoes-espadrille",
+      "brief": "ONE PAIR oatmeal canvas ESPADRILLES, mirrored slightly splayed closed toes and flat woven jute rope soles, no wood sole, no heel. Left x300..450 y1300..1420, right x575..725 y1300..1420. No feet, skin, legs or socks. Upper foot openings transparent.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-a9c39153-511c-4a0e-bf5c-4694d9cc1703.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-shoes-espadrille-v1.png"
+    },
+    {
+      "key": "shoes-lace-boot",
+      "brief": "ONE PAIR oatmeal leather LACE-UP ANKLE BOOTS, mirrored slightly splayed feet, leather tongue and fine front laces, small welt sole and low heels. Left x300..450 y1220..1420, right x575..725 y1220..1420. No feet, skin or legs.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-7c65b9fa-a7a6-4204-99e3-b5ff4859f0e8.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-shoes-lace-boot-v1.png"
+    },
+    {
+      "key": "belt",
+      "brief": "One oatmeal leather BELT as worn around a waist, front view softly curved narrow band x335..689 y690..735, small antique brass square buckle at center, tidy stitched edges and punch holes. No body, no rear loop or other objects.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-d611ce99-c4fa-4916-9389-a11c33b328f4.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-belt-v1.png"
+    },
+    {
+      "key": "outer-tailcoat",
+      "brief": "Ivory wool TAILCOAT, FRONT VIEW as worn over a separate shirt. Open front, pointed lapels, fitted long sleeves, front waist hem cropped at waist, two tapered long rear tails visible behind the hips to knee. Clear transparent center opening and between tails. No shirt, vest, body, skin or bow tie.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-8d78ccf6-c427-4a82-9a61-2ccd10c4e158.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-outer-tailcoat-v1.png"
+    },
+    {
+      "key": "bottom-origami",
+      "brief": "Ivory thick crepe ORIGAMI SKIRT, fitted waistband, sculptural angular overlapping folded panels and an asymmetric knee-to-midi hem. Opaque modest fabric, soft hand-painted texture on architectural folds. No body or legs.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-1b6d6c2a-8691-415a-8650-0db03706146d.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bottom-origami-v1.png"
+    },
+    {
+      "key": "bag-handbag",
+      "brief": "One oatmeal leather FRAME HANDBAG with top handle, rounded structured vintage doctor-bag pouch, fine seams, small brass kiss-lock clasp, front view slightly angled. No human, arm, neck or other items.",
+      "source": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-0ae7ef2a-c8d4-41d6-a427-4d28588c8913.png",
+      "installedPath": "assets/characters-v3/modular-v4/source/catalogue-bag-handbag-v1.png"
+    }
+  ]
+}

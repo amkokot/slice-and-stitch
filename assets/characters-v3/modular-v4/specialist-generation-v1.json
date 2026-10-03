@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "mode": "Built-in image_gen tool; transparent-background raster generation and one precise asset edit.",
+  "scope": "12 distinct specialist silhouettes replacing shared placeholder-family mappings. Catalogue count, ownership, prices, unlock levels and saved identity are unchanged.",
+  "counts": {
+    "newRegisteredPaintings": 12,
+    "newColourwaysUsingThem": 24,
+    "sourceFilesCreated": 13,
+    "totalSharedPaintedBases": 89,
+    "catalogueEntries": 389
+  },
+  "referenceRoles": {
+    "canonicalBody": "Pose and registration only; never baked into the clothing.",
+    "approvedGarments": "Matte hand-painted material and soft-edge illustration style."
+  },
+  "records": [
+    {
+      "key": "top-halter",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-f345fe1d-af46-434e-819a-f2b8e1e93036.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-top-halter-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: A feminine elegant HALTER TOP, waist-length softly fitted bodice, visible straps rise diagonally from the underarm to meet behind the neck. Open shoulders and arms, a clean small front V-neckline, tasteful gathered drape at the bust, sewn lower hem at waist y690. Distinct from a camisole. No sleeves, no skin.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/top-wrap-blouse-v1.png"
+      ]
+    },
+    {
+      "key": "top-shell",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-19bdd7eb-43b6-4c30-b750-134a52c07e7c.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-top-shell-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: A refined sleeveless SHELL BLOUSE, round jewel neckline at y345, broad shoulder panels reaching x330/695, smooth slightly loose bodice, small front seam detail, gentle folds and side slits at hem y725. Broad shoulder fabric, not thin camisole straps. No sleeves, arms or skin.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/top-wrap-blouse-v1.png"
+      ]
+    },
+    {
+      "key": "outer-double-blazer",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-91136286-2777-46de-83e6-b3d0a088b519.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: An open DOUBLE-BREASTED tailored BLAZER, six subtle taupe horn buttons in two parallel rows, peaked lapels and crossing lower fronts, structured shoulder at y355 and slightly shaped waist. Arms relaxed outward to cuffs at wrists y775. Side patch/welt pockets, jacket hem y815. Central chest opening genuinely transparent, so an independently equipped shirt is visible beneath. No shirt or body painted into it. Rich woven cloth, neatly hand-sewn lapels.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/top-wrap-blouse-v1.png"
+      ]
+    },
+    {
+      "key": "outer-peacoat",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-9deeb2d6-ae77-487a-a94e-18db01458c5c.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-peacoat-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: A classic hip-length DOUBLE-BREASTED PEACOAT, broad notched collar, double rows of six horn buttons, thick matte wool, slanted hand pockets, fitted relaxed long sleeves ending at wrists y775. Shoulders y355, hem y880. Upper V-neck opening transparent to show another shirt below, jacket fabric closed below chest. No body or shirt, no scarf.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/top-wrap-blouse-v1.png"
+      ]
+    },
+    {
+      "key": "bottom-paperbag",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-e19569a8-c3f3-4870-a87b-58b2e95ac511.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-bottom-paperbag-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: PAPERBAG-WAIST TROUSERS, gathered high waist y685, a softly tied narrow fabric belt with short connected ends, fine stitched pleats, roomy upper leg then taper, cuffs y1310. Hips y790, knees1030, relaxed front stance feet centers394/630. Distinct ruffled waistband silhouette. Ivory cotton twill, no feet, no shoes or body.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/top-wrap-blouse-v1.png"
+      ]
+    },
+    {
+      "key": "bottom-jogger",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-6b7656f8-23d1-427e-a3fb-65f133bbe9c2.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-bottom-jogger-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: Refined TAILORED JOGGERS, comfortable softly elasticated waistband y690 with short tied drawstring, slightly roomy hips, tapering legs to rib-knit ankle cuffs y1305, side-seam pockets, matte cotton knit with subtle stitchwork. Relaxed front stance leg centers394/630 at ankles. No feet or shoes, no body.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/top-wrap-blouse-v1.png"
+      ]
+    },
+    {
+      "key": "bottom-sailor",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-2bc24854-0ecd-482d-81f8-c21583ea26b2.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-bottom-sailor-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: HIGH-WAIST SAILOR TROUSERS, smooth waistband y690 and wide rectangular front fall flap with six subtle taupe buttons, deep clean front creases, elegant wide straight legs to hem y1320. Upper hips y790, knees1030. Relaxed front stance leg centers394/630. Matte ivory dense cotton, no feet, shoes or body.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-bottom-tailored-v1.png"
+      ]
+    },
+    {
+      "key": "shoes-mule",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-d06709ba-2821-47d8-93e6-f28ac6fad146.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-shoes-mule-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: A pair of elegant closed-toe LEATHER MULES, low stacked heels, no heel backs, refined almond toes. Left shoe points slightly left, right slightly right, naturally worn in the front-view pose, foot centers394 and630, heel opening y1300 and toe soles y1410. Soft matte ivory leather with taupe seam shading. Upper foot openings fully transparent; no feet or skin, no floating parts.",
+      "accepted": false,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-shoes-pump-v1.png"
+      ]
+    },
+    {
+      "key": "shoes-slingback",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-3436e3d1-47e0-43b0-aeea-839983b9d181.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-shoes-slingback-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: A pair of elegant low SLINGBACK PUMPS, almond toes, modest block heels, distinctive narrow heel straps connecting around the back of each shoe. Left shoe slightly turned left, right slightly turned right, front-view pose foot centers394/630, heel y1300, toe sole y1410. Matte ivory leather with taupe seams. Open insteps fully transparent. No feet or skin.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-shoes-pump-v1.png"
+      ]
+    },
+    {
+      "key": "shoes-t-strap",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-11e2a9a5-725c-49d7-a4b7-e23c357c209d.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-shoes-t-strap-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: A pair of elegant T-STRAP HEELS, clearly visible central vertical strap joined to a horizontal ankle strap, small buckle on outside, softly almond closed toe and low block heel. Front relaxed stance left turns slightly left, right slightly right, ankle centers394/630 y1300, toe sole y1410. Matte ivory leather, taupe seams. Open foot spaces fully transparent, no feet or skin.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-shoes-pump-v1.png"
+      ]
+    },
+    {
+      "key": "shoes-monk",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-c5d6bc92-394b-4144-a9e6-40bb9bbae119.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-shoes-monk-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: A pair of classic DOUBLE-MONK leather shoes, two distinct buckle straps across each instep, softly rounded toe, stitched welt and modest stacked heels. Front relaxed stance, left shoe slightly outward left, right slightly outward right. Ankle openings at foot centers394/630 y1300, toe sole ground1410. Rich matte ivory leather with quiet taupe detail. Openings fully transparent, no socks, skin or feet.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-shoes-pump-v1.png"
+      ]
+    },
+    {
+      "key": "apron-leather",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-35c8c0a7-b8f4-4953-becd-602ae74dfd57.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-apron-leather-v1.png",
+      "prompt": "Use case: stylized-concept. Production wearable layer for the Slice & Stitch painted cartoon-human paper doll.\nOutput ONE isolated garment on a genuinely transparent 1024 x 1536 portrait canvas.\nReference image 1 is the canonical front-view relaxed body for fit and pose ONLY. Reference image 2 is the approved garment for hand-painted matte material, refined stitchwork, soft edges and folds ONLY. Do not render either reference body or other clothes.\nCANONICAL REGISTRATION: center x512; neck base y335; shoulders x320 and x700 at y355; waist x350..674 at y690; hips y790; upper arms angle gently outward to wrists x267 and x757 at y775; knees y1030; ankles x394 and x630 at y1300; toes/ground y1410. Keep garment exactly where worn, leave unused canvas transparent. Never enlarge or recenter to fill canvas.\nWarm richly detailed hand-painted game illustration. Opaque matte ivory cloth/leather with subdued taupe shadows, stitched edges and realistic but gently cartoon folds. No hard black outlines, no shiny 3D render, no photo.\nSTRICT transparency: no human, neck, skin, hands, mannequin, background, halo, label, text or floating fragments. Neck and sleeve openings fully transparent. Clothing only, everything within canvas with clear margins.\nGARMENT: A full LEATHER MAKER APRON, distinctive matte softened ivory leather, stitched reinforced edges, brass rivets and two large practical tool pockets. Broad bib from y435 to waist690, straps joined to bib rising toward neck y345, lower panel to knees y1070, side waist straps with very short connected ties. Gentle leather folds, no tools, no shirt, no body, strap interior and sides transparent.",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/top-wrap-blouse-v1.png"
+      ]
+    },
+    {
+      "key": "shoes-mule-v2",
+      "generatedPath": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-ff1e7084-de92-46d1-9356-0739cf6e62dd.png",
+      "assetPath": "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-shoes-mule-v2.png",
+      "prompt": "Use case: precise asset edit. Edit ONLY the shoe construction in the referenced production PNG. It incorrectly shows closed heel-back pumps; make a genuine BACKLESS MULE pair instead.\nPreserve the 1024x1536 transparent canvas, exact bottom-canvas location, left/right size, outward toe directions, ivory matte hand-painted texture, sewn almond toes, and low block heels.\nCRITICAL construction change: REMOVE the entire tall rear quarters and closed heel cups from both shoes. Each shoe must have a closed toe and a relatively low vamp ending over the mid-foot, with a fully OPEN heel/back. Shorten the leather side walls so they end near the mid-foot, never wrapping around the heel. The visible opening should be broad, horizontal-ish and low, not a tall teardrop instep surrounded by a pump back. Keep the low block heel sole below, but NO heel straps or heel-counter upper. Transparent empty back, no foot, skin or sock. This should be unmistakably a slip-on mule, not a pump.\nDo not change viewpoint, palette, material, pair spacing, or canvas framing. No background, halo, shadows outside shoe, detached fragments or text.",
+      "family": "shoes-mule",
+      "accepted": true,
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-shoes-mule-v1.png"
+      ]
+    }
+  ],
+  "qualityControl": {
+    "source": "All 63 catalogue paintings audited as RGBA8 1024x1536 with transparent corners and visible margins; existing paintings preserved.",
+    "fit": "Shared body anchors unchanged. Peacoat sleeves and torso have independent continuous mesh fit; blazer cuffs narrowed. Fitted coats tuck high waist sides without exposing the base waist. New full-length trousers hide covered calves. Backless mule revision clears the insole area occupied by the foot and samples the chosen skin bucket.",
+    "visual": "Six specialist mixed outfits checked in full, torso and feet framing across light, medium and deep skin buckets. Foot-detail framing reduced to keep toe tips inside the preview.",
+    "inGame": "Four-piece catalogue outfit retained across search and category changes. Owned and unowned catalogue cards both preview-only. Optional apron and neck removal are temporary. Original worn outfit remains restorable.",
+    "tests": {
+      "command": "npm run check",
+      "passed": 138,
+      "failed": 0
+    },
+    "screenshots": [
+      "artifacts/clothing-specialist-cuts-2026-10-03/specialist-outfits.png",
+      "artifacts/clothing-specialist-cuts-2026-10-03/torso-medium.png",
+      "artifacts/clothing-specialist-cuts-2026-10-03/feet-deep.png",
+      "artifacts/clothing-specialist-cuts-2026-10-03/in-game-fitting-room.png"
+    ]
+  },
+  "limitations": [
+    "389 entries are colourways and family adaptations, not 389 bespoke illustrations. Other specialist cuts still share existing family art; this batch only differentiates the 12 listed cuts.",
+    "The rejected mule v1 candidate is preserved for provenance but never used by the runtime.",
+    "Painted clothing is registered to the current front-view stationary player body. This work does not add walk-cycle garment directions."
+  ]
+}

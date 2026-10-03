@@ -1,0 +1,11 @@
+{
+  "name": "slice-and-stitch-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "test": "node --check kitchen-service.js && node --check kitchen-service-ui.js && node --check pattern-library.js && node --check minigame-actions.js && node --check coop-ui.js && node --check coop-controller.js && node --check online-room.js && node --test checks/*.spec.js",
+    "check": "node --check model.js && node --check game-clock.js && node --check economy.js && node --check economy-journal.js && node --check progression.js && node --check fashion-catalog.js && node --check character-model.js && node --check character-creator.js && node --check character-v3/modular-head.js && node --check character-v2/renderer.js && node --check character-v2/portrait-renderer.js && node --check hub-actors.js && node --check scene-character-layout.js && node --check game-panel.js && node --check town-life.js && node --check minigame-runtime.js && node --check kitchen-minigames.js && node --check game.js && node --check hub.js && node --check dev-server.js && npm test"
+  }
+}

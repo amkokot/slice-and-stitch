@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modular wardrobe registration pilot</title>
+  <link rel="stylesheet" href="./character-v3/modular-avatar.css?v=18">
+  <link rel="stylesheet" href="./character-fit-pilot.css?v=18">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Production architecture · registration pilot</p>
+      <h1>Painted clothes.<br>Actually interchangeable.</h1>
+      <p class="intro">Each garment is painted directly on the registered body, then extracted without scaling or warping. The result keeps the illustration quality of a finished character while allowing tops, bottoms, shoes, and aprons to be equipped independently.</p>
+    </header>
+
+    <section class="rules" aria-label="Registration rules">
+      <span><b>Preset</b> head · hair · skin palette only</span>
+      <span><b>Slots</b> independent top · jacket · bottom · shoes · apron</span>
+      <span><b>Fit</b> painted on-body at 1024 × 1536, never stretched</span>
+      <span><b>Catalogue</b> one painted item fits every preset</span>
+    </section>
+
+    <section class="workbench">
+      <div class="hero-stage" id="hero-stage"></div>
+      <div class="controls">
+        <div class="selection-heading">
+          <div>
+            <p class="eyebrow">Shared body rig</p>
+            <h2>Swap identity, tone, and clothes</h2>
+          </div>
+          <button class="reset" type="button" id="reset-look">Pizzeria set</button>
+        </div>
+        <div class="slot-controls" id="slot-controls"></div>
+        <aside>
+          <b>Fit contract</b>
+          <p>Head and skin tone are independent selections. The selected palette is baked deterministically into the face, neck, arms, hands, and ankles. Garment pixels never change; jackets sit over tops and under aprons.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="matrix-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Identity scaling gate</p>
+          <h2>Twelve forward-facing heads, four skin palettes</h2>
+        </div>
+        <p>Every example uses the same straight-on pose, body silhouette, shirt, trousers, and shoes. Hair and facial details remain pixel-stable while the registered skin regions change palette.</p>
+      </div>
+      <div class="fit-matrix identity-matrix" id="identity-matrix"></div>
+    </section>
+
+    <section class="matrix-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Cross-slot stress test</p>
+          <h2>Jacket and apron occlusion</h2>
+        </div>
+        <p>These are assembled live from separate PNG layers. The jacket remains open over the shirt, its rolled cuffs reveal palette-driven skin, and the apron correctly sits above both garments.</p>
+      </div>
+      <div class="fit-matrix" id="fit-matrix"></div>
+    </section>
+  </main>
+  <script type="module" src="./character-fit-pilot.js?v=18"></script>
+</body>
+</html>
+

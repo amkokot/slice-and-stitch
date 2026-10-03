@@ -1,0 +1,229 @@
+.char2-character {
+  position: absolute;
+  display: block;
+  overflow: visible;
+  contain: layout style;
+}
+
+.hub-actor.uses-char2 > .char2-character {
+  inset: -14px -11px -4px;
+  filter: none;
+}
+
+.hub-actor.is-player.uses-char2 > .char2-character {
+  inset: -16px -14px -6px;
+  filter: drop-shadow(0 4px 3px rgba(44, 29, 23, .2));
+}
+
+.hub-actor.uses-char2 > .hub-actor-shadow { display: none; }
+.hub-actor.uses-char2.is-walking > .char2-character,
+.hub-actor.uses-char2.is-player-moving > .char2-character { animation: none; }
+
+.character-preview-actor > .char2-character {
+  inset: -8px -7px -3px;
+  filter: none;
+}
+
+.character-preview-scene.is-walking .character-preview-actor > .char2-character { animation: none; }
+
+.char2-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.char2-rig,
+.char2-head,
+.char2-torso,
+.char2-arm,
+.char2-forearm,
+.char2-hand,
+.char2-leg,
+.char2-shoe,
+.char2-hair-tail {
+  transform-box: view-box;
+  will-change: transform;
+}
+
+.char2-head { transform-origin: 160px 180px; }
+.char2-arm-back { transform-origin: 112px 198px; }
+.char2-arm-front { transform-origin: 208px 198px; }
+.char2-leg-back { transform-origin: 181px 290px; }
+.char2-leg-front { transform-origin: 139px 290px; }
+.char2-shoe-left { transform-origin: 134px 453px; }
+.char2-shoe-right { transform-origin: 186px 453px; }
+.char2-arm-back .char2-hand { transform-origin: 101px 305px; }
+.char2-arm-front .char2-hand { transform-origin: 239px 305px; }
+.char2-hair-tail { transform-origin: 205px 112px; }
+
+.char2-svg[data-motion='idle'] .char2-rig {
+  animation: char2-idle-root 3.8s ease-in-out infinite;
+}
+
+.char2-svg[data-motion='idle'] .char2-head {
+  animation: char2-idle-head 4.7s ease-in-out infinite alternate;
+}
+
+.char2-svg[data-motion='walk'] .char2-rig {
+  animation: char2-walk-root var(--actor-walk-cycle, .72s) ease-in-out infinite;
+}
+
+.char2-svg[data-motion='walk'] .char2-arm-back,
+.char2-svg[data-motion='walk'] .char2-leg-front {
+  animation: char2-gait-forward var(--actor-walk-cycle, .72s) cubic-bezier(.45, 0, .55, 1) infinite;
+}
+
+.char2-svg[data-motion='walk'] .char2-arm-front,
+.char2-svg[data-motion='walk'] .char2-leg-back {
+  animation: char2-gait-back var(--actor-walk-cycle, .72s) cubic-bezier(.45, 0, .55, 1) infinite;
+}
+
+.char2-svg[data-motion='walk'] .char2-head {
+  animation: char2-walk-head var(--actor-walk-cycle, .72s) ease-in-out infinite;
+}
+
+.char2-svg[data-motion='walk'] .char2-torso {
+  animation: char2-walk-torso var(--actor-walk-cycle, .72s) ease-in-out infinite;
+}
+
+.char2-svg[data-motion='walk'] .char2-leg-front > .char2-shoe {
+  animation: char2-foot-forward var(--actor-walk-cycle, .72s) ease-in-out infinite;
+}
+
+.char2-svg[data-motion='walk'] .char2-leg-back > .char2-shoe {
+  animation: char2-foot-back var(--actor-walk-cycle, .72s) ease-in-out infinite;
+}
+
+.char2-svg[data-action='wave'] .char2-arm-front {
+  animation: char2-wave-arm 1.05s ease-in-out infinite alternate;
+}
+.char2-svg[data-action='wave'] .char2-arm-front .char2-forearm {
+  animation: char2-wave-forearm 1.05s ease-in-out infinite alternate;
+}
+.char2-svg[data-action='wave'] .char2-arm-front .char2-hand {
+  animation: char2-wave-hand .52s ease-in-out infinite alternate;
+}
+
+.char2-svg[data-action='talk'] .char2-head {
+  animation: char2-talk-head 1.4s ease-in-out infinite alternate;
+}
+
+.char2-svg[data-action='carry'] .char2-arm-back { transform: rotate(-23deg); }
+.char2-svg[data-action='carry'] .char2-arm-front { transform: rotate(23deg); }
+.char2-svg[data-action='carry'] .char2-arm-back .char2-forearm { transform: rotate(-32deg); }
+.char2-svg[data-action='carry'] .char2-arm-front .char2-forearm { transform: rotate(32deg); }
+
+.char2-svg[data-action='sew'] .char2-rig { animation: char2-work-root 2.2s ease-in-out infinite; }
+.char2-svg[data-action='sew'] .char2-head { animation: char2-work-head 1.8s ease-in-out infinite alternate; }
+.char2-svg[data-action='sew'] .char2-arm-back { animation: char2-sew-left .74s ease-in-out infinite alternate; }
+.char2-svg[data-action='sew'] .char2-arm-front { animation: char2-sew-right .74s ease-in-out infinite alternate; }
+.char2-svg[data-action='sew'] .char2-arm-back .char2-forearm { transform: rotate(34deg); }
+.char2-svg[data-action='sew'] .char2-arm-front .char2-forearm { transform: rotate(-34deg); }
+
+.char2-svg[data-action='present'] .char2-head { animation: char2-present-head 2.6s ease-in-out infinite alternate; }
+.char2-svg[data-action='present'] .char2-arm-front { animation: char2-present-arm 2.6s ease-in-out infinite alternate; }
+.char2-svg[data-action='present'] .char2-arm-front .char2-forearm { transform: rotate(-54deg); }
+.char2-svg[data-action='present'] .char2-arm-front .char2-hand { animation: char2-present-hand .9s ease-in-out infinite alternate; }
+
+.char2-svg[data-action='serve'] .char2-rig { animation: char2-serve-root 2.8s ease-in-out infinite; }
+.char2-svg[data-action='serve'] .char2-head,
+.char2-svg[data-action='order'] .char2-head { animation: char2-talk-head 1.4s ease-in-out infinite alternate; }
+.char2-svg[data-action='serve'] .char2-arm-front,
+.char2-svg[data-action='order'] .char2-arm-front { animation: char2-order-arm 1.9s ease-in-out infinite alternate; }
+.char2-svg[data-action='serve'] .char2-arm-front .char2-forearm,
+.char2-svg[data-action='order'] .char2-arm-front .char2-forearm { transform: rotate(-38deg); }
+
+.char2-svg[data-action='browse'] .char2-head { animation: char2-browse-head 3.8s ease-in-out infinite alternate; }
+.char2-svg[data-action='browse'] .char2-arm-front { transform: rotate(-24deg); }
+.char2-svg[data-action='browse'] .char2-arm-front .char2-forearm { animation: char2-browse-hand 2.7s ease-in-out infinite alternate; }
+.char2-svg[data-action='wait'] .char2-rig { animation: char2-wait-shift 4.2s ease-in-out infinite alternate; }
+
+.char2-svg[data-action='sit'] .char2-rig { transform: translateY(36px); }
+.char2-svg[data-action='sit'] .char2-leg-back { transform: rotate(-58deg) translateY(-5px); }
+.char2-svg[data-action='sit'] .char2-leg-front { transform: rotate(55deg) translateY(-5px); }
+
+.char2-eyelids {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: char2-blink 5.3s steps(1, end) infinite;
+}
+
+.char2-hair-tail { animation: char2-hair-lag 2.4s ease-in-out infinite alternate; }
+.char2-svg[data-motion='walk'] .char2-hair-tail { animation-duration: var(--actor-walk-cycle, .72s); }
+
+.char2-garment-thumbnail { display: block; width: 48px; height: 48px; overflow: visible; }
+
+@keyframes char2-idle-root {
+  0%, 100% { transform: translateY(0); }
+  45% { transform: translateY(-2px); }
+  65% { transform: translateY(-1px) rotate(.35deg); }
+}
+
+@keyframes char2-idle-head {
+  from { transform: rotate(calc(var(--char2-head-rotation, 0deg) - .7deg)); }
+  to { transform: rotate(calc(var(--char2-head-rotation, 0deg) + .9deg)) translateY(-1px); }
+}
+
+@keyframes char2-walk-root {
+  0%, 50%, 100% { transform: translateY(0); }
+  25%, 75% { transform: translateY(-2.5px); }
+}
+
+@keyframes char2-walk-head {
+  0%, 50%, 100% { transform: rotate(-.55deg) translateY(.4px); }
+  25% { transform: rotate(.7deg) translateY(-.55px); }
+  75% { transform: rotate(.2deg) translateY(-.55px); }
+}
+
+@keyframes char2-walk-torso {
+  0%, 100% { transform: rotate(-.65deg); }
+  50% { transform: rotate(.65deg); }
+}
+@keyframes char2-gait-forward { 0%, 100% { transform: rotate(-7deg); } 50% { transform: rotate(8deg); } }
+@keyframes char2-gait-back { 0%, 100% { transform: rotate(8deg); } 50% { transform: rotate(-7deg); } }
+@keyframes char2-foot-forward {
+  0%, 100% { transform: rotate(2deg) translateY(0); }
+  25% { transform: rotate(4deg) translateY(-1px); }
+  50% { transform: rotate(-3deg) translateY(.5px); }
+  75% { transform: rotate(-1deg) translateY(0); }
+}
+@keyframes char2-foot-back {
+  0%, 100% { transform: rotate(-3deg) translateY(.5px); }
+  25% { transform: rotate(-1deg) translateY(0); }
+  50% { transform: rotate(2deg) translateY(0); }
+  75% { transform: rotate(4deg) translateY(-1px); }
+}
+@keyframes char2-wave-arm { from { transform: rotate(-80deg); } to { transform: rotate(-104deg); } }
+@keyframes char2-wave-forearm { from { transform: rotate(-28deg); } to { transform: rotate(-54deg); } }
+@keyframes char2-wave-hand { from { transform: rotate(-8deg); } to { transform: rotate(13deg); } }
+@keyframes char2-talk-head { from { transform: rotate(-1.5deg); } to { transform: rotate(2deg) translateY(-1px); } }
+@keyframes char2-hair-lag { from { transform: rotate(-2deg); } to { transform: rotate(4deg); } }
+@keyframes char2-work-root { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2px); } }
+@keyframes char2-work-head { from { transform: rotate(-4deg) translateY(1px); } to { transform: rotate(-1deg) translateY(3px); } }
+@keyframes char2-sew-left { from { transform: rotate(11deg); } to { transform: rotate(18deg); } }
+@keyframes char2-sew-right { from { transform: rotate(-11deg); } to { transform: rotate(-18deg); } }
+@keyframes char2-present-head { from { transform: rotate(-2deg); } to { transform: rotate(3deg) translateY(-1px); } }
+@keyframes char2-present-arm { from { transform: rotate(-47deg); } to { transform: rotate(-58deg); } }
+@keyframes char2-present-hand { from { transform: rotate(-8deg); } to { transform: rotate(12deg); } }
+@keyframes char2-serve-root { 0%, 100% { transform: translateY(0); } 45% { transform: translateY(-2px); } 60% { transform: translate(1px, -1px); } }
+@keyframes char2-order-arm { from { transform: rotate(-14deg); } to { transform: rotate(-31deg); } }
+@keyframes char2-browse-head { from { transform: rotate(-4deg); } to { transform: rotate(4deg) translateY(-1px); } }
+@keyframes char2-browse-hand { from { transform: rotate(-20deg); } to { transform: rotate(-38deg); } }
+@keyframes char2-wait-shift { from { transform: translateX(-1px); } to { transform: translateX(2px) translateY(-1px); } }
+
+@keyframes char2-blink {
+  0%, 43%, 46%, 100% { opacity: 0; }
+  44%, 45% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .char2-rig,
+  .char2-head,
+  .char2-arm,
+  .char2-leg,
+  .char2-shoe,
+  .char2-hair-tail,
+  .char2-eyelids { animation: none !important; transition: none !important; }
+}
+

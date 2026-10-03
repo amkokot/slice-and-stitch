@@ -1,0 +1,274 @@
+/* The game is one self-contained stage, not a page with outside navigation. */
+body:has(.game-panel) { display: grid; place-items: center; height: 100dvh; min-height: 0; margin: 0; padding: 12px; overflow: hidden; }
+body:has(.game-panel) > .street-silhouette { display: none; }
+.game-panel {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: 54px minmax(0, 1fr);
+  width: min(1540px, 100%);
+  height: min(900px, calc(100dvh - 24px));
+  margin: 0 auto;
+  overflow: clip;
+  border: 2px solid #665044;
+  border-radius: 22px;
+  color: var(--ink);
+  background: #3b302b;
+  box-shadow: 0 20px 60px #32221e40, inset 0 0 0 1px #fff5d666;
+}
+.game-panel-backdrop {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(22px) brightness(.46) saturate(.75);
+  transform: scale(1.08);
+  pointer-events: none;
+}
+.game-panel > .hub-topbar {
+  position: relative;
+  grid-area: 1 / 1;
+  z-index: 30;
+  display: flex;
+  gap: 16px;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 6px 14px;
+  border: 0;
+  border-bottom: 1px solid #fff3d830;
+  border-radius: 0;
+  color: #fff7e8;
+  background: linear-gradient(110deg, #382c26ec, #4d3c32e8);
+  box-shadow: 0 3px 12px #20171140;
+}
+.game-panel .hub-brand { margin-right: auto; gap: 8px; }
+.game-panel .hub-brand-mark { width: 30px; height: 30px; font-size: 16px; box-shadow: none; }
+.game-panel .hub-brand small { display: none; }
+.game-panel .hub-brand b { color: #fff4de; font-size: 18px; }
+.game-panel .hub-brand i { color: #ddb777; }
+.game-panel .hub-day { display: flex; align-items: center; gap: 7px; margin-left: auto; background: #ffffff09; border-color: #dec69d38; }
+.game-panel .hub-day > span { display: inline; font-size: 10px; color: #dfc49d; white-space: nowrap; }
+.game-panel .hub-day > b { min-width: 0; padding: 6px 9px; font: 12px Georgia,serif; background: #496c62; }
+.game-panel .hub-day button { flex: none; padding: 6px 10px; color: #fff2d6; border: 1px solid #d8be8f66; background: #ffffff09; font-size: 11px; }
+.game-panel .hub-wallet { position: static; gap: 7px; font-size: 11px; }
+.game-panel .hub-wallet span { padding: 6px 9px; color: #fff5df; border-color: #dec69d38; background: #ffffff09; }
+.game-panel .hub-wallet span + span { display: inline-flex; }
+.game-panel > .world-shell,
+body[data-world-view='workshop'] .game-panel > .app-shell {
+  position: relative;
+  grid-area: 2 / 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+.game-panel .hub-main { display: grid; grid-template-columns: minmax(0,1fr); height: 100%; min-height: 0; place-items: center; margin: 0; }
+.game-panel .hub-scene-card { max-width: 100%; max-height: 100%; border: 0; border-radius: 0; box-shadow: none; }
+.game-panel .hub-scene-stage[data-scene] { width: 100%; height: 100%; min-height: 0; aspect-ratio: auto; border-radius: 0; }
+.game-panel .hub-scene-stage[data-scene] .hub-scene-art { background-size: cover; }
+.game-panel > .hub-drawer { z-index: 40; top: 64px; right: 10px; bottom: 10px; max-height: none; }
+.game-panel > .hub-drawer.is-character-creator { width: min(1100px, calc(100% - 20px)); }
+.game-panel > .hub-toast { z-index: 45; bottom: 12px; max-width: calc(100% - 24px); }
+.game-panel .fashion-playtest-banner { position: absolute; bottom: 4px; left: 8px; z-index: 5; padding: 3px 7px; border-radius: 6px; background: #342a37bb; font-size: 9px; pointer-events: none; }
+.game-panel .hub-return-dock { position: static; display: block; margin: 0 auto 0 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; transform: none; }
+.game-panel .hub-return-dock::before,
+.game-panel .hub-return-dock::after { display: none; }
+.game-panel .hub-return-dock button { min-height: 34px; padding: 7px 12px; color: #fff2d9; border: 1px solid #dfc38d66; border-radius: 9px; background: #fff3d615; box-shadow: none; font-size: 12px; }
+.game-panel .hub-return-dock button:hover { color: #fff; background: #fff3d62a; }
+.game-panel[data-mode='workshop'] .hub-brand { display: none; }
+
+/* Tickets and trays are attached to the workbench. The painted surface scales
+   uniformly into its available space; none of the art is cropped to fit. */
+body[data-world-view='workshop'] .game-panel .game-frame,
+body[data-world-view='workshop'] .game-panel .workspace {
+  height: 100%; min-height: 0; margin: 0; border: 0; border-radius: 0;
+}
+body[data-world-view='workshop'] .game-panel .workspace {
+  padding: 0;
+  background: linear-gradient(120deg, #b29670ed, #e6d4aced), repeating-linear-gradient(0deg, #8a63432a 0 2px, transparent 2px 9px);
+}
+body[data-world-view='workshop'] .game-panel .activity {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  min-height: 0;
+  padding: 12px;
+}
+.game-panel .activity > .activity-heading {
+  flex: 0 0 54px;
+  align-items: center;
+  min-height: 0;
+  margin: 0;
+  padding: 8px 14px;
+  border-width: 1px;
+  border-radius: 12px;
+}
+.game-panel .activity-heading h1 { margin: 2px 0 0; font-size: 23px; }
+.game-panel .activity-heading p { display: none; }
+.game-panel .activity-heading .section-kicker { font-size: 9px; }
+.game-panel #fashionActivity .activity-heading { padding-left: 188px; }
+.game-panel #fashionActivity:has(.workshop-pattern-drawer[hidden]) .activity-heading { padding-left: 14px; }
+.game-panel .activity-grid { flex: 1; grid-template-columns: minmax(0, 1fr) minmax(265px, 30%); min-height: 0; gap: 12px; align-items: stretch; }
+.game-panel .play-card { display: flex; flex-direction: column; align-items: center; min-width: 0; min-height: 0; padding: 8px; border-width: 1px; border-radius: 14px; overflow: hidden; }
+.game-panel .workshop-surface { display: grid; flex: 1; width: 100%; min-height: 0; place-items: center; container-type: size; }
+.game-panel .workshop-surface .canvas-wrap { flex: none; width: min(100cqw, 100cqh); max-width: none; margin: 0; border-width: 3px; border-radius: 13px; }
+.game-panel .workshop-surface .kitchen-canvas-wrap { width: min(100cqw, calc(100cqh * 4 / 3)); }
+.game-panel .workshop-tools { flex: 0 1 auto; width: 100%; max-height: 38%; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.game-panel .tool-dock { min-height: 0; gap: 6px; padding: 8px 3px 3px; }
+.game-panel .tool-chip { min-height: 34px; padding: 6px 9px; font-size: 11px; border-width: 1px; box-shadow: 0 2px 0 #4b2d3222; }
+.game-panel .fabric-dock .tool-chip small { font-size: 10px; }
+.game-panel .station-hint-strip { min-height: 0; margin: 8px 0 0; padding: 9px 12px; font-size: 12px; }
+.game-panel .task-card { order: 0; min-width: 0; min-height: 0; padding: 13px; border-width: 1px; border-radius: 12px; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.game-panel .ticket-top { padding: 5px 2px 10px; }
+.game-panel .ticket-top strong { font-size: 20px; }
+.game-panel .ticket-top p { font-size: 12px; }
+.game-panel .instruction-card { gap: 8px; margin: 10px 0; padding: 10px; }
+.game-panel .instruction-card strong { font-size: 12px; line-height: 1.45; }
+.game-panel .step-number { flex: 0 0 30px; width: 30px; height: 30px; font-size: 17px; }
+.game-panel .score-preview { margin: 10px 0; }
+.game-panel .primary-button,
+.game-panel .secondary-button { min-height: 36px; padding: 9px 12px; font-size: 12px; }
+.game-panel #pizzaActivity .task-card > .ticket-top { display: none; }
+.game-panel .counter-ticket { margin: 0; padding: 8px 0 10px; border: 0; border-radius: 0; background: none; box-shadow: none; transform: none; }
+.game-panel .counter-ticket::before,
+.game-panel .counter-ticket::after { display: none; }
+.game-panel .counter-ticket-heading { gap: 5px; }
+.game-panel .counter-ticket-heading strong { font-size: 20px; }
+.game-panel .counter-ticket-heading .ticket-heading-actions { gap: 5px; }
+.game-panel .counter-ticket .ticket-items { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 5px; padding: 9px 0; }
+.game-panel .counter-ticket .ticket-item { grid-template-columns: 28px minmax(0,1fr); grid-template-rows: auto auto; align-items: center; justify-items: start; column-gap: 7px; row-gap: 1px; min-height: 54px; padding: 8px 6px; text-align: left; }
+.game-panel .counter-ticket .ticket-item i { grid-row: 1 / 3; width: 28px; height: 28px; font-size: 22px; }
+.game-panel .counter-ticket .ticket-item b { font-size: 11px; }
+.game-panel .counter-ticket .ticket-item small { font-size: 10px; }
+.game-panel .counter-ticket > p { margin-bottom: 0; font-size: 10px; }
+.game-panel .fashion-product-proof { grid-template-columns: 80px minmax(0,1fr); gap: 8px; padding: 8px; margin: 9px 0; }
+.game-panel .fashion-product-art { height: 115px; }
+.game-panel .fashion-finish-surface .fashion-product-art { height: 100%; min-height: 0; }
+.game-panel .quality-estimate { gap: 5px; margin: 9px 0; }
+.game-panel .quality-estimate span { padding: 6px; }
+
+/* A real pattern drawer, opened on demand without sending the workbench down
+   the page. Selecting material tucks it away to expose the cutting surface. */
+.game-panel .workshop-pattern-drawer { position: absolute; z-index: 20; top: 21px; left: 22px; width: min(390px, calc(100% - 44px)); }
+.game-panel .workshop-pattern-drawer > summary { width: max-content; max-width: 100%; padding: 9px 12px; border: 1px solid #ddbb9066; border-radius: 9px; color: #fff0d8; background: #674b66; font-size: 12px; cursor: pointer; }
+.game-panel .workshop-pattern-drawer[open] > summary { color: #573e55; background: #fff0d8; border-radius: 9px 9px 0 0; }
+.game-panel .fashion-pattern-board { display: block; max-height: min(720px, calc(100dvh - 178px)); margin: 0; padding: 13px; overflow: auto; overscroll-behavior: contain; border-radius: 0 13px 13px 13px; box-shadow: 0 12px 35px #2d1c2840; }
+.game-panel .fashion-pattern-copy { margin-bottom: 10px; }
+.game-panel .fashion-pattern-copy p { font-size: 11px; }
+.game-panel .fashion-archive-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 0 10px; }
+.game-panel .fashion-archive-controls label { min-width: 0; }
+.game-panel .fashion-archive-controls input,
+.game-panel .fashion-archive-controls select { width: 100%; font-size: 11px; }
+.game-panel .fashion-pattern-selector { grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 190px; margin-bottom: 12px; }
+.game-panel .fashion-pattern-chip { grid-template-columns: 38px minmax(0,1fr); }
+.game-panel .fashion-pattern-chip b { font-size: 11px; }
+.game-panel .fashion-pattern-chip small { font-size: 9px; white-space: normal; }
+.game-panel .fashion-style-controls { gap: 12px; padding-bottom: 12px; }
+.game-panel .fashion-style-controls > span { flex-wrap: wrap; gap: 7px; }
+.game-panel .fashion-mod-list { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.game-panel .fashion-mod-note { font-size: 11px; }
+
+/* Native dialog focus/keyboard behavior, with frame-local geometry. */
+.game-panel > dialog {
+  position: fixed;
+  inset: auto;
+  top: var(--game-modal-y);
+  left: var(--game-modal-x);
+  width: min(700px, var(--game-modal-width));
+  max-width: var(--game-modal-width);
+  max-height: var(--game-modal-height);
+  margin: 0;
+  transform: translate(-50%, -50%);
+  overscroll-behavior: contain;
+}
+.game-panel > dialog::backdrop { clip-path: inset(var(--game-frame-top) var(--game-frame-right) var(--game-frame-bottom) var(--game-frame-left) round 22px); backdrop-filter: none; background: #201920aa; }
+.game-panel > .recipe-book-dialog { background: linear-gradient(110deg, #f3e6c7, #fff8df); }
+.game-panel :is(button, summary, input, select):focus-visible { outline: 3px solid #e5b95d; outline-offset: 2px; }
+
+/* The mirror and chest keep their model visible while only the choice drawer
+   scrolls. Boilerplate rig notes no longer push the feet/name below the panel. */
+@media (min-width: 761px) {
+  .game-panel > .hub-drawer.is-character-creator { overflow: hidden; padding: 16px; }
+  .game-panel .is-character-creator > [data-drawer-content] { height: 100%; }
+  .game-panel .character-creator { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+  .game-panel .character-creator-heading { flex: none; padding: 2px 45px 0 2px; }
+  .game-panel .character-creator-heading h2 { font-size: 28px; margin-bottom: 0; }
+  .game-panel .character-creator-heading p { display: none; }
+  .game-panel .character-section-tabs { flex: none; margin-top: 9px; padding: 4px; }
+  .game-panel .character-section-tabs button { min-height: 32px; padding: 6px; }
+  .game-panel .character-creator-layout { flex: 1; min-height: 0; grid-template-columns: 300px minmax(0,1fr); gap: 12px; margin-top: 10px; }
+  .game-panel .character-preview-card,
+  .game-panel .character-creator-layout:has(.wardrobe-tools) > .character-preview-card { position: static; display: flex; flex-direction: column; height: 100%; min-height: 0; align-self: stretch; }
+  .game-panel .character-preview-mode { flex: none; }
+  .game-panel .character-preview-scene { flex: 1; min-height: 0; height: auto; }
+  .game-panel .character-preview-caption { flex: none; grid-template-columns: minmax(0,1fr); }
+  .game-panel .character-preview-caption > span,
+  .game-panel .character-fit-note,
+  .game-panel .character-equipped,
+  .game-panel .character-preview-scale { display: none; }
+  .game-panel .wardrobe-try-on { flex: 0 1 auto; max-height: 120px; overflow: auto; }
+  .game-panel .character-controls { min-height: 0; height: 100%; padding: 14px; overflow: auto; overscroll-behavior: contain; }
+  .game-panel .character-controls > h3 { margin: 4px 0; font-size: 22px; }
+  .game-panel .character-controls > p { font-size: 11px; }
+  .game-panel .character-creator-actions { flex: none; margin-top: 10px; }
+}
+
+@media (max-width: 760px) {
+  body:has(.game-panel) { padding: 6px; }
+  .game-panel { grid-template-rows: 48px minmax(0,1fr); height: calc(100dvh - 12px); border-radius: 14px; }
+  .game-panel > .hub-topbar { gap: 7px; padding: 5px 8px; }
+  .game-panel .hub-brand-mark { display: none; }
+  .game-panel .hub-brand b { font-size: 14px; }
+  .game-panel .hub-day { gap: 5px; }
+  .game-panel .hub-day > span { display: none; }
+  .game-panel .hub-day > b { font-size: 10px; padding: 5px 7px; }
+  .game-panel .hub-day button { padding: 6px 7px; font-size: 10px; }
+  .game-panel .hub-wallet { gap: 4px; }
+  .game-panel .hub-wallet span { gap: 3px; padding: 5px 6px; font-size: 10px; }
+  .game-panel .hub-wallet span + span { display: none; }
+  .game-panel .hub-return-dock button { padding: 7px 8px; font-size: 11px; }
+  .game-panel[data-mode='workshop'] { grid-template-rows: 80px minmax(0,1fr); }
+  .game-panel[data-mode='workshop'] > .hub-topbar { flex-wrap: wrap; align-content: center; gap: 2px 8px; }
+  .game-panel[data-mode='workshop'] .hub-return-dock { order: 1; }
+  .game-panel[data-mode='workshop'] .hub-wallet { order: 2; margin-left: auto; }
+  .game-panel[data-mode='workshop'] .hub-day { order: 3; justify-content: space-between; flex-basis: 100%; margin: 0; padding: 2px 5px; }
+  .game-panel > .hub-drawer { inset: 57px 7px 7px; width: auto; padding: 18px 14px; }
+  .game-panel > .hub-drawer.is-character-creator { width: auto; padding: 12px; }
+  .game-panel .character-creator-heading h2 { font-size: 24px; }
+  .game-panel .character-creator-heading p,
+  .game-panel .character-save-note { display: none; }
+  .game-panel .character-section-tabs { grid-template-columns: repeat(4,minmax(0,1fr)); padding: 4px; margin-top: 10px; }
+  .game-panel .character-section-tabs button { min-height: 34px; padding: 6px 3px; font-size: 11px; }
+  .game-panel .character-section-tabs button i { display: none; }
+  .game-panel .character-preview-caption > span { display: none; }
+  .game-panel .character-preview-caption { grid-template-columns: minmax(0,1fr); }
+  .game-panel .character-controls > h3 { font-size: 22px; }
+  .game-panel[data-mode='workshop'] > .hub-drawer { top: 89px; }
+  body[data-world-view='workshop'] .game-panel .activity { display: block; overflow-y: auto; overscroll-behavior: contain; padding: 8px; }
+  .game-panel .activity > .activity-heading { min-height: 52px; padding: 8px 10px; margin-bottom: 10px; }
+  .game-panel .activity-heading h1 { font-size: 18px; }
+  .game-panel .activity-heading .step-pips { display: none; }
+  .game-panel #fashionActivity .activity-heading { padding-left: 148px; }
+  .game-panel #fashionActivity .activity-heading h1 { font-size: 15px; }
+  .game-panel .activity-grid { display: grid; grid-template-columns: minmax(0,1fr); height: auto; gap: 10px; }
+  .game-panel .play-card { height: auto; padding: 6px; }
+  .game-panel .workshop-surface { flex: none; aspect-ratio: 1; }
+  .game-panel .kitchen-play-card .workshop-surface { aspect-ratio: 4 / 3; }
+  .game-panel .workshop-tools { max-height: 190px; }
+  .game-panel .task-card { height: auto; overflow: visible; }
+  .game-panel .workshop-pattern-drawer { top: 17px; left: 17px; width: calc(100% - 34px); }
+  .game-panel .workshop-pattern-drawer > summary { padding: 9px; font-size: 11px; }
+  .game-panel > dialog { padding: 20px 14px; border-radius: 18px; }
+  .game-panel .recipe-book-pages { grid-template-columns: minmax(0,1fr); }
+}
+
+@media (max-width: 410px) {
+  .game-panel .hub-brand { display: none; }
+  .game-panel .hub-day { margin-left: 0; }
+  .game-panel .hub-wallet { margin-left: auto; }
+}

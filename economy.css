@@ -1,0 +1,35 @@
+/* Clock/journal additions are scoped away from the character and fitting UI. */
+body[data-phase='night'] {
+  --sky-top:#242b47; --sky-bottom:#77708a; --ambient:rgba(59,57,99,.3);
+  --street:#64586c; --street-shadow:#353847; --window-glow:rgba(255,191,111,.7);
+}
+body[data-phase='night'] .hub-scene-art {filter:saturate(.85) brightness(.7) sepia(.08)}
+body[data-phase='night'] .hub-scene-shade {background:linear-gradient(125deg,rgba(36,39,76,.25),transparent 55%,rgba(35,30,62,.14))}
+.day-track [data-game-time] {padding:0 8px;font-size:.8rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.hub-day [data-hub-phase-label] {white-space:nowrap;font-variant-numeric:tabular-nums}
+.hub-day [data-day-journal] {color:var(--plum-dark);background:rgba(255,255,255,.65)}
+.hub-drawer[data-panel='day-journal'] {width:min(690px,92%);max-height:calc(100% - 36px)}
+[data-panel='day-journal'] h3 {margin:22px 0 9px;color:var(--plum-dark);font:700 1rem Georgia,serif}
+.economy-rhythm {display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:16px 0}
+.economy-rhythm span {display:grid;gap:5px;padding:10px 6px;border-radius:9px;border:1px solid #dac7b5;text-align:center;background:#f5e7d5}
+.economy-rhythm .is-current {background:#e1ecdf;border-color:#729a76}
+.economy-rhythm b {font-size:.76rem}
+.economy-rhythm small,.economy-rhythm em {font-size:.66rem;font-style:normal;color:var(--ink-soft)}
+.economy-forecasts {display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.economy-forecasts article {display:grid;gap:6px;padding:12px 9px;border:1px solid #dbc5ad;border-radius:10px;background:#fff6e6}
+.economy-forecasts b {font-size:.72rem}
+.economy-forecasts strong {color:var(--basil);font-size:1.2rem}
+.economy-forecasts small {font-size:.65rem;color:var(--ink-soft)}
+[data-panel='day-journal'] .economy-small {font-size:.73rem;line-height:1.5}
+.economy-table-wrap {overflow:auto}
+.economy-unlocks {width:100%;border-collapse:collapse;font-size:.74rem}
+.economy-unlocks th,.economy-unlocks td {padding:9px 5px;border-bottom:1px solid #e3d2bc;text-align:left}
+.economy-unlocks th {font-size:.65rem;color:var(--ink-soft)}
+.economy-unlocks .is-unlocked {background:#e8efdf}
+.economy-history {padding:6px 10px;border-radius:8px;background:#f5e7d5}
+.economy-test-clock {margin-top:16px;font-size:.7rem}
+.hub-shop-search {display:grid;gap:5px;margin:14px 0;color:var(--ink-soft);font-size:.75rem}
+.hub-shop-search input {width:100%;padding:10px 12px;border:1px solid #c7af98;border-radius:8px;background:#fffaf1;color:var(--ink);font:inherit}
+.hub-shop-search small {font-size:.67rem}
+.hub-shop-item[hidden],.hub-catalog-group[hidden] {display:none}
+@media(max-width:600px) {.economy-rhythm {grid-template-columns:repeat(2,1fr)} .economy-forecasts {grid-template-columns:1fr}}

@@ -1,0 +1,54 @@
+/* Scoped to the tailoring workflow; the town/creator layouts are untouched. */
+.fashion-product-proof { display:grid;grid-template-columns:105px minmax(0,1fr);gap:12px;padding:14px;background:#faf1de;border:1px solid #d6c3a8;border-radius:15px;margin:12px 0;color:#4d3949; }
+.fashion-product-art { min-width:0;height:155px;display:grid;place-items:center;position:relative;overflow:hidden; }
+.fashion-product-art svg { width:100%;height:100%; }
+.fashion-product-proof small,.fashion-product-proof b,.fashion-product-proof span {display:block;}
+.fashion-product-proof small {font-size:9px;letter-spacing:.12em;color:#846e77;}
+.fashion-product-proof b {font-family:Georgia,serif;margin:5px 0;font-size:15px;}
+.fashion-product-proof span,.fashion-product-proof li {font-size:11px;line-height:1.5;}
+.fashion-product-proof ol {padding-left:17px;margin:7px 0 0;}
+.fashion-product-proof [aria-current=step] {font-weight:bold;color:#82475f;}
+.fashion-archive-controls {display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 0;}
+.fashion-archive-controls label {font-size:11px;font-weight:bold;color:#775070;}
+.fashion-archive-controls input,.fashion-archive-controls select {max-width:100%;border:1px solid #c7af88;border-radius:8px;padding:7px 9px;background:#fff8e8;color:#4d3949;}
+.fashion-archive-controls input {width:170px;}
+.fashion-pattern-selector {max-height:205px;overflow:auto;}
+.fashion-pattern-thumb {display:block;width:38px;height:52px;overflow:hidden;}
+.fashion-pattern-thumb svg {display:block;width:100%;height:100%;}
+.fashion-finish-zones {display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.fashion-finish-zones button {font-size:12px;padding:8px 10px;border:1px solid #c7af88;border-radius:9px;background:#fff6df;color:#61475c;cursor:pointer;}
+.fashion-finish-zones button[aria-pressed=true] {background:#ead5dd;border-color:#82475f;}
+.fashion-finish-zones p {flex-basis:100%;font-size:12px;margin:4px 0;}
+.fashion-material-note {font-size:12px;color:#775070;flex-basis:100%;}
+.fashion-finish-surface {width:100%;aspect-ratio:1;display:grid;place-items:center;padding:20px;background:radial-gradient(ellipse,#fff8e6,#ddc8a4);border-radius:24px;box-sizing:border-box;}
+.fashion-finish-surface[hidden],#fashionCanvas[hidden] {display:none;}
+.fashion-finish-surface .fashion-product-proof {width:100%;height:100%;box-sizing:border-box;grid-template-columns:1fr;background:none;border:0;margin:0;padding:0;}
+.fashion-finish-surface .fashion-product-art {height:100%;min-height:200px;}
+.fashion-finish-surface .fashion-product-proof>div+div {display:none;}
+@media(max-width:600px) {.fashion-product-proof {grid-template-columns:82px minmax(0,1fr);}.fashion-product-art {height:140px;}}
+.fashion-work-controls {padding:0 15px 15px;color:#61475c;font-size:12px;line-height:1.5;}
+.fashion-work-controls:empty {display:none;}
+.fashion-plan-readiness {font-size:12px;line-height:1.45;color:#775070;}
+.fashion-plan-readiness[hidden] {display:none;}
+.fashion-pattern-board[hidden] {display:none;}
+.fashion-input-modes {display:flex;gap:8px;flex-wrap:wrap;}
+.fashion-input-modes button {padding:9px 12px;border:1px solid #c7af88;border-radius:10px;background:#fff6df;color:#61475c;cursor:pointer;}
+.fashion-input-modes [aria-pressed=true] {background:#775070;color:#fff8e8;border-color:#775070;}
+.fashion-pass-progress {font-weight:bold;}
+.fashion-steady-hand {padding:14px;background:#f6ead5;border:1px solid #d6c3a8;border-radius:14px;}
+.fashion-steady-hand p {margin:0 0 12px;}
+.fashion-aim-lane {height:24px;position:relative;border-radius:20px;background:linear-gradient(90deg,#e2b4a1,#ebd0a0 30%,#abc6ad 45%,#abc6ad 55%,#ebd0a0 70%,#e2b4a1);margin:12px 0 18px;}
+.fashion-aim-center {position:absolute;left:50%;height:100%;border-left:2px solid #3f6459;}
+.fashion-aim-lane i {position:absolute;top:-5px;height:34px;width:5px;background:#573d56;border-radius:4px;transform:translateX(-50%);box-shadow:0 0 0 2px #fff4da;}
+.fashion-work-feedback {display:block;margin-top:9px;min-height:18px;}
+.fashion-project-options {margin-top:15px;border-top:1px solid #dac6af;padding-top:10px;}
+.fashion-project-options button {border:1px solid #bd8e7b;border-radius:8px;padding:7px 10px;background:#fff3e6;color:#8b4f43;cursor:pointer;}
+.fashion-playtest-banner {padding:8px 15px;text-align:center;background:#775070;color:#fff5de;font-size:12px;}
+.result-hero.is-garment {width:110px;height:145px;margin:0 auto 12px;padding:0;background:#faf1de;border-radius:15px;display:grid;place-items:center;}
+.result-hero.is-garment svg {width:100%;height:100%;}
+/* Shared wardrobe painting classes are positioned absolutely in the creator.
+   Product views must remain in flow and never intercept workshop controls. */
+.fashion-product-art > svg.painted-garment-thumbnail__painting,
+.fashion-pattern-thumb > svg.painted-garment-thumbnail__painting,
+.result-hero.is-garment > svg.painted-garment-thumbnail__painting {position:static;inset:auto;transform:none;width:100%;height:100%;max-width:100%;max-height:100%;overflow:hidden;pointer-events:none;}
+@media(prefers-reduced-motion:reduce) {.fashion-aim-lane i {box-shadow:none;}}

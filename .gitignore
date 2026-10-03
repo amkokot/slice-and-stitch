@@ -1,0 +1,11 @@
+artifacts/
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+**/__pycache__/

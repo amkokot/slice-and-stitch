@@ -1,0 +1,60 @@
+/* A cedar chest, linen drawers and brass labels; only the wardrobe panel. */
+.wardrobe-tools { display: grid; gap: 9px; margin-top: 16px; padding: 12px; border: 1px solid #d7c7a8; border-radius: 12px; background: #f7efd9; }
+.wardrobe-search { display: grid; gap: 5px; }
+.wardrobe-tools label { min-width: 0; color: #70584a; font-size: .6rem; font-weight: 800; }
+.wardrobe-tools input,
+.wardrobe-tools select { width: 100%; min-width: 0; min-height: 38px; padding: 8px 9px; border: 1px solid #bea88b; border-radius: 7px; background: #fffdf7; color: #45332b; font: inherit; font-size: .7rem; }
+.wardrobe-tools input:focus-visible,
+.wardrobe-tools select:focus-visible { outline: 3px solid #a6c8b2; border-color: #49765b; }
+.wardrobe-filter-row { display: grid; grid-template-columns: 1.25fr 1fr .8fr; gap: 7px; }
+.wardrobe-filter-row label { display: grid; gap: 4px; }
+.character-slot-tabs.wardrobe-slot-tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.character-slot-tabs.wardrobe-slot-tabs button { border-color: #bda080; border-radius: 6px; background: linear-gradient(#f9eaca, #e8d1aa); box-shadow: 0 2px 0 #b2997d; }
+.character-slot-tabs.wardrobe-slot-tabs button.is-active { color: #fff6df; border-color: #5f3f31; background: linear-gradient(#8b6250, #674735); box-shadow: 0 2px 0 #483126; }
+.wardrobe-results-heading { display: flex; gap: 10px; align-items: center; justify-content: space-between; margin: 14px 2px 8px; color: #69574b; font-size: .62rem; }
+.wardrobe-results-heading button,
+.wardrobe-empty button,
+.wardrobe-pagination button,
+.wardrobe-try-on button { padding: 7px 10px; border: 1px solid #b4976d; border-radius: 7px; background: #fff7df; color: #624533; font: inherit; font-size: .62rem; font-weight: 800; cursor: pointer; }
+.wardrobe-chest { padding: 9px; border: 3px solid #674735; border-radius: 10px; background: repeating-linear-gradient(3deg, #9a7053 0 2px, #a77f5c 3px 19px, #9c7456 20px 23px); box-shadow: inset 0 0 0 1px #d4aa77, 0 4px 0 #533b2e; }
+.wardrobe-drawer { min-width: 0; padding: 10px; border: 1px solid #a98762; border-radius: 6px; background: linear-gradient(140deg, #f1e8cc, #e8d6b4); box-shadow: 0 3px 0 #694b35, inset 0 0 0 2px #fff8e2; }
+.wardrobe-drawer + .wardrobe-drawer { margin-top: 10px; }
+.wardrobe-drawer > header { display: flex; align-items: center; justify-content: space-between; gap: 9px; padding: 2px 4px 8px; border-bottom: 1px solid #c7b08b; }
+.wardrobe-drawer > header span { display: grid; gap: 3px; }
+.wardrobe-drawer > header b { color: #5e3f31; font: 700 .86rem Georgia, serif; }
+.wardrobe-drawer > header small { color: #836b52; font-size: .52rem; }
+.wardrobe-drawer > header i { flex: 0 0 auto; width: 34px; height: 12px; border: 2px solid #957542; border-radius: 3px 3px 8px 8px; box-shadow: inset 0 2px 0 #f7d98e, 0 1px 2px #b39773; background: #bc9559; }
+.wardrobe-drawer[data-wardrobe-drawer=top] > header,
+.wardrobe-drawer[data-wardrobe-drawer=outerwear] > header { border-bottom: 3px solid #9f8059; }
+.wardrobe-drawer .character-garment { grid-template-columns: 58px minmax(0, 1fr); min-height: 88px; border-radius: 6px; background: #fffdf5; }
+.wardrobe-drawer .character-garment-art { background: radial-gradient(ellipse, #f8f1de, #e3d7bb); border-radius: 5px; }
+.wardrobe-drawer .character-garment-copy b { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; white-space: normal; font-size: .63rem; line-height: 1.3; }
+.wardrobe-drawer .character-equipped-mark { position: absolute; top: 4px; right: 4px; width: 15px; height: 15px; font-size: .48rem; }
+.wardrobe-drawer .character-garment.is-catalogue { border-style: dashed; background: #f8f2e5; }
+.wardrobe-drawer .character-garment.is-trying { outline: 2px solid #aa7a45; outline-offset: -2px; }
+.wardrobe-empty { padding: 30px 14px; border-radius: 5px; background: #f2e5c8; text-align: center; }
+.wardrobe-empty b { font: 700 1rem Georgia, serif; color: #604635; }
+.wardrobe-empty p { font-size: .68rem; color: #755d4b; }
+.wardrobe-pagination { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 13px; font-size: .62rem; }
+.wardrobe-pagination button:disabled { opacity: .4; cursor: default; }
+.wardrobe-try-on { display: grid; gap: 5px; padding: 10px; border: 1px solid #bb9a60; border-radius: 8px; background: #fff0cf; color: #624533; }
+.wardrobe-try-on b { font-size: .65rem; }
+.wardrobe-try-on span { font-size: .57rem; }
+.wardrobe-fitting-pieces { display: flex; flex-wrap: wrap; gap: 5px; }
+.wardrobe-fitting-pieces button { display: flex; align-items: center; gap: 6px; max-width: 100%; padding: 5px 7px; text-align: left; font-size: .55rem; }
+.wardrobe-fitting-pieces i { font-style: normal; font-size: .8rem; }
+/* The framing button and slot tabs already identify the full outfit. Keep the
+   redundant floating legend off the shoes, especially in the narrow preview. */
+.character-creator-layout:has(.wardrobe-tools) .character-preview-scale { display: none; }
+@media (min-width: 701px) { .character-creator-layout:has(.wardrobe-tools) > .character-preview-card { position: sticky; top: 10px; } }
+@media (max-width: 700px) {
+  .character-creator-layout:has(.wardrobe-tools) .character-preview-scene { height: 270px; grid-row: 1 / 5; }
+  .character-creator-layout:has(.wardrobe-tools) .character-fit-note,
+  .character-creator-layout:has(.wardrobe-tools) .character-equipped { display: none; }
+}
+@media (max-width: 500px) {
+  .wardrobe-filter-row { grid-template-columns: 1fr 1fr; }
+  .wardrobe-filter-row label:last-child { grid-column: 1 / -1; }
+  .character-slot-tabs.wardrobe-slot-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wardrobe-drawer .character-garment-grid { grid-template-columns: 1fr; }
+}

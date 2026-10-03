@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slice & Stitch · Painted catalogue fitting room</title>
+  <link rel="stylesheet" href="painted-paper-doll.css">
+  <link rel="stylesheet" href="catalogue-qa.css">
+</head>
+<body>
+  <main>
+    <header><p class="eyebrow">Slice & Stitch · Painted wardrobe</p><h1>Catalogue fitting room</h1><p>Actual equipped artwork on the same body. This room never changes your saved character.</p><a href="wardrobe-fit-demo.html">Mix your own outfit</a> · <a href="/#home">Back to the game</a></header>
+    <section class="toolbar" aria-label="Fitting room controls">
+      <nav aria-label="Garment groups">
+        <button data-group="arrivals" aria-pressed="true">New arrivals</button>
+        <button data-group="major">Major cuts</button>
+        <button data-group="patterns">Colours & patterns</button>
+        <button data-group="premium">Leather & luxury</button>
+        <button data-group="premium-contrasts">Premium colour mixes</button>
+        <button data-group="specialists">Specialist cuts</button>
+        <button data-group="paintings">New paintings</button>
+        <button data-group="catalogue">Catalogue cuts</button>
+        <button data-group="layers">Mixed outfits</button>
+        <button data-group="top">Tops</button><button data-group="outerwear">Outerwear</button>
+        <button data-group="bottom">Bottoms</button><button data-group="shoes">Footwear</button>
+        <button data-group="details">Aprons & scarves</button>
+        <button data-group="footwear-audit">Shoe fit audit</button><button data-group="headwear-audit">Hat fit audit</button>
+      </nav>
+      <label>Skin bucket<select id="tone"><option value="light">Light</option><option value="medium" selected>Medium</option><option value="deep">Deep</option></select></label>
+      <label>Framing<select id="framing"><option value="full">Full outfit</option><option value="torso">Torso detail</option><option value="feet">Shoes & hems</option><option value="head">Hats & hair</option></select></label>
+      <span id="fit-pairings" hidden><label>Hair pairing<select id="hair"><option value="shoulder-waves">Shoulder waves</option><option value="buzz">Buzz cut</option><option value="afro">Afro</option><option value="curls">Long curls</option><option value="bob">Bob</option></select></label><label>Hem pairing<select id="hem"><option value="skirt">Exposed ankles</option><option value="trousers">Long trousers</option></select></label></span>
+    </section>
+    <section id="catalogue-controls" class="toolbar" hidden><label>Search cuts<input type="search" id="cut-search" placeholder="Dress, coat, sandal…"></label><label id="cut-slot-label">Category<select id="cut-slot"><option value="all">All categories</option><option value="top">Tops & dresses</option><option value="outerwear">Outerwear</option><option value="bottom">Bottoms</option><option value="apron">Aprons</option><option value="shoes">Shoes</option><option value="accessory">Accessories</option></select></label><button id="cut-prev">Previous cuts</button><span id="cut-page"></span><button id="cut-next">Next cuts</button></section>
+    <p id="coverage" role="status"></p>
+    <section id="gallery" aria-label="Equipped catalogue examples"></section>
+    <footer>Shirt → outerwear → apron → details. Footwear stays under long hems. Head and skin remain independent of every garment.</footer>
+  </main>
+  <script type="module" src="catalogue-qa.js"></script>
+</body>
+</html>

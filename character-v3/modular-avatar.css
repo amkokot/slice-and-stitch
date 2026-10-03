@@ -1,0 +1,29 @@
+.modular-avatar {
+  position: relative;
+  display: block;
+  aspect-ratio: 2 / 3;
+  contain: layout paint;
+}
+
+.modular-avatar__layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.modular-avatar__layer--base { z-index: 0; }
+.modular-avatar__layer--feet { z-index: 5; }
+.modular-avatar__layer--identity { z-index: 8; }
+.modular-avatar__layer--bottom { z-index: 10; }
+.modular-avatar__layer--shoes { z-index: 20; }
+.modular-avatar__layer--top { z-index: 30; }
+.modular-avatar__layer--outer { z-index: 35; }
+.modular-avatar__layer--apron { z-index: 40; }
+.modular-avatar__layer--accessory { z-index: 50; }
+

@@ -1,0 +1,1153 @@
+{
+  "batch": "Leather and luxury specialty capsule",
+  "date": "2026-10-03",
+  "mode": "Built-in image_gen tool; not CLI",
+  "catalogueEntries": 405,
+  "sharedPaintings": 99,
+  "specialtyEntries": 30,
+  "paintings": {
+    "leather-biker": {
+      "family": "premium-leather-biker",
+      "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-leather-biker-v1.png",
+      "transform": "",
+      "referenceLuminance": 0.81,
+      "cleanAlpha": true,
+      "fit": [
+        [
+          0,
+          170,
+          0.66,
+          170
+        ],
+        [
+          259,
+          315,
+          0.66,
+          315
+        ],
+        [
+          400,
+          365,
+          0.66,
+          365
+        ],
+        [
+          850,
+          690,
+          0.64,
+          690
+        ],
+        [
+          1100,
+          790,
+          0.58,
+          735
+        ],
+        [
+          1225,
+          845,
+          0.58,
+          805
+        ],
+        [
+          1536,
+          1015,
+          0.58,
+          980
+        ]
+      ],
+      "thumbnailBox": "0 245 1024 1015",
+      "coversArms": true,
+      "tucksWaist": true,
+      "cropped": true,
+      "neutralTrim": "M290 425a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM717 425a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM303 516a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM719 511a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM293 539Q489 716 474 836L404 1107L391 1103L461 833Q477 724 286 548ZM548 786L556 785L635 1119L618 1122ZM322 809L336 814L277 979L263 973ZM698 811L711 807L761 975L748 980Z",
+      "garmentIds": [
+        "leather-biker-ink",
+        "leather-biker-cognac"
+      ]
+    },
+    "suede-jacket": {
+      "family": "premium-suede-jacket",
+      "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-suede-jacket-v1.png",
+      "transform": "",
+      "referenceLuminance": 0.81,
+      "cleanAlpha": true,
+      "fit": [
+        [
+          0,
+          175,
+          0.65,
+          175
+        ],
+        [
+          247,
+          310,
+          0.65,
+          310
+        ],
+        [
+          400,
+          365,
+          0.65,
+          365
+        ],
+        [
+          850,
+          690,
+          0.64,
+          690
+        ],
+        [
+          1135,
+          800,
+          0.58,
+          750
+        ],
+        [
+          1248,
+          845,
+          0.58,
+          805
+        ],
+        [
+          1536,
+          990,
+          0.58,
+          960
+        ]
+      ],
+      "thumbnailBox": "0 235 1024 1030",
+      "coversArms": true,
+      "tucksWaist": true,
+      "cropped": true,
+      "visibleContour": "M0 0H410V305Q512 298 614 305V0H1024V1536H0Z",
+      "garmentIds": [
+        "suede-jacket-sand",
+        "suede-jacket-forest"
+      ]
+    },
+    "leather-trouser": {
+      "family": "premium-leather-trouser",
+      "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-leather-trouser-v1.png",
+      "transform": "",
+      "referenceLuminance": 0.81,
+      "cleanAlpha": true,
+      "fit": [
+        [
+          0,
+          585,
+          0.92
+        ],
+        [
+          185,
+          690,
+          0.92
+        ],
+        [
+          440,
+          875,
+          0.85
+        ],
+        [
+          850,
+          1090,
+          0.8
+        ],
+        [
+          1356,
+          1325,
+          0.79
+        ],
+        [
+          1536,
+          1410,
+          0.79
+        ]
+      ],
+      "thumbnailBox": "225 170 575 1210",
+      "coversLegs": true,
+      "garmentIds": [
+        "leather-trouser-ink",
+        "leather-trouser-cognac"
+      ]
+    },
+    "leather-skirt": {
+      "family": "premium-leather-skirt",
+      "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-leather-skirt-v1.png",
+      "transform": "",
+      "referenceLuminance": 0.81,
+      "cleanAlpha": true,
+      "fit": [
+        [
+          0,
+          550,
+          0.87
+        ],
+        [
+          262,
+          690,
+          0.87
+        ],
+        [
+          480,
+          800,
+          0.8
+        ],
+        [
+          900,
+          980,
+          0.73
+        ],
+        [
+          1256,
+          1100,
+          0.75
+        ],
+        [
+          1536,
+          1200,
+          0.75
+        ]
+      ],
+      "thumbnailBox": "190 245 645 1030",
+      "garmentIds": [
+        "leather-skirt-sage",
+        "leather-skirt-oat",
+        "leather-skirt-ink",
+        "leather-skirt-cognac"
+      ]
+    },
+    "tuxedo-jacket": {
+      "family": "premium-tuxedo-jacket",
+      "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-tuxedo-jacket-v1.png",
+      "transform": "",
+      "referenceLuminance": 0.81,
+      "cleanAlpha": true,
+      "fit": [
+        [
+          0,
+          180,
+          0.64,
+          180
+        ],
+        [
+          262,
+          315,
+          0.64,
+          315
+        ],
+        [
+          410,
+          365,
+          0.64,
+          365
+        ],
+        [
+          906,
+          690,
+          0.64,
+          690
+        ],
+        [
+          1180,
+          805,
+          0.58,
+          795
+        ],
+        [
+          1228,
+          835,
+          0.58,
+          810
+        ],
+        [
+          1536,
+          995,
+          0.58,
+          970
+        ]
+      ],
+      "thumbnailBox": "0 245 1024 1005",
+      "coversArms": true,
+      "tucksWaist": true,
+      "garmentIds": [
+        "tuxedo-jacket-plum",
+        "tuxedo-jacket-sage",
+        "tuxedo-jacket-ink"
+      ]
+    },
+    "tuxedo-trouser": {
+      "family": "premium-tuxedo-trouser",
+      "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-tuxedo-trouser-v1.png",
+      "transform": "",
+      "referenceLuminance": 0.81,
+      "cleanAlpha": true,
+      "fit": [
+        [
+          0,
+          595,
+          0.92
+        ],
+        [
+          168,
+          690,
+          0.92
+        ],
+        [
+          450,
+          875,
+          0.84
+        ],
+        [
+          930,
+          1130,
+          0.8
+        ],
+        [
+          1375,
+          1325,
+          0.79
+        ],
+        [
+          1536,
+          1400,
+          0.79
+        ]
+      ],
+      "thumbnailBox": "230 150 575 1250",
+      "coversLegs": true,
+      "garmentIds": [
+        "tuxedo-trouser-butter",
+        "tuxedo-trouser-coral",
+        "tuxedo-trouser-ink",
+        "tuxedo-trouser-plum",
+        "tuxedo-trouser-sage"
+      ]
+    },
+    "velvet-camisole": {
+      "family": "premium-velvet-camisole",
+      "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-velvet-camisole-v1.png",
+      "transform": "",
+      "referenceLuminance": 0.81,
+      "cleanAlpha": true,
+      "fit": [
+        [
+          0,
+          185,
+          0.66
+        ],
+        [
+          288,
+          335,
+          0.66
+        ],
+        [
+          490,
+          415,
+          0.66
+        ],
+        [
+          700,
+          540,
+          0.74
+        ],
+        [
+          950,
+          690,
+          0.82
+        ],
+        [
+          1210,
+          800,
+          0.68
+        ],
+        [
+          1536,
+          935,
+          0.68
+        ]
+      ],
+      "thumbnailBox": "180 270 665 970",
+      "garmentIds": [
+        "velvet-camisole-wine",
+        "velvet-camisole-midnight"
+      ]
+    },
+    "brocade-coat": {
+      "family": "premium-brocade-coat",
+      "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-brocade-coat-v1.png",
+      "transform": "",
+      "referenceLuminance": 0.81,
+      "cleanAlpha": true,
+      "fit": [
+        [
+          0,
+          230,
+          0.7,
+          230
+        ],
+        [
+          132,
+          300,
+          0.7,
+          300
+        ],
+        [
+          260,
+          365,
+          0.7,
+          365
+        ],
+        [
+          700,
+          690,
+          0.7,
+          690
+        ],
+        [
+          940,
+          865,
+          0.64,
+          805
+        ],
+        [
+          1438,
+          1160,
+          0.67,
+          1160
+        ],
+        [
+          1536,
+          1220,
+          0.67,
+          1220
+        ]
+      ],
+      "thumbnailBox": "45 110 940 1360",
+      "coversArms": true,
+      "tucksWaist": true,
+      "visibleContour": "M0 0H464V151Q512 166 555 151V0H1024V1536H0Z",
+      "garmentIds": [
+        "brocade-coat-berry",
+        "brocade-coat-moss"
+      ]
+    },
+    "leather-tote": {
+      "family": "premium-leather-tote",
+      "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-leather-tote-v1.png",
+      "transform": "translate(622 678) scale(.25)",
+      "referenceLuminance": 0.81,
+      "cleanAlpha": true,
+      "thumbnailBox": "90 310 875 950",
+      "neutralTrim": "M286 632Q273 656 292 694L301 686Q286 659 298 636ZM350 638Q376 664 348 699L343 687Q357 661 348 646ZM577 658Q561 692 583 714L591 706Q574 690 588 663ZM648 658Q677 688 651 716L643 707Q662 687 642 666Z",
+      "garmentIds": [
+        "leather-tote-moss",
+        "leather-tote-cocoa",
+        "leather-tote-ink"
+      ]
+    },
+    "velvet-pumps": {
+      "family": "premium-velvet-pumps",
+      "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-velvet-pumps-v1.png",
+      "transform": "",
+      "referenceLuminance": 0.81,
+      "cleanAlpha": true,
+      "thumbnailBox": "65 905 895 470",
+      "neutralTrim": "M145 1220Q180 1173 229 1200Q261 1239 221 1280Q174 1300 145 1250ZM783 1200Q828 1173 881 1220L881 1250Q855 1300 810 1280Q770 1239 783 1200ZM80 1335Q280 1325 397 1275L399 1286Q282 1341 89 1356ZM548 1275Q733 1325 948 1335L938 1356Q732 1341 548 1286Z",
+      "parts": [
+        {
+          "key": "left",
+          "clip": [
+            0,
+            850,
+            512,
+            686
+          ],
+          "transform": "translate(218 977) scale(.48 .32)",
+          "clearOpening": true,
+          "skinOpening": "M416 946Q445 946 453 980Q428 1117 361 1198Q300 1220 189 1193Q289 1110 365 1014Z",
+          "textureBox": [
+            175,
+            930,
+            295,
+            295
+          ],
+          "sampleBox": [
+            375,
+            1180,
+            35,
+            70
+          ]
+        },
+        {
+          "key": "right",
+          "clip": [
+            512,
+            850,
+            512,
+            686
+          ],
+          "transform": "translate(314 977) scale(.48 .32)",
+          "clearOpening": true,
+          "skinOpening": "M609 946Q580 946 572 980Q597 1117 664 1198Q725 1220 836 1193Q736 1110 660 1014Z",
+          "textureBox": [
+            554,
+            930,
+            295,
+            295
+          ],
+          "sampleBox": [
+            608,
+            1180,
+            35,
+            70
+          ]
+        }
+      ],
+      "garmentIds": [
+        "velvet-pump-sage",
+        "velvet-pump-oat",
+        "velvet-pump-ink"
+      ]
+    }
+  },
+  "acceptedSourcePaintings": 10,
+  "newCatalogueEntries": 16,
+  "upgradedExistingColourways": 12,
+  "qualityControl": {
+    "testsPassed": 145,
+    "testsFailed": 0,
+    "skinBuckets": [
+      "light",
+      "medium",
+      "deep"
+    ],
+    "visualChecks": [
+      "12 mixed outfits",
+      "collar openings and independent sleeve cuffs",
+      "matching tuxedo separates",
+      "open velvet shoes with bucket-matched skin",
+      "hand foreground coverage and glove suppression",
+      "in-game search, collection filter and five-piece non-saving try-on"
+    ],
+    "screenshots": [
+      "artifacts/clothing-premium-2026-10-03/in-game-fitting-room-final.png",
+      "artifacts/clothing-premium-2026-10-03/premium-outfits-deep-final.png",
+      "artifacts/clothing-premium-2026-10-03/premium-colour-mixes-light.png",
+      "artifacts/clothing-premium-2026-10-03/premium-outfits-medium-final.png",
+      "artifacts/clothing-premium-2026-10-03/premium-shoes-deep-final.png"
+    ],
+    "playerSave": "No outfit, inventory, coins or name changed by try-on checks"
+  },
+  "limitations": [
+    "Front-view shared-body wearable layers; not bespoke animated clothing sprites.",
+    "Original catalogue still reuses registered family paintings where distinct sources have not yet been authored.",
+    "Dyeable body material and stitched details share luminance tint; brass/pearl trim is selectively preserved in source space."
+  ],
+  "records": [
+    {
+      "key": "leather-biker",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-premium-leather-biker-v1.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: production wearable sprite for the Slice & Stitch painted cartoon-human wardrobe.\nPrimary request: ONE isolated garment, genuinely transparent 1024x1536 portrait canvas, front view in the shared relaxed standing pose.\nInput images: Image 1 is canonical body pose/fit reference ONLY; Image 2 is approved painted garment style ONLY. Do NOT render the body or reference garment.\nRegistration: center x512; collar y335, shoulder centers x320/700 y355, waist x350..674 y690, hips y790, wrists x267/757 y775; knees y1030, ankles x394/630 y1300, ground y1410. Keep garment in wear position, not enlarged to fill the canvas.\nStyle: polished warm hand-painted cartoon illustration, softly painted edge, fine seams, tactile material detail; neutral ivory base with soft taupe shadows for later dye. Restrained broad soft highlights, no white glossy glare, no black outlines, no photorealism or 3D render.\nConstraints: no person, neck, skin, hands, mannequin, hangers, background, halo, labels, text or floating fragments. Openings must be transparent. No back surfaces crossing the neck opening or open front; this is a FRONT wearable layer to place over a separately selected shirt.\nGarment: A beautifully made fitted leather biker jacket: pebble-grain lambskin, asymmetrical zip opening left undone to reveal a separate shirt, shaped broad notched lapels, slim full sleeves ending at wrists, two zipped slant pockets, compact waist-length hem, small antique brass zipper pulls. Distinct leather panel seams with restrained rounded reflections, NOT cloth folds. No belt extending sideways. Keep center neckline and the entire open front genuinely transparent.",
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+      ],
+      "generated": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-ac37e32a-9dea-4e04-a8f1-55095f46b79d.png",
+      "registration": {
+        "family": "premium-leather-biker",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-leather-biker-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            170,
+            0.66,
+            170
+          ],
+          [
+            259,
+            315,
+            0.66,
+            315
+          ],
+          [
+            400,
+            365,
+            0.66,
+            365
+          ],
+          [
+            850,
+            690,
+            0.64,
+            690
+          ],
+          [
+            1100,
+            790,
+            0.58,
+            735
+          ],
+          [
+            1225,
+            845,
+            0.58,
+            805
+          ],
+          [
+            1536,
+            1015,
+            0.58,
+            980
+          ]
+        ],
+        "thumbnailBox": "0 245 1024 1015",
+        "coversArms": true,
+        "tucksWaist": true,
+        "cropped": true,
+        "neutralTrim": "M290 425a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM717 425a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM303 516a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM719 511a12 12 0 1 0 24 0a12 12 0 1 0-24 0ZM293 539Q489 716 474 836L404 1107L391 1103L461 833Q477 724 286 548ZM548 786L556 785L635 1119L618 1122ZM322 809L336 814L277 979L263 973ZM698 811L711 807L761 975L748 980Z",
+        "garmentIds": [
+          "leather-biker-ink",
+          "leather-biker-cognac"
+        ]
+      }
+    },
+    {
+      "key": "suede-jacket",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-premium-suede-jacket-v1.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: production wearable sprite for the Slice & Stitch painted cartoon-human wardrobe.\nPrimary request: ONE isolated garment, genuinely transparent 1024x1536 portrait canvas, front view in the shared relaxed standing pose.\nInput images: Image 1 is canonical body pose/fit reference ONLY; Image 2 is approved painted garment style ONLY. Do NOT render the body or reference garment.\nRegistration: center x512; collar y335, shoulder centers x320/700 y355, waist x350..674 y690, hips y790, wrists x267/757 y775; knees y1030, ankles x394/630 y1300, ground y1410. Keep garment in wear position, not enlarged to fill the canvas.\nStyle: polished warm hand-painted cartoon illustration, softly painted edge, fine seams, tactile material detail; neutral ivory base with soft taupe shadows for later dye. Restrained broad soft highlights, no white glossy glare, no black outlines, no photorealism or 3D render.\nConstraints: no person, neck, skin, hands, mannequin, hangers, background, halo, labels, text or floating fragments. Openings must be transparent. No back surfaces crossing the neck opening or open front; this is a FRONT wearable layer to place over a separately selected shirt.\nGarment: A sophisticated suede trucker jacket, soft brushed ivory suede nap distinct from smooth leather: turn-down collar, two seam-inset chest pockets, discreet buttons, fitted waist-length hem, full sleeves to wrists. Entire front OPEN with a generous transparent gap for the separate shirt. No fringe, no unwanted detached trims. Matte velvety suede with finely worked panel seams.",
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+      ],
+      "generated": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-80ae90e3-9b46-4dd3-846c-f087ae41fb38.png",
+      "registration": {
+        "family": "premium-suede-jacket",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-suede-jacket-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            175,
+            0.65,
+            175
+          ],
+          [
+            247,
+            310,
+            0.65,
+            310
+          ],
+          [
+            400,
+            365,
+            0.65,
+            365
+          ],
+          [
+            850,
+            690,
+            0.64,
+            690
+          ],
+          [
+            1135,
+            800,
+            0.58,
+            750
+          ],
+          [
+            1248,
+            845,
+            0.58,
+            805
+          ],
+          [
+            1536,
+            990,
+            0.58,
+            960
+          ]
+        ],
+        "thumbnailBox": "0 235 1024 1030",
+        "coversArms": true,
+        "tucksWaist": true,
+        "cropped": true,
+        "visibleContour": "M0 0H410V305Q512 298 614 305V0H1024V1536H0Z",
+        "garmentIds": [
+          "suede-jacket-sand",
+          "suede-jacket-forest"
+        ]
+      }
+    },
+    {
+      "key": "leather-trouser",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-premium-leather-trouser-v1.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: production wearable sprite for the Slice & Stitch painted cartoon-human wardrobe.\nPrimary request: ONE isolated garment, genuinely transparent 1024x1536 portrait canvas, front view in the shared relaxed standing pose.\nInput images: Image 1 is canonical body pose/fit reference ONLY; Image 2 is approved painted garment style ONLY. Do NOT render the body or reference garment.\nRegistration: center x512; collar y335, shoulder centers x320/700 y355, waist x350..674 y690, hips y790, wrists x267/757 y775; knees y1030, ankles x394/630 y1300, ground y1410. Keep garment in wear position, not enlarged to fill the canvas.\nStyle: polished warm hand-painted cartoon illustration, softly painted edge, fine seams, tactile material detail; neutral ivory base with soft taupe shadows for later dye. Restrained broad soft highlights, no white glossy glare, no black outlines, no photorealism or 3D render.\nConstraints: no person, neck, skin, hands, mannequin, hangers, background, halo, labels, text or floating fragments. Openings must be transparent. No back surfaces crossing the neck opening or open front; this is a FRONT wearable layer to place over a separately selected shirt.\nGarment: A pair of straight tapered leather trousers: fine grained soft lambskin panels, shaped natural waist at y690, fly and slant front pockets, subtle seamed knees, two separate straight legs ending at ankles y1320. Stance matches reference. Supple leather with soft broad highlights and controlled crease shading, NOT cotton jeans, no shoes, no skin. Transparent gap between legs.",
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+      ],
+      "generated": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-c9a3c2d2-82f1-48ab-968c-750d6085eaef.png",
+      "registration": {
+        "family": "premium-leather-trouser",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-leather-trouser-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            585,
+            0.92
+          ],
+          [
+            185,
+            690,
+            0.92
+          ],
+          [
+            440,
+            875,
+            0.85
+          ],
+          [
+            850,
+            1090,
+            0.8
+          ],
+          [
+            1356,
+            1325,
+            0.79
+          ],
+          [
+            1536,
+            1410,
+            0.79
+          ]
+        ],
+        "thumbnailBox": "225 170 575 1210",
+        "coversLegs": true,
+        "garmentIds": [
+          "leather-trouser-ink",
+          "leather-trouser-cognac"
+        ]
+      }
+    },
+    {
+      "key": "leather-skirt",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-premium-leather-skirt-v1.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: production wearable sprite for the Slice & Stitch painted cartoon-human wardrobe.\nPrimary request: ONE isolated garment, genuinely transparent 1024x1536 portrait canvas, front view in the shared relaxed standing pose.\nInput images: Image 1 is canonical body pose/fit reference ONLY; Image 2 is approved painted garment style ONLY. Do NOT render the body or reference garment.\nRegistration: center x512; collar y335, shoulder centers x320/700 y355, waist x350..674 y690, hips y790, wrists x267/757 y775; knees y1030, ankles x394/630 y1300, ground y1410. Keep garment in wear position, not enlarged to fill the canvas.\nStyle: polished warm hand-painted cartoon illustration, softly painted edge, fine seams, tactile material detail; neutral ivory base with soft taupe shadows for later dye. Restrained broad soft highlights, no white glossy glare, no black outlines, no photorealism or 3D render.\nConstraints: no person, neck, skin, hands, mannequin, hangers, background, halo, labels, text or floating fragments. Openings must be transparent. No back surfaces crossing the neck opening or open front; this is a FRONT wearable layer to place over a separately selected shirt.\nGarment: A fitted knee-length panelled leather pencil skirt. Natural waistband y690, tailored hips, curved vertical leather seams, small center front walking slit, hem y1060. Fine soft leather grain, defined seam stitching and gently rounded leather reflections, no cloth drapes. Fully front-facing, separate wearable bottom only.",
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+      ],
+      "generated": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-45cce329-05ea-4f35-b74e-7111f6aa6eda.png",
+      "registration": {
+        "family": "premium-leather-skirt",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-leather-skirt-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            550,
+            0.87
+          ],
+          [
+            262,
+            690,
+            0.87
+          ],
+          [
+            480,
+            800,
+            0.8
+          ],
+          [
+            900,
+            980,
+            0.73
+          ],
+          [
+            1256,
+            1100,
+            0.75
+          ],
+          [
+            1536,
+            1200,
+            0.75
+          ]
+        ],
+        "thumbnailBox": "190 245 645 1030",
+        "garmentIds": [
+          "leather-skirt-sage",
+          "leather-skirt-oat",
+          "leather-skirt-ink",
+          "leather-skirt-cognac"
+        ]
+      }
+    },
+    {
+      "key": "tuxedo-jacket",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-premium-tuxedo-jacket-v1.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: production wearable sprite for the Slice & Stitch painted cartoon-human wardrobe.\nPrimary request: ONE isolated garment, genuinely transparent 1024x1536 portrait canvas, front view in the shared relaxed standing pose.\nInput images: Image 1 is canonical body pose/fit reference ONLY; Image 2 is approved painted garment style ONLY. Do NOT render the body or reference garment.\nRegistration: center x512; collar y335, shoulder centers x320/700 y355, waist x350..674 y690, hips y790, wrists x267/757 y775; knees y1030, ankles x394/630 y1300, ground y1410. Keep garment in wear position, not enlarged to fill the canvas.\nStyle: polished warm hand-painted cartoon illustration, softly painted edge, fine seams, tactile material detail; neutral ivory base with soft taupe shadows for later dye. Restrained broad soft highlights, no white glossy glare, no black outlines, no photorealism or 3D render.\nConstraints: no person, neck, skin, hands, mannequin, hangers, background, halo, labels, text or floating fragments. Openings must be transparent. No back surfaces crossing the neck opening or open front; this is a FRONT wearable layer to place over a separately selected shirt.\nGarment: A luxurious SINGLE-BREASTED tuxedo jacket, fine matte ivory wool body and subtly luminous silk satin shawl lapels, one silk-covered waist button, two welt pockets, full fitted sleeves ending at wrists. Front OPEN to reveal separate shirt with transparent central gap. Mid-hip hem y835. Smooth satin lapels visibly distinct from matte wool. No bow tie, no shirt, no cuffs or skin painted into openings.",
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+      ],
+      "generated": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-c29c624b-6765-4832-8f09-e9546dd2e762.png",
+      "registration": {
+        "family": "premium-tuxedo-jacket",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-tuxedo-jacket-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            180,
+            0.64,
+            180
+          ],
+          [
+            262,
+            315,
+            0.64,
+            315
+          ],
+          [
+            410,
+            365,
+            0.64,
+            365
+          ],
+          [
+            906,
+            690,
+            0.64,
+            690
+          ],
+          [
+            1180,
+            805,
+            0.58,
+            795
+          ],
+          [
+            1228,
+            835,
+            0.58,
+            810
+          ],
+          [
+            1536,
+            995,
+            0.58,
+            970
+          ]
+        ],
+        "thumbnailBox": "0 245 1024 1005",
+        "coversArms": true,
+        "tucksWaist": true,
+        "garmentIds": [
+          "tuxedo-jacket-plum",
+          "tuxedo-jacket-sage",
+          "tuxedo-jacket-ink"
+        ]
+      }
+    },
+    {
+      "key": "tuxedo-trouser",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-premium-tuxedo-trouser-v1.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: production wearable sprite for the Slice & Stitch painted cartoon-human wardrobe.\nPrimary request: ONE isolated garment, genuinely transparent 1024x1536 portrait canvas, front view in the shared relaxed standing pose.\nInput images: Image 1 is canonical body pose/fit reference ONLY; Image 2 is approved painted garment style ONLY. Do NOT render the body or reference garment.\nRegistration: center x512; collar y335, shoulder centers x320/700 y355, waist x350..674 y690, hips y790, wrists x267/757 y775; knees y1030, ankles x394/630 y1300, ground y1410. Keep garment in wear position, not enlarged to fill the canvas.\nStyle: polished warm hand-painted cartoon illustration, softly painted edge, fine seams, tactile material detail; neutral ivory base with soft taupe shadows for later dye. Restrained broad soft highlights, no white glossy glare, no black outlines, no photorealism or 3D render.\nConstraints: no person, neck, skin, hands, mannequin, hangers, background, halo, labels, text or floating fragments. Openings must be transparent. No back surfaces crossing the neck opening or open front; this is a FRONT wearable layer to place over a separately selected shirt.\nGarment: A pair of precisely tailored formal tuxedo trousers, flat satin waistband y690, fine matte ivory wool with a smooth slightly darker silk satin stripe down each outside leg. Pressed creases, slant pockets, elegant tapered full-length legs ending at y1325. Reference standing stance, no shoes, no skin, transparent gap between legs.",
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+      ],
+      "generated": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-e1bbcf2d-780a-4811-bb32-1fe94c92f426.png",
+      "registration": {
+        "family": "premium-tuxedo-trouser",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-tuxedo-trouser-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            595,
+            0.92
+          ],
+          [
+            168,
+            690,
+            0.92
+          ],
+          [
+            450,
+            875,
+            0.84
+          ],
+          [
+            930,
+            1130,
+            0.8
+          ],
+          [
+            1375,
+            1325,
+            0.79
+          ],
+          [
+            1536,
+            1400,
+            0.79
+          ]
+        ],
+        "thumbnailBox": "230 150 575 1250",
+        "coversLegs": true,
+        "garmentIds": [
+          "tuxedo-trouser-butter",
+          "tuxedo-trouser-coral",
+          "tuxedo-trouser-ink",
+          "tuxedo-trouser-plum",
+          "tuxedo-trouser-sage"
+        ]
+      }
+    },
+    {
+      "key": "velvet-camisole",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-premium-velvet-camisole-v1.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: production wearable sprite for the Slice & Stitch painted cartoon-human wardrobe.\nPrimary request: ONE isolated garment, genuinely transparent 1024x1536 portrait canvas, front view in the shared relaxed standing pose.\nInput images: Image 1 is canonical body pose/fit reference ONLY; Image 2 is approved painted garment style ONLY. Do NOT render the body or reference garment.\nRegistration: center x512; collar y335, shoulder centers x320/700 y355, waist x350..674 y690, hips y790, wrists x267/757 y775; knees y1030, ankles x394/630 y1300, ground y1410. Keep garment in wear position, not enlarged to fill the canvas.\nStyle: polished warm hand-painted cartoon illustration, softly painted edge, fine seams, tactile material detail; neutral ivory base with soft taupe shadows for later dye. Restrained broad soft highlights, no white glossy glare, no black outlines, no photorealism or 3D render.\nConstraints: no person, neck, skin, hands, mannequin, hangers, background, halo, labels, text or floating fragments. Openings must be transparent. No back surfaces crossing the neck opening or open front; this is a FRONT wearable layer to place over a separately selected shirt.\nGarment: A refined velvet camisole with broad satin shoulder straps, curved softly draped neckline, shaped torso and neat waist-length hem y770. Plush crushed velvet pile, very soft tonal directional sheen rather than shiny latex, opaque lined front. Bare arm openings transparent, no skin. No lace or floating fragments.",
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+      ],
+      "generated": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-b3ece40b-d0bf-4534-8a3a-1fe41ef0ae5a.png",
+      "registration": {
+        "family": "premium-velvet-camisole",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-velvet-camisole-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            185,
+            0.66
+          ],
+          [
+            288,
+            335,
+            0.66
+          ],
+          [
+            490,
+            415,
+            0.66
+          ],
+          [
+            700,
+            540,
+            0.74
+          ],
+          [
+            950,
+            690,
+            0.82
+          ],
+          [
+            1210,
+            800,
+            0.68
+          ],
+          [
+            1536,
+            935,
+            0.68
+          ]
+        ],
+        "thumbnailBox": "180 270 665 970",
+        "garmentIds": [
+          "velvet-camisole-wine",
+          "velvet-camisole-midnight"
+        ]
+      }
+    },
+    {
+      "key": "brocade-coat",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-premium-brocade-coat-v1.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: production wearable sprite for the Slice & Stitch painted cartoon-human wardrobe.\nPrimary request: ONE isolated garment, genuinely transparent 1024x1536 portrait canvas, front view in the shared relaxed standing pose.\nInput images: Image 1 is canonical body pose/fit reference ONLY; Image 2 is approved painted garment style ONLY. Do NOT render the body or reference garment.\nRegistration: center x512; collar y335, shoulder centers x320/700 y355, waist x350..674 y690, hips y790, wrists x267/757 y775; knees y1030, ankles x394/630 y1300, ground y1410. Keep garment in wear position, not enlarged to fill the canvas.\nStyle: polished warm hand-painted cartoon illustration, softly painted edge, fine seams, tactile material detail; neutral ivory base with soft taupe shadows for later dye. Restrained broad soft highlights, no white glossy glare, no black outlines, no photorealism or 3D render.\nConstraints: no person, neck, skin, hands, mannequin, hangers, background, halo, labels, text or floating fragments. Openings must be transparent. No back surfaces crossing the neck opening or open front; this is a FRONT wearable layer to place over a separately selected shirt.\nGarment: An exquisite open-front brocade opera coat, elegant narrow stand collar opening, full fitted sleeves to wrists, long hem below knees at y1140. Tone-on-tone floral damask vines woven into ivory fabric, subtle warm pale-gold embroidery on front edges and cuffs, restrained ornamental frog fasteners on the two front edges, open transparent center from neckline to hem to show independently selected shirt and trousers. No neck wrap crossing front opening. Shape is fitted shoulders and a lightly flared skirt, not an enormous cape.",
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+      ],
+      "generated": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-18d2e89d-54e5-4131-a5ce-5514256f678c.png",
+      "registration": {
+        "family": "premium-brocade-coat",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-brocade-coat-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "fit": [
+          [
+            0,
+            230,
+            0.7,
+            230
+          ],
+          [
+            132,
+            300,
+            0.7,
+            300
+          ],
+          [
+            260,
+            365,
+            0.7,
+            365
+          ],
+          [
+            700,
+            690,
+            0.7,
+            690
+          ],
+          [
+            940,
+            865,
+            0.64,
+            805
+          ],
+          [
+            1438,
+            1160,
+            0.67,
+            1160
+          ],
+          [
+            1536,
+            1220,
+            0.67,
+            1220
+          ]
+        ],
+        "thumbnailBox": "45 110 940 1360",
+        "coversArms": true,
+        "tucksWaist": true,
+        "visibleContour": "M0 0H464V151Q512 166 555 151V0H1024V1536H0Z",
+        "garmentIds": [
+          "brocade-coat-berry",
+          "brocade-coat-moss"
+        ]
+      }
+    },
+    {
+      "key": "leather-tote",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-premium-leather-tote-v1.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: production wearable sprite for the Slice & Stitch painted cartoon-human wardrobe.\nPrimary request: ONE isolated garment, genuinely transparent 1024x1536 portrait canvas, front view in the shared relaxed standing pose.\nInput images: Image 1 is canonical body pose/fit reference ONLY; Image 2 is approved painted garment style ONLY. Do NOT render the body or reference garment.\nRegistration: center x512; collar y335, shoulder centers x320/700 y355, waist x350..674 y690, hips y790, wrists x267/757 y775; knees y1030, ankles x394/630 y1300, ground y1410. Keep garment in wear position, not enlarged to fill the canvas.\nStyle: polished warm hand-painted cartoon illustration, softly painted edge, fine seams, tactile material detail; neutral ivory base with soft taupe shadows for later dye. Restrained broad soft highlights, no white glossy glare, no black outlines, no photorealism or 3D render.\nConstraints: no person, neck, skin, hands, mannequin, hangers, background, halo, labels, text or floating fragments. Openings must be transparent. No back surfaces crossing the neck opening or open front; this is a FRONT wearable layer to place over a separately selected shirt.\nGarment: A structured designer-quality leather tote handbag worn beside the right hip, not a whole outfit. Two short arched handles, trapezoid bag body, refined topstitched panel edges, fine pebble-grain ivory leather, discreet small pale brass handle rings, no logos or letters. Bag positioned source center for later shoulder-zone registration; visible front with only slight three-quarter depth. Clear transparent inside handle loops; no person or hand.",
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+      ],
+      "generated": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-f52c6b44-4454-4638-831c-db48d4893345.png",
+      "registration": {
+        "family": "premium-leather-tote",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-leather-tote-v1.png",
+        "transform": "translate(622 678) scale(.25)",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "thumbnailBox": "90 310 875 950",
+        "neutralTrim": "M286 632Q273 656 292 694L301 686Q286 659 298 636ZM350 638Q376 664 348 699L343 687Q357 661 348 646ZM577 658Q561 692 583 714L591 706Q574 690 588 663ZM648 658Q677 688 651 716L643 707Q662 687 642 666Z",
+        "garmentIds": [
+          "leather-tote-moss",
+          "leather-tote-cocoa",
+          "leather-tote-ink"
+        ]
+      }
+    },
+    {
+      "key": "velvet-pumps",
+      "file": "assets/characters-v3/modular-v4/source/catalogue-premium-velvet-pumps-v1.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: production wearable sprite for the Slice & Stitch painted cartoon-human wardrobe.\nPrimary request: ONE isolated garment, genuinely transparent 1024x1536 portrait canvas, front view in the shared relaxed standing pose.\nInput images: Image 1 is canonical body pose/fit reference ONLY; Image 2 is approved painted garment style ONLY. Do NOT render the body or reference garment.\nRegistration: center x512; collar y335, shoulder centers x320/700 y355, waist x350..674 y690, hips y790, wrists x267/757 y775; knees y1030, ankles x394/630 y1300, ground y1410. Keep garment in wear position, not enlarged to fill the canvas.\nStyle: polished warm hand-painted cartoon illustration, softly painted edge, fine seams, tactile material detail; neutral ivory base with soft taupe shadows for later dye. Restrained broad soft highlights, no white glossy glare, no black outlines, no photorealism or 3D render.\nConstraints: no person, neck, skin, hands, mannequin, hangers, background, halo, labels, text or floating fragments. Openings must be transparent. No back surfaces crossing the neck opening or open front; this is a FRONT wearable layer to place over a separately selected shirt.\nGarment: A matching left and right pair of elegant velvet evening pumps, pointed almond toes, modest narrow block heels, tiny pearl-and-brass ornaments at toes. Deep plush ivory velvet nap with satin edge binding, not glossy patent leather. Front three-quarter view matching reference feet, heels at x394/630 y1300 and toe ends y1410. Separate spaced left/right shoes, open tops genuinely transparent, no skin, feet, mannequin, or socks. No ground shadow.",
+      "references": [
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/render/qa-onbody-shirt-pants-v2.png",
+        "C:/Users/akoko/OneDrive/Documents/Class_Work/Educational_Games/slice-and-stitch/assets/characters-v3/modular-v4/source/catalogue-outer-double-blazer-v1.png"
+      ],
+      "generated": "C:\\Users\\akoko\\.codex\\generated_images\\01a0eed3-870f-7c03-9d79-71ec728c23f1\\exec-358b8937-f871-47c2-9563-35734a3b7908.png",
+      "registration": {
+        "family": "premium-velvet-pumps",
+        "src": "/assets/characters-v3/modular-v4/source/catalogue-premium-velvet-pumps-v1.png",
+        "transform": "",
+        "referenceLuminance": 0.81,
+        "cleanAlpha": true,
+        "thumbnailBox": "65 905 895 470",
+        "neutralTrim": "M145 1220Q180 1173 229 1200Q261 1239 221 1280Q174 1300 145 1250ZM783 1200Q828 1173 881 1220L881 1250Q855 1300 810 1280Q770 1239 783 1200ZM80 1335Q280 1325 397 1275L399 1286Q282 1341 89 1356ZM548 1275Q733 1325 948 1335L938 1356Q732 1341 548 1286Z",
+        "parts": [
+          {
+            "key": "left",
+            "clip": [
+              0,
+              850,
+              512,
+              686
+            ],
+            "transform": "translate(218 977) scale(.48 .32)",
+            "clearOpening": true,
+            "skinOpening": "M416 946Q445 946 453 980Q428 1117 361 1198Q300 1220 189 1193Q289 1110 365 1014Z",
+            "textureBox": [
+              175,
+              930,
+              295,
+              295
+            ],
+            "sampleBox": [
+              375,
+              1180,
+              35,
+              70
+            ]
+          },
+          {
+            "key": "right",
+            "clip": [
+              512,
+              850,
+              512,
+              686
+            ],
+            "transform": "translate(314 977) scale(.48 .32)",
+            "clearOpening": true,
+            "skinOpening": "M609 946Q580 946 572 980Q597 1117 664 1198Q725 1220 836 1193Q736 1110 660 1014Z",
+            "textureBox": [
+              554,
+              930,
+              295,
+              295
+            ],
+            "sampleBox": [
+              608,
+              1180,
+              35,
+              70
+            ]
+          }
+        ],
+        "garmentIds": [
+          "velvet-pump-sage",
+          "velvet-pump-oat",
+          "velvet-pump-ink"
+        ]
+      }
+    }
+  ]
+}

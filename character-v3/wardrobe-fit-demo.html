@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slice & Stitch · Wearable shape trials</title>
+  <link rel="stylesheet" href="painted-paper-doll.css">
+  <link rel="stylesheet" href="wardrobe-fit-demo.css">
+</head>
+<body>
+  <main>
+    <header><p class="eyebrow">Slice & Stitch · Painted wardrobe</p><h1>Wearable shape trials</h1><p>Mix representative cuts on the shared body. This preview does not change your saved character.</p><a href="catalogue-qa.html">Catalogue fitting room</a> · <a href="/#home">Back to the game</a></header>
+    <nav aria-label="Trial outfits" id="outfits"></nav>
+    <section class="studio">
+      <div>
+        <div class="view-tabs" aria-label="Preview framing"><button type="button" data-view="full" aria-pressed="true">Full outfit</button><button type="button" data-view="torso" aria-pressed="false">Torso</button><button type="button" data-view="feet" aria-pressed="false">Shoes & hems</button></div>
+        <div class="frame" id="frame" data-view="full"><div class="figure" id="figure"></div></div>
+        <p class="fit-caption" id="caption" aria-live="polite"></p>
+      </div>
+      <form aria-label="Mix clothing pieces" id="controls">
+        <label>Top<select name="top"></select></label>
+        <label>Outerwear<select name="outerwear"></select></label>
+        <label>Bottom<select name="bottom"></select></label>
+        <label>Apron<select name="apron"></select></label>
+        <label>Shoes<select name="shoes"></select></label>
+        <label>Accessory<select name="accessory"></select></label>
+        <label>Skin bucket<select name="skin"><option value="light">Light</option><option value="medium" selected>Medium</option><option value="deep">Deep</option></select></label>
+        <label class="guide-control"><input type="checkbox" name="guides"> Show fit anchors</label>
+        <aside><h2>What this trial covers</h2><p>Open lapels and long sleeves; wide trouser hems; a fitted midi skirt and walking vent; low loafers; individual sneaker fit.</p><p>Try both apron types over each outfit. Shoe uppers can change color while their soles and lace highlights stay separate.</p><p>Shirts and outerwear are independently selectable. Change a tee or blouse beneath the same blazer; choose None for outerwear to keep the shirt visible on its own.</p></aside>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="wardrobe-fit-demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-03",
+  "scope": "Align the tailoring workbench with the existing painted clothing catalogue, preserving equipment layers and saved player identity.",
+  "catalogueEntries": 409,
+  "paintedSources": 106,
+  "craftingPatterns": 165,
+  "constructionFamilies": 19,
+  "sourceNativeAttachmentAnchors": 276,
+  "sourceImagesModified": false,
+  "imageGenerationUsed": false,
+  "reviewFindings": [
+    "Many catalogue shapes were missing crafting patterns; footwear, hats, bags and ornaments could inherit unrelated generic workpiece silhouettes.",
+    "Only one generic side seam was required, including for dresses and structured outerwear.",
+    "Every project required three arbitrary decorations, and the worn renderer did not preserve their placement.",
+    "Material compatibility was not enforced; some multi-unit daily projects had insufficient inventory.",
+    "Generic geometry alterations changed the canvas but not the painted wardrobe silhouette."
+  ],
+  "implementation": [
+    "Catalogue-backed patterns preserve their native artwork template, material metadata, attachment points, outline and colour-pattern recipe through crafting and saving.",
+    "Nineteen construction families use distinct contours and two or three named assembly passes. Shirt collars, pleats, quilting, boot shafts, bow ties and wrap strips have specific jobs.",
+    "Machine-feed paths are monotonic. Curved joins and leather, suede or material-kit assembly use direct hand-work tracing. Every pass requires whole-guide coverage.",
+    "Suitable material families gate construction. Cotton jersey, pre-knitted rib, millinery felt, footwear leather and an ornament kit fill material gaps without changing the original fabric atlas columns.",
+    "Daily recommendations retain finite stock, with a suitable sufficient-stock material for every suggested pattern. All unlocked patterns can be searched separately.",
+    "A clean finish earns the same finishing score as a clean decorated one. Paired details need not be artificially different.",
+    "Optional details are attached in source-native product coordinates, alpha-masked before the existing fit mesh or footwear-part transforms. Open-jacket gaps and necklines are avoided by audited per-painting anchors.",
+    "Only implemented attached surface details and catalogue-backed recuts are offered. Unsupported bespoke deformations, invisible lining claims and translucent insets are deferred.",
+    "Material-specific paintings retain their baked surface. A different suitable material uses the existing clipped textile recipe; it is not merely relabelled.",
+    "The final finishing surface displays the actual painted garment, not the simplified workpiece diagram."
+  ],
+  "feasibilityBoundary": "This is a stylized construction workbench on a fixed pose and shared wardrobe rig, not a cloth physics, weaving, yarn knitting, metal casting or arbitrary pattern-drafting simulation. Cut-and-sew knits use pre-knitted yardage; footwear uses one template for a mirrored pair. Retain catalogue-quality painted clothes; native diagrams are only workpiece guides.",
+  "verification": {
+    "testCommand": "npm run check",
+    "tests": 173,
+    "newConstructionTests": 12,
+    "dailyStockCases": 1080,
+    "checks": ["all catalogue cuts and 106 painted sources remain craftable", "all seam guides have valid bounds, whole-trace scores and feed-safe direction", "material compatibility at every unlock level", "every advertised finish zone lands inside painted fabric", "source-native details, specialty materials and layering survive save/equipment adapters", "no saving or ownership changes from the trial page"],
+    "browserChecks": ["live pattern archive and search", "suitable starter jersey enables construction while woven fabrics are disabled", "painted previews for blazer, leather jacket, dress, paired footwear, hat and scarf", "blazer embroidery visible on product and worn avatar", "brocade texture visible on generic cloth without replacing the underlying painting"],
+    "browserBoundary": "Visual recipe and planning controls were checked in the browser; scoring, all assembly pass wiring and persistence were checked by tests. The player's saved currency and appearance were not used for a complete rewarded crafting run."
+  },
+  "trial": "/fashion-workshop-qa.html",
+  "proofDirectory": "artifacts/atelier-catalogue-2026-10-03",
+  "finalProof": "blazer-final.png",
+  "notes": "Other screenshots in the proof directory include earlier intermediate diagrams. Existing source art, earlier generation provenance, town actors, fashion catalogue garment IDs and player saves are preserved. Changes outside the atelier are limited to passing customization through the existing painted garment and thumbnail renderers."
+}

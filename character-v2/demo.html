@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Painted character art direction — Slice &amp; Stitch</title>
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <main class="lab-shell">
+      <header class="lab-header">
+        <a class="brand" href="../" aria-label="Return to Slice and Stitch">
+          <span aria-hidden="true">✂</span>
+          <span><small>A KITCHEN &amp; CLOTHIER STORY</small><b>Slice <i>&amp;</i> Stitch</b></span>
+        </a>
+        <div class="build-mark"><i></i><span><b>Painted character target</b><small>art pass v4 · fashion catalog aligned</small></span></div>
+      </header>
+
+      <section class="art-review" aria-labelledby="review-title">
+        <header class="review-copy">
+          <span class="eyebrow">CHARACTER LAB · PRODUCTION ART REVIEW</span>
+          <h1 id="review-title">Characters built for the same world as the clothes.</h1>
+          <p>The flat puppet look is retired from this review. These examples use the fashion game’s painted cloth, constructed seams, adult proportions, and warm feature-animation expression as the quality bar.</p>
+        </header>
+
+        <nav class="art-tabs" aria-label="Character art sheets">
+          <button class="is-active" type="button" data-art-sheet="cast">Cast</button>
+          <button type="button" data-art-sheet="turnaround">Turnaround</button>
+          <button type="button" data-art-sheet="wardrobe">Wardrobe</button>
+          <button type="button" data-art-sheet="expression">Gaze &amp; expression</button>
+        </nav>
+
+        <div class="review-stage" data-review-stage>
+          <img data-review-image src="../assets/characters-v3/cast-lineup-v1.png" alt="Four painted Slice and Stitch characters in detailed workwear and fashion outfits" />
+          <div class="stage-caption">
+            <span data-review-kicker>Shared visual language</span>
+            <strong data-review-label>Four distinct neighbors, one coherent cast</strong>
+            <p data-review-note>Painterly faces, mature anatomy, cloth texture, seams, hardware, pockets, drape, and wear all survive at character scale.</p>
+          </div>
+        </div>
+
+        <div class="quality-row" aria-label="Character art coverage">
+          <span><b>4</b><small>signature examples</small></span>
+          <span><b>5 → 8</b><small>view directions</small></span>
+          <span><b>5</b><small>catalog looks</small></span>
+          <span><b>8</b><small>face states</small></span>
+        </div>
+      </section>
+
+      <section class="proof-grid" aria-labelledby="proof-title">
+        <header class="section-heading">
+          <span class="eyebrow">ANIMATION &amp; EQUIPMENT PROOF</span>
+          <h2 id="proof-title">The art changes. The identity does not.</h2>
+          <p>The painted sheets below are registered to fixed cells so the cutout rig can swap direction, clothing, and facial state without redrawing the whole character.</p>
+        </header>
+
+        <article class="proof-card direction-card">
+          <header><span>01</span><div><b>Body direction</b><small>5 painted views mirrored into 8-way movement</small></div></header>
+          <div class="sprite-window direction-window" data-direction-window role="img" aria-label="Character facing down"></div>
+          <div class="direction-pad" data-direction-controls aria-label="Body direction controls">
+            <button type="button" data-direction="up-left" aria-label="Face up left">↖</button>
+            <button type="button" data-direction="up" aria-label="Face up">↑</button>
+            <button type="button" data-direction="up-right" aria-label="Face up right">↗</button>
+            <button type="button" data-direction="left" aria-label="Face left">←</button>
+            <span aria-hidden="true">●</span>
+            <button type="button" data-direction="right" aria-label="Face right">→</button>
+            <button type="button" data-direction="down-left" aria-label="Face down left">↙</button>
+            <button class="is-active" type="button" data-direction="down" aria-label="Face down">↓</button>
+            <button type="button" data-direction="down-right" aria-label="Face down right">↘</button>
+          </div>
+          <p><b data-direction-label>Front</b><span>Direction swaps are discrete art; walk, idle, carry, wave, and talk animate its registered bones and secondary cloth.</span></p>
+        </article>
+
+        <article class="proof-card wardrobe-card">
+          <header><span>02</span><div><b>Wardrobe silhouette</b><small>same face, frame, pose, and registration</small></div></header>
+          <div class="sprite-window wardrobe-window" data-wardrobe-window role="img" aria-label="Counter Classic outfit"></div>
+          <div class="choice-rail" data-wardrobe-controls>
+            <button class="is-active" type="button" data-look="counter"><i style="--swatch:#ad493b"></i>Counter</button>
+            <button type="button" data-look="garden"><i style="--swatch:#6c7e5d"></i>Garden</button>
+            <button type="button" data-look="plum"><i style="--swatch:#704861"></i>Plum</button>
+            <button type="button" data-look="midnight"><i style="--swatch:#30394d"></i>Midnight</button>
+            <button type="button" data-look="maker"><i style="--swatch:#526963"></i>Maker</button>
+          </div>
+          <p><b data-look-label>Counter Classic</b><span data-look-copy>Henley · service apron · work trouser · canvas sneaker</span></p>
+        </article>
+
+        <article class="proof-card expression-card">
+          <header><span>03</span><div><b>Independent face layer</b><small>gaze and expression stay separate from body direction</small></div></header>
+          <div class="expression-window" data-expression-window role="img" aria-label="Neutral face looking forward"></div>
+          <div class="choice-rail face-rail" data-expression-controls>
+            <button class="is-active" type="button" data-expression="center">Center</button>
+            <button type="button" data-expression="left">Look left</button>
+            <button type="button" data-expression="right">Look right</button>
+            <button type="button" data-expression="up">Look up</button>
+            <button type="button" data-expression="down">Look down</button>
+            <button type="button" data-expression="blink">Blink</button>
+            <button type="button" data-expression="talk">Talk</button>
+            <button type="button" data-expression="laugh">Laugh</button>
+          </div>
+          <p><b data-expression-label>Neutral · center gaze</b><span>Blink timing, eye aim, brow emotion, and mouth phonemes can layer over idle, walk, carry, or service actions.</span></p>
+        </article>
+      </section>
+
+      <section class="fashion-bridge" aria-labelledby="fashion-title">
+        <div class="fashion-art">
+          <img src="../assets/game/fashion-pattern-catalog-v1.png" alt="Six detailed garment paper patterns from the fashion game" />
+          <span>Live source art · fashion pattern catalog</span>
+        </div>
+        <div class="fashion-copy">
+          <span class="eyebrow">FASHION SYSTEM AS SOURCE OF TRUTH</span>
+          <h2 id="fashion-title">Everything the atelier makes must survive on a person.</h2>
+          <p>The avatar no longer treats clothes as a color choice. Every equipped item carries a cut family, fabric pattern, accent, construction finish, alteration geometry, and attachment map.</p>
+          <div class="catalog-stats">
+            <span><b>289</b><small>ready-made garments</small></span>
+            <span><b>107</b><small>craftable schematics</small></span>
+            <span><b>26</b><small>alterations</small></span>
+            <span><b>15</b><small>finishes</small></span>
+          </div>
+          <div class="equipment-map">
+            <article><b>Core garments</b><p>Top · bottom · apron/overlayer · left shoe · right shoe</p></article>
+            <article><b>Accessory anchors</b><p>Head · neck · chest · shoulder/bag · waist · hands</p></article>
+            <article><b>Constructed detail</b><p>Collars · cuffs · lapels · straps · ties · pockets · pleats · hardware</p></article>
+            <article><b>Surface detail</b><p>Woven texture · print · topstitch · embroidery · binding · wear</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rig-note" aria-labelledby="rig-title">
+        <span class="eyebrow">PERSONAL AVATAR + PROCEDURAL CAST</span>
+        <h2 id="rig-title">Signature models and personal characters share one contract.</h2>
+        <div class="rig-flow">
+          <span><b>Identity recipe</b><small>body · face · skin · hair · marks</small></span>
+          <i>→</i>
+          <span><b>Bone pose</b><small>idle · walk · wave · carry · service</small></span>
+          <i>→</i>
+          <span><b>Garment pieces</b><small>torso · sleeves · hips · legs · straps</small></span>
+          <i>→</i>
+          <span><b>Face layer</b><small>gaze · blink · brow · mouth</small></span>
+        </div>
+        <p>Personal avatars select every recipe field directly. Procedural NPCs use deterministic seeds, weighted variety, and curated outfit rules. Loose hair, apron ties, skirts, scarves, and satchels receive secondary-motion bones, so replacing clothes never replaces the animation beneath them.</p>
+      </section>
+    </main>
+    <script type="module" src="demo.js"></script>
+  </body>
+</html>

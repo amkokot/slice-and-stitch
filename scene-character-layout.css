@@ -1,0 +1,49 @@
+/* Room-only calibration; creator/catalogue registration remains untouched. */
+.hub-scene-stage .hub-actors { inset: auto; overflow: visible; }
+.hub-scene-stage .hub-actor,
+.hub-scene-stage .hub-actor.is-player,
+.hub-scene-stage .hub-actor.uses-painted-sprite {
+  width: var(--scene-character-width);
+  height: var(--scene-character-height);
+  transform: translate(var(--scene-character-center, -50%), var(--scene-character-anchor));
+  scale: 1;
+  z-index: var(--scene-character-depth);
+}
+.hub-scene-stage[data-scene] .hub-actor.is-player { scale: 1; }
+.hub-scene-stage .painted-actor-sprite {
+  width: 100%; height: 100%;
+  clip-path: inset(0 0 max(var(--scene-character-clip, 0px), var(--sprite-trim-bottom, 0%)));
+}
+.hub-scene-stage .hub-actor-shadow {
+  bottom: 6.5%; left: 34%; right: 34%; height: 3%;
+  background: rgba(39,27,23,.24);
+}
+.hub-scene-stage .uses-painted-sprite .hub-actor-shadow { bottom: 2%; }
+.hub-scene-stage .pose-counter-host .hub-actor-shadow,
+.hub-scene-stage .pose-counter-customer .hub-actor-shadow { display: none; }
+.hub-scene-stage .pose-counter-customer .painted-actor-sprite { animation: none; }
+.hub-scene-stage .hub-actor.detail-signature::before { display: none; }
+.hub-seat-contact {
+  position: absolute; z-index: 1;
+  left: var(--seat-contact-x); top: var(--seat-contact-y);
+  width: var(--seat-contact-width); height: var(--seat-contact-height);
+  transform: translate(-50%, -35%); border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(36, 20, 17, .45), rgba(36, 20, 17, .08) 65%, transparent 75%);
+}
+.hub-scene-stage[data-scene='restaurant'] .hub-actor.pose-counter-customer[data-actor-state]::after {
+  left: 8%; right: auto; top: 0;
+}
+/* Keep room paintings undistorted, including their physical actor landmarks. */
+@media (max-width: 720px) {
+  .hub-scene-stage[data-scene='restaurant'],
+  .hub-scene-stage[data-scene='kitchen'],
+  .hub-scene-stage[data-scene='tailor'],
+  .hub-scene-stage[data-scene='boutique'] { min-height: 0; aspect-ratio: 1672 / 941; }
+  .hub-scene-stage[data-scene='restaurant'] .hub-scene-art,
+  .hub-scene-stage[data-scene='kitchen'] .hub-scene-art,
+  .hub-scene-stage[data-scene='tailor'] .hub-scene-art,
+  .hub-scene-stage[data-scene='boutique'] .hub-scene-art { background-size: cover; }
+  .hub-scene-stage[data-scene='restaurant'] .hub-actor.pose-counter-customer[data-actor-state]::after {
+    width: 14px; height: 14px; font-size: 8px; border-width: 1px;
+  }
+}

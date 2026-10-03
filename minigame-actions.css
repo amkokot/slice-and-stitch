@@ -1,0 +1,119 @@
+.workbench-continuation {flex:0 0 58px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 10px;box-sizing:border-box;color:#57412d;background:linear-gradient(110deg,#fff6df,#ead9b5);border:1px solid #b99a69;border-radius:10px;box-shadow:0 3px 8px #402e2217}
+.workbench-continuation[data-ready=false] {visibility:hidden;pointer-events:none}
+.workbench-continuation span {min-width:0}.workbench-continuation small,.workbench-continuation b {display:block}
+.workbench-continuation small {font:9px Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;color:#846f50}
+.workbench-continuation b {font:700 14px Georgia,serif}
+.workbench-continuation button {flex:none;min-height:40px;padding:9px 17px;border:1px solid #684d38;border-radius:8px;color:#fff6dc;background:#70513c;box-shadow:0 2px 0 #4b3229;font:700 13px Georgia,serif;cursor:pointer}
+#fashionActivity .workbench-continuation button {background:#6d526b;border-color:#553c54;box-shadow:0 2px 0 #4a3249}
+.workbench-continuation button:disabled {opacity:.55;cursor:default;box-shadow:none}
+.craft-project-planner[hidden] {display:none!important}
+.craft-project-planner {position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);overflow:hidden;padding:12px;box-sizing:border-box;text-align:left;color:#573f4e;background:linear-gradient(135deg,#fff8e7,#f0e4ca)}
+.craft-pattern-step {min-height:0;display:flex;flex-direction:column}
+.game-panel .workshop-surface .canvas-wrap[data-planning=true] {width:100cqw;height:100cqh;overflow:hidden}
+#fashionCanvasWrap[data-planning=true] canvas {visibility:hidden}
+#fashionCanvasWrap[data-planning=true] .canvas-badge {display:none}
+.craft-project-planner h2 {margin:0 0 5px;font:700 21px Georgia,serif}
+.craft-project-planner > header {display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 8px}
+.craft-project-planner .planner-note {grid-column:1/-1}
+.craft-pattern-shop-link {padding:6px 9px;border:1px solid #b99a79;border-radius:7px;background:#f7ead2;color:#6d526b;font:700 11px Georgia,serif;cursor:pointer}
+.craft-project-planner p,.craft-material-step p {margin:4px 0 7px;font:11px/1.45 Arial,sans-serif}
+.craft-material-step h3 {margin:8px 0 5px;font:700 16px Georgia,serif}
+.craft-material-step[hidden] {display:none!important}
+.game-panel .craft-project-planner .fashion-pattern-selector {display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));flex:1;max-height:none;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;gap:7px;min-width:0;align-content:start;margin-bottom:0}
+.game-panel .craft-project-planner .fashion-pattern-chip {grid-template-columns:52px minmax(0,1fr);gap:8px;min-height:77px;padding:7px;border-width:1px;border-radius:9px;box-shadow:0 2px 0 #77545820;align-items:center}
+.game-panel .craft-project-planner .fashion-pattern-thumb {display:grid;place-items:center;width:52px;height:52px;aspect-ratio:1;padding:4px;box-sizing:border-box;border:1px solid #d8c8a8;border-radius:7px;background:linear-gradient(135deg,#fffbee,#eee2c7);overflow:hidden}
+.game-panel .craft-project-planner .fashion-pattern-thumb svg {display:block;position:static;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;transform:none;pointer-events:none}
+.game-panel .craft-project-planner .fashion-pattern-chip b {font-size:12px;white-space:normal;overflow:visible;line-height:1.2}
+.game-panel .craft-project-planner .fashion-pattern-chip small {font-size:10px;line-height:1.35}
+.game-panel .craft-project-planner .fashion-archive-controls {display:grid;grid-template-columns:minmax(150px,1fr) minmax(0,2fr);gap:8px;margin:4px 0 8px;padding:0}
+.craft-project-planner .fashion-archive-controls input,.craft-project-planner .fashion-archive-controls select {box-sizing:border-box;width:100%;font:11px Arial,sans-serif;padding:8px;border:1px solid #bdab90;border-radius:7px;background:#fffaf0}
+.craft-project-planner .fashion-archive-controls label {font:10px Arial,sans-serif;min-width:0}
+#fashionPlannerMaterials {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.game-panel #fashionPlannerMaterials .tool-chip {min-width:0;min-height:60px;justify-content:flex-start;text-align:left;padding:6px;font-size:11px}
+.game-panel #fashionPlannerMaterials .tool-chip small {display:block;white-space:normal;font-size:10px;line-height:1.35}
+.game-panel #fashionPlannerMaterials .tool-swatch {flex:none;width:23px;height:23px}
+#fashionPlannerMaterials .fashion-material-note {grid-column:1/-1}
+#fashionPlannerMaterials {max-height:210px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.game-panel .craft-project-planner .fashion-pattern-chip.is-new {background:linear-gradient(135deg,#fff7d8,#f3ead0);border-color:#b99740;box-shadow:inset 0 0 0 1px #edcf78,0 2px 0 #77545820}
+.game-panel .craft-project-planner .fashion-pattern-chip.is-active {border-color:#79546d;box-shadow:inset 0 0 0 1px #79546d,0 2px 0 #77545820}
+.pattern-new-badge {display:inline-block;margin-left:4px;padding:2px 4px;border-radius:4px;background:#f0d68b;color:#6b4c1f;font:700 8px Arial,sans-serif;text-transform:uppercase;vertical-align:middle}
+.fashion-empty-preview {font:12px/1.5 Georgia,serif;color:#8b7767;text-align:center;padding:20px 12px;border:1px dashed #d4be9c;border-radius:8px}
+#fashionActivity .fashion-pattern-copy strong {font-size:16px}
+.game-panel .craft-project-planner .tool-swatch {flex:none}
+
+/* Setup is an owned-only pattern box beside cloth/preview, with one shared action.
+   The DOM nodes and their handlers survive each phase; no canvas is stretched. */
+.game-panel #fashionActivity[data-fashion-phase=plan] .activity-grid {grid-template-rows:minmax(0,1fr) 58px}
+.game-panel #fashionActivity[data-fashion-phase=plan] .play-card {display:contents}
+.game-panel #fashionActivity[data-fashion-phase=plan] .workshop-surface {grid-column:1;grid-row:1}
+.game-panel #fashionActivity[data-fashion-phase=plan] .task-card {grid-column:2;grid-row:1}
+.game-panel #fashionActivity[data-fashion-phase=plan] .workbench-continuation {grid-column:1/-1;grid-row:2}
+.game-panel #fashionActivity[data-fashion-phase=plan] .workshop-tools {display:none}
+.game-panel #fashionActivity[data-fashion-phase=plan] :is(#qualityEstimate,.instruction-card,#fashionTaskCopy) {display:none}
+.game-panel #fashionActivity[data-fashion-phase=plan] .ticket-top {padding:0;border:0}
+.game-panel #fashionActivity[data-fashion-phase=plan] .fashion-product-proof {grid-template-columns:110px minmax(0,1fr);margin:9px 0 0}
+.game-panel #fashionActivity[data-fashion-phase=plan] .task-card .fashion-product-art {height:120px}
+.game-panel #fashionActivity[data-fashion-phase=plan] #fashionPlanReadiness {margin:7px 0 0;font-size:11px}
+
+/* Keep the cutting/sewing controls with their instructions, not under the art.
+   Freed vertical space becomes a larger, correctly proportioned work surface. */
+.game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew],[data-fashion-phase=finish]) .activity-grid {grid-template-columns:minmax(0,1fr) minmax(320px,35%)}
+.game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew],[data-fashion-phase=finish]) .workshop-tools {display:none}
+.game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) #fashionTools {display:none}
+.game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew],[data-fashion-phase=finish]) #fashionTaskCopy {display:none}
+.game-panel #fashionActivity .task-card .fashion-product-proof {grid-template-columns:110px minmax(0,1fr)}
+.game-panel #fashionActivity .task-card .fashion-product-art {height:150px}
+.game-panel #fashionActivity .task-card .fashion-work-controls {padding:0;font-size:11px}
+.game-panel #fashionActivity .fashion-input-modes {gap:5px}
+.game-panel #fashionActivity .fashion-input-modes button {padding:7px 9px;font-size:11px}
+.game-panel #fashionActivity .fashion-pass-progress {margin:7px 0}
+.game-panel #fashionActivity .fashion-steady-hand {padding:8px;border-radius:9px}
+.game-panel #fashionActivity .fashion-steady-hand p {margin:0 0 7px}
+.game-panel #fashionActivity .fashion-aim-lane {margin:9px 0 12px;height:20px}
+.game-panel #fashionActivity .fashion-aim-lane i {height:30px}
+.game-panel #fashionActivity .fashion-work-feedback {margin-top:5px}
+.game-panel #fashionActivity .fashion-project-options {margin-top:8px;padding-top:6px}
+.game-panel #fashionActivity[data-fashion-phase=finish] #fashionProductPreview {display:none}
+.game-panel #fashionActivity[data-fashion-phase=finish] .canvas-wrap {width:100cqw;height:100cqh}
+.game-panel #fashionActivity[data-fashion-phase=finish] .fashion-finish-surface {display:block;height:100%;aspect-ratio:auto;padding:35px}
+.game-panel #fashionActivity[data-fashion-phase=finish] .fashion-finish-surface .fashion-product-proof {display:block;grid-template-columns:minmax(0,1fr);width:100%;height:100%;margin:0;padding:0;gap:0;background:none;border:0;box-sizing:border-box}
+.game-panel #fashionActivity[data-fashion-phase=finish] .fashion-finish-surface .fashion-product-art {display:block;width:100%;height:100%;min-height:0}
+.game-panel #fashionActivity[data-fashion-phase=finish] #qualityEstimate {grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(min-width:1100px) and (min-height:660px) {
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) .activity-grid {grid-template-columns:minmax(0,min(55%,calc(100dvh - 190px))) minmax(0,1fr)}
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) .task-card {display:grid;grid-template-columns:minmax(0,1.25fr) minmax(160px,1fr);gap:0 12px;align-content:start;align-items:start}
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) .ticket-top {grid-column:1/-1;padding:2px 0 8px;border:0}
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) .instruction-card {grid-column:1;grid-row:2;margin:0 0 10px}
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) #fashionWorkControls {grid-column:1;grid-row:3}
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) #fashionClearButton {grid-column:1;grid-row:4;margin-top:9px}
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) #qualityEstimate {grid-column:1/-1;grid-row:5;grid-template-columns:repeat(4,minmax(0,1fr));margin:10px 0 0}
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) #fashionProductPreview {grid-column:2;grid-row:2/5}
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) .fashion-product-proof {display:block;margin:0;padding:8px}
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew]) .fashion-product-art {height:225px;margin-bottom:8px}
+}
+.game-panel .result-actions {position:sticky;bottom:-20px;z-index:2;flex-wrap:wrap;padding:14px 0 8px;background:#fff6df;box-shadow:0 -10px 16px #fff6dff0;border-top:1px solid #dac79d}
+.game-panel .result-actions button {min-height:44px}
+.fashion-pattern-empty {grid-column:1/-1;text-align:center;padding:14px;border:1px dashed #bda280;border-radius:9px;font-size:12px}
+.fashion-pattern-empty button {display:block;margin:9px auto 0;border:1px solid #8f6b89;border-radius:7px;padding:7px 12px;background:#6d526b;color:#fff3dd;cursor:pointer}
+.fashion-pattern-chip small.pattern-purchase {color:#79516a;font-weight:700}
+.hub-pattern-stock article.is-owned {background:#edf0df;border-color:#b6c298}
+.hub-pattern-stock [data-pattern-shop-record][hidden] {display:none!important}
+#fashionActivity:has(.workbench-continuation) #fashionNextButton {display:none}
+@media(max-width:760px) {.workbench-continuation {flex-basis:58px;margin-top:5px;gap:8px;padding:6px 8px}.workbench-continuation b {font-size:12px}.workbench-continuation button {max-width:58%;padding:9px 10px;font-size:12px}.game-panel .result-actions {bottom:-14px}}
+@media(max-width:760px) {
+  .game-panel #fashionActivity[data-fashion-phase=plan] .activity-grid {grid-template-rows:auto auto 58px}
+  .game-panel #fashionActivity[data-fashion-phase=plan] .workshop-surface {height:285px;aspect-ratio:auto}
+  .game-panel #fashionActivity[data-fashion-phase=plan] .task-card {grid-column:1;grid-row:2;padding:10px}
+  .game-panel #fashionActivity[data-fashion-phase=plan] .workbench-continuation {grid-row:3;position:sticky;bottom:0;z-index:8;margin-top:0}
+  .game-panel #fashionActivity[data-fashion-phase=plan] .fashion-product-proof {grid-template-columns:75px minmax(0,1fr)}
+  .game-panel #fashionActivity[data-fashion-phase=plan] .task-card .fashion-product-art {height:90px}
+  .craft-project-planner {padding:9px}.craft-project-planner h2 {font-size:18px}
+  .game-panel .craft-project-planner .fashion-archive-controls {grid-template-columns:1fr 1fr}
+  .game-panel .craft-project-planner .fashion-pattern-selector {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .game-panel .craft-project-planner .fashion-pattern-chip {grid-template-columns:40px minmax(0,1fr);gap:5px;min-height:68px;padding:5px}
+  .game-panel .craft-project-planner .fashion-pattern-thumb {width:40px;height:40px;padding:3px}
+  .game-panel .craft-project-planner .fashion-pattern-chip b {font-size:11px}
+  .game-panel .craft-project-planner .fashion-pattern-chip small {font-size:9px}
+  .game-panel #fashionActivity:is([data-fashion-phase=cut],[data-fashion-phase=sew],[data-fashion-phase=finish]) .activity-grid {grid-template-columns:minmax(0,1fr)}
+  .game-panel #fashionActivity[data-fashion-phase=finish] .canvas-wrap {height:100cqh}
+}
