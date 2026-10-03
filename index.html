@@ -28,7 +28,10 @@
       <i></i><i></i><i></i><i></i><i></i>
     </div>
 
-    <main class="app-shell">
+    <!-- Retain the workshop DOM for its canvases and controls, but never show
+         the retired prototype menu while the scene modules are loading. The
+         hub only reveals this shell when a player enters a work station. -->
+    <main class="app-shell" hidden>
       <header class="topbar">
         <a class="brand" href="./index.html" aria-label="Slice and Stitch prototype home">
           <span class="brand-stamp" aria-hidden="true"><i>✂</i><b>◆</b></span>
