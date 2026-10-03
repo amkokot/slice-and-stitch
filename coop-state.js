@@ -65,7 +65,7 @@ export function applyRoomCommand(current,command) {
       if(command.type==='reconcile-sleep' && playerId!==state.hostPlayerId) return fail('Only the host checks the bedtime roll call.')
       if(command.type==='go-to-bed' && data.day!==state.clock.day) return fail('A new morning has already started. Your old bedtime request was not repeated.')
       const players=[...new Set((Array.isArray(data.players)?data.players:[]).filter(identifier))]
-      if(!players.includes(state.hostPlayerId) || !players.includes(playerId) || players.length>MAX_ROOM_PLAYERS) return fail('The connected room roster is required before sleeping.')
+      if(!players.includes(state.hostPlayerId) || !players.includes(playerId) || players.length>MAX_ROOM_PLAYERS) return fail('Wait for the room to reconnect before going to bed.')
       if(command.type==='go-to-bed') state.sleeping[playerId]=true
       for(const id of Object.keys(state.sleeping)) if(!players.includes(id)) delete state.sleeping[id]
       for(const [id,owner] of Object.entries(state.stations)) if(state.sleeping[owner.playerId]) delete state.stations[id]
@@ -86,7 +86,7 @@ export function applyRoomCommand(current,command) {
       result={ok:true,pattern:purchase.pattern,price:spent};break
     }
     case 'buy-garment': {
-      if(state.wardrobe.includes(data.id)) return fail('This piece is already in the shared chest.')
+      if(state.wardrobe.includes(data.id)) return fail('This piece is already in the shared wardrobe.')
       const offer=boutiqueCatalogForDay(state.clock.day,state.reputation,state.progression.atelierLevel).find(g=>g.id===data.id)
       if(!offer || offer.locked || !offer.availableToday) return fail('This garment is not unlocked yet.')
       spent=offer.price;saveCharacter(addCatalogGarment(character(),data.id));result={ok:true,price:spent};break

@@ -55,7 +55,7 @@ export function pizzaServiceGate(state, { id, sauce = 'tomato' } = {}) {
   if (state.burning) return { blocked: true, code: 'burning', station: 'saucePot', title: 'Sauce burning · cooking paused', copy: 'Rescue the hot tomato pot. This pizza and its oven progress stay safe while you stir.', action: 'Rescue the sauce' }
   if (state.reservation && state.reservation.id === id) return { blocked: false }
   if (state.reservation) return { blocked: true, code: 'reserved', station: 'pizza', title: 'Finish your current pizza', copy: 'Its prepared dough and sauce are already set aside.', action: 'Return to your pizza' }
-  if (!state.doughs) return { blocked: true, code: 'dough', station: 'doughToss', title: 'A fresh dough skin is needed', copy: 'Toss and catch a dough skin at the prep table. Each finished skin makes one pizza.', action: 'Throw some dough' }
+  if (!state.doughs) return { blocked: true, code: 'dough', station: 'doughToss', title: 'Prepare a pizza base', copy: 'Toss dough at the prep table. Each finished base makes one pizza.', action: 'Toss dough' }
   if (!state.sauces[sauceKind(sauce)]) return { blocked: true, code: 'sauce', station: 'saucePot', sauce: sauceKind(sauce), title: `${sauce === 'pesto' ? 'Fresh pesto' : 'Tomato sauce'} is needed`, copy: 'Prepare a five-portion batch. One portion is used per pizza, regardless of the requested sauce coverage.', action: sauce === 'pesto' ? 'Make pesto' : 'Make tomato sauce' }
   return { blocked: false }
 }

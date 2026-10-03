@@ -27,12 +27,12 @@ export const FASHION_SETS = Object.freeze({
   'plum-atelier': Object.freeze({
     id: 'plum-atelier', name: 'Plum Atelier', mark: '✦',
     pieces: ['violet-blouse', 'plum-skirt', 'plum-boots'],
-    twoPiece: '+3 tailoring finish quality', full: '+6 finish quality',
+    twoPiece: '+3 finish points', full: '+6 finish points',
   }),
   'midnight-rush': Object.freeze({
     id: 'midnight-rush', name: 'Midnight Rush', mark: '◐',
     pieces: ['navy-waistcoat', 'charcoal-trousers', 'oxford-loafers'],
-    twoPiece: '+5% dusk/night tips', full: '+10% dusk/night tips',
+    twoPiece: '+5% evening & night tips', full: '+10% evening & night tips',
   }),
   'sunday-social': Object.freeze({
     id: 'sunday-social', name: 'Sunday Social', mark: '☀',
@@ -42,7 +42,7 @@ export const FASHION_SETS = Object.freeze({
   'maker-studio': Object.freeze({
     id: 'maker-studio', name: 'Maker Studio', mark: '✂',
     pieces: ['teal-jacket', 'denim-trousers', 'tool-roll-apron'],
-    twoPiece: 'Project costs 8% less', full: 'Project costs 15% less',
+    twoPiece: '8% lower project costs', full: '15% lower project costs',
   }),
 })
 
@@ -346,7 +346,7 @@ export const FASHION_SCHEMATICS = freezeList([...originalPatterns, ...catalogueP
     || FASHION_CATALOG_GARMENTS.find(item => recipeKey(item) === recipeKey(pattern))
     || FASHION_CATALOG_GARMENTS.find(item => item.cut === pattern.cut)
   const resolved={...template,...pattern, tags:pattern.tags || template?.tags || [], material:pattern.material || template?.material}
-  return {...pattern, artworkId:template?.id, tags:resolved.tags, material:resolved.material,
+  return {...pattern, name:pattern.name[0].toUpperCase()+pattern.name.slice(1), artworkId:template?.id, tags:resolved.tags, material:resolved.material,
     note:fashionConstructionBrief(resolved),
     unlockLevel:Math.max(pattern.unlockLevel,earliestFashionMaterialLevel(resolved)), silhouette:fashionFamily(resolved)}
 }))

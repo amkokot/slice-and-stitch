@@ -17,14 +17,15 @@ export function kitchenContinuation(info, service, gate) {
   const prepReady = info.active === 'saucePot' ? game.completed && service.sauces[game.kind] > 0
     : info.active === 'doughToss' && service.doughs > 0 && !['airborne', 'landing'].includes(game.stage)
   const serviceDone = ['dishwashing', 'drinkPour'].includes(info.active) && game.completed
+  const serviceTitle = game.stage === 'empty' ? info.active === 'dishwashing' ? 'No dishes waiting' : 'No soda orders waiting' : 'Service complete'
   if (!prepReady && !serviceDone) return null
   if (serviceDone && info.active !== 'drinkPour' && service.drinkTickets > 0)
     return { title: 'Dish rack clear', label: 'Fill soda orders', station: 'drinkPour' }
   if (serviceDone && info.active !== 'dishwashing' && service.dirtyDishes > 0)
-    return { title: 'Soda orders filled', label: 'Clean dishes', station: 'dishwashing' }
+    return { title: game.stage === 'empty' ? serviceTitle : 'Soda orders filled', label: 'Clean dishes', station: 'dishwashing' }
   if (gate?.blocked)
-    return { title: prepReady ? 'Prep ready' : 'Service complete', label: gate.action, station: gate.station, sauce: gate.sauce }
-  return { title: prepReady ? 'Prep ready for your order' : 'Service complete', label: 'Continue to pizza', station: 'pizza' }
+    return { title: prepReady ? 'Prep ready' : serviceTitle, label: gate.action, station: gate.station, sauce: gate.sauce }
+  return { title: prepReady ? 'Prep ready for your order' : serviceTitle, label: 'Continue to pizza', station: 'pizza' }
 }
 
 export function renderWorkbenchAction(activityId, action, onContinue) {

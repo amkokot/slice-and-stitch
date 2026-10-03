@@ -95,7 +95,7 @@ test('playtest mode and normal game keep separate storage; handoff buttons are c
   assert.equal(createCharacterStore({storage}).snapshot().profile.name,'Trial')
   const game=readFileSync(new URL('../game.js',import.meta.url),'utf8')
   const hub=readFileSync(new URL('../hub.js',import.meta.url),'utf8')
-  assert.match(game,/Wear it & open wardrobe/)
+  assert.match(game,/Wear it now/)
   assert.match(game,/fashion-wardrobe/)
   assert.match(hub,/characterStore\.equip\(garment\.id\)/)
   assert.match(hub,/getAtelierLevel: \(\) => currentProgress\(\)\.atelierLevel/)

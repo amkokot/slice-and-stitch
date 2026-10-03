@@ -1,17 +1,17 @@
 export const PROGRESSION_STORAGE_KEY = 'slice-and-stitch.progression.v1'
 
 export const COUNTER_UPGRADES = Object.freeze([
-  Object.freeze({ id: 'sauce-ladle', station: 'Sauce pot', icon: '♨', name: 'Balanced brass ladle', cost: 70, atelierLevel: 1, effect: 'Stirring reaches a smooth emulsion with fewer full turns.' }),
-  Object.freeze({ id: 'dough-cloth', station: 'Dough table', icon: '○', name: 'Linen proofing cloths', cost: 90, atelierLevel: 1, effect: 'Clean catches stretch each dough skin fifteen percent farther.' }),
+  Object.freeze({ id: 'sauce-ladle', station: 'Sauce pot', icon: '♨', name: 'Balanced brass ladle', cost: 70, atelierLevel: 1, effect: 'Mix sauce with fewer turns of the spoon.' }),
+  Object.freeze({ id: 'dough-cloth', station: 'Dough table', icon: '○', name: 'Linen proofing cloths', cost: 90, atelierLevel: 1, effect: 'Clean catches stretch your dough 15% farther.' }),
   Object.freeze({ id: 'drink-regulator', station: 'Soda fountain', icon: '◌', name: 'Flow regulator', cost: 90, atelierLevel: 2, effect: 'The fountain pours more slowly near the order line.' }),
   Object.freeze({ id: 'dish-sprayer', station: 'Dish pit', icon: '≋', name: 'Brass rinse sprayer', cost: 100, atelierLevel: 2, effect: 'Rinsing takes noticeably less time.' }),
-  Object.freeze({ id: 'tailor-shears', station: 'Tailoring table', icon: '✂', name: 'Hollow-ground shears', cost: 120, atelierLevel: 3, effect: 'A sharper cutting edge grants a wider precision tolerance.' }),
+  Object.freeze({ id: 'tailor-shears', station: 'Tailoring table', icon: '✂', name: 'Hollow-ground shears', cost: 120, atelierLevel: 3, effect: 'Stay accurate while cutting a little farther from the guide.' }),
   Object.freeze({ id: 'pizza-garden', station: 'Pizza counter', icon: '◒', name: 'Garden ingredient rail', cost: 240, atelierLevel: 3, effect: 'Installs pesto, peppers, onions, and the market-pie menu.' }),
-  Object.freeze({ id: 'sauce-diffuser', station: 'Sauce pot', icon: '♨', name: 'Cast-iron heat diffuser', cost: 180, atelierLevel: 5, requires: ['sauce-ladle'], effect: 'Sauce heats thirty percent more slowly while unattended.' }),
+  Object.freeze({ id: 'sauce-diffuser', station: 'Sauce pot', icon: '♨', name: 'Cast-iron heat diffuser', cost: 180, atelierLevel: 5, requires: ['sauce-ladle'], effect: 'Sauce heats 30% more slowly between stirs.' }),
   Object.freeze({ id: 'dough-marble', station: 'Dough table', icon: '○', name: 'Marble stretching slab', cost: 220, atelierLevel: 6, requires: ['dough-cloth'], effect: 'Centered tosses gain a small accuracy and stretch bonus.' }),
   Object.freeze({ id: 'drink-chill-plate', station: 'Soda fountain', icon: '◌', name: 'Chilled fountain plate', cost: 230, atelierLevel: 6, requires: ['drink-regulator'], effect: 'Foam builds more slowly, making high fills easier to judge.' }),
   Object.freeze({ id: 'dish-drying-rack', station: 'Dish pit', icon: '≋', name: 'Raised drying rack', cost: 240, atelierLevel: 7, requires: ['dish-sprayer'], effect: 'Better drainage makes each scrub pass lift more grime.' }),
-  Object.freeze({ id: 'tailor-feed-guide', station: 'Tailoring table', icon: '⌁', name: 'Adjustable seam guide', cost: 280, atelierLevel: 7, requires: ['tailor-shears'], effect: 'The machine tolerates a wider seam path and improves tool appraisal.' }),
+  Object.freeze({ id: 'tailor-feed-guide', station: 'Tailoring table', icon: '⌁', name: 'Adjustable seam guide', cost: 280, atelierLevel: 7, requires: ['tailor-shears'], effect: 'Sew accurately with more room for error and improve your garment’s appraisal.' }),
   Object.freeze({ id: 'pizza-artisan', station: 'Pizza counter', icon: '◒', name: 'Artisan finishing wing', cost: 640, atelierLevel: 8, requires: ['pizza-garden'], effect: 'Adds fresh mozzarella, olive-oil finishing, and artisan orders.' }),
 ])
 

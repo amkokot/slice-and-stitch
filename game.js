@@ -42,6 +42,7 @@ import { constructionRecipe, currentFashionSeam, effectiveSchematic, compatibleF
   compatibleFashionModifications, compatibleFashionFinishes, fashionFinishZones,
   fashionFinishScore, fashionGarmentDraft, constructionTraceScore, traceCompletion } from './fashion-construction.js'
 import { fashionProductPreview, fashionProductPainting } from './fashion-workshop-preview.js'
+import { garmentSlotLabel, readableCut } from './ui-copy.js'
 import { gameStorage, isFashionPlaytest, activeSession } from './game-storage.js'
 import {createGameClock, clockSnapshot, advanceGameClock, nextGameDay} from './game-clock.js'
 import {ECONOMY_BALANCE, pizzaEarnings, dishEarnings, sodaEarnings, incomeForecast, garmentSetEffects, orderGarmentTipBonus, reputationAward, loyaltyTipBonus,
@@ -1064,7 +1065,7 @@ function freshFashion() {
 }
 
 function resetPrototype() {
-  if(coopActive()) {roomWarning({reason:'Leave the online room before resetting your solo prototype.'});return}
+  if(coopActive()) {roomWarning({reason:'Leave the shared room before resetting your solo progress.'});return}
   cancelAnimationFrame(bakeFrame)
   cancelAnimationFrame(ingredientFrame)
   cancelAnimationFrame(fashionFrame)
@@ -1286,7 +1287,7 @@ function kitchenStatusText(game) {
     if (game.stage === 'stir') return `${Math.min(3, Math.floor(game.stirTurns))}/3 turns`
     if (game.stage === 'simmer') return `${game.bubblesLeft} bubbles left`
   }
-  if (game.id === 'doughToss') return `${game.completedCount}/5 doughs`
+  if (game.id === 'doughToss') return `${game.completedCount}/5 bases`
   if (game.id === 'dishwashing') {
     if (game.stage === 'empty') return 'Rack clear'
     if (game.completed) return `${game.cleanedCount}/${game.target} dishes clean`
@@ -1302,8 +1303,8 @@ function kitchenReadoutFor(game, phase) {
     ['Pot', kitchenStatusText(game)],
   ]
   if (game.id === 'doughToss') return [
-    ['Prep rack', `${game.completedCount}/5 skins`],
-    ['Throws', String(game.tosses)],
+    ['Prep rack', `${game.completedCount}/5 bases`],
+    ['Tosses', String(game.tosses)],
   ]
   if (game.id === 'dishwashing') return [
     ['Wash rack', game.stage === 'empty' ? 'Rack clear' : `${game.remaining} dirty`],
@@ -1327,7 +1328,7 @@ function renderKitchenDashboard(info) {
   const game = info.current
   const taskCopy = {
     saucePot: 'Prepare five portions of tomato sauce or cold pesto. Keep the hot tomato pot stirred during service.',
-    doughToss: 'A short gesture game sized so five doughs can be prepared during roughly one pizza order.',
+    doughToss: 'Toss and catch dough to prepare pizza bases. Each finished base is ready to use right away.',
     dishwashing: 'Scrub visible grime, then rinse. Each dish from a served order earns 2 bonus coins.',
     drinkPour: 'Match a customer’s flavor and fill line for up to 8 bonus coins. Orders come from served pizzas.',
   }
@@ -1662,7 +1663,7 @@ function renderRecipeBook() {
   const pizza = state.pizza
   const tier = stationTierFor(pizza)
   const toppingTargets = toppingTargetsFor(pizza)
-  elements.recipeBookIntro.textContent = `${pizza.order.name} is the menu baseline; highlighted entries show this customer’s request. The live ticket keeps only the kitchen words visible.`
+  elements.recipeBookIntro.textContent = `Use these amounts for ${pizza.order.name}. Highlighted rows match the current customer’s request.`
   const sauceRows = recipeReferenceRows(['light', 'regular', 'extra'], pizza.order.sauce, (qualifier) => (
     `${Math.round(coverageTargetFor(qualifier, 'sauce') * 100)}% of the dough interior`
   ))
@@ -1828,12 +1829,12 @@ function renderPizzaTools() {
     const sauceControl = tier.sauce.id === 'tomato' ? 'sauce' : tier.sauce.id
     elements.pizzaTools.innerHTML = pizza.selectedIngredient === sauceControl
       ? `<span class="tool-chip is-active"><span class="topping-icon" style="--chip-color:${tier.sauce.id === 'pesto' ? '#5f803f' : '#ad3e2f'}"></span>${tier.sauce.label} ready</span><span class="tool-chip">Spread in overlapping spirals</span>`
-      : `<span class="tool-chip">Click the ${tier.sauce.id === 'pesto' ? 'pesto mortar on the painted counter' : 'sauce bowl to stir the spoon'}</span><span class="tool-chip">Order: ${qualifierLabel(pizza.order.sauce)} sauce</span>`
+      : `<span class="tool-chip">Select the ${tier.sauce.id === 'pesto' ? 'pesto mortar' : 'sauce bowl'}, then spread with the spoon</span><span class="tool-chip">Order: ${qualifierLabel(pizza.order.sauce)} sauce</span>`
   } else if (pizza.step === 'cheese') {
     const cheeseControl = tier.cheese.id === 'shredded' ? 'cheese' : tier.cheese.id
     elements.pizzaTools.innerHTML = pizza.selectedIngredient === cheeseControl
       ? `<span class="tool-chip is-active"><span class="topping-icon" style="--chip-color:#f2d48c"></span>${tier.cheese.label} ready</span><span class="tool-chip">Order: ${qualifierLabel(pizza.order.cheese)} cheese</span>`
-      : `<span class="tool-chip">Click the ${tier.cheese.interaction === 'place' ? 'fresh mozzarella bowl on the painted counter' : 'cheese tray to shake the dispenser'}</span><span class="tool-chip">Order: ${qualifierLabel(pizza.order.cheese)} cheese</span>`
+      : `<span class="tool-chip">Select the ${tier.cheese.interaction === 'place' ? 'mozzarella bowl, then place each piece' : 'cheese tray, then drag to scatter cheese'}</span><span class="tool-chip">Order: ${qualifierLabel(pizza.order.cheese)} cheese</span>`
   } else if (pizza.step === 'toppings') {
     const detail = pizza.selectedIngredient && toppingDetails[pizza.selectedIngredient]
     elements.pizzaTools.innerHTML = pizzaCanAdvance()
@@ -2031,7 +2032,7 @@ async function finishPizza() {
     kicker: `Order ${String(pizza.order.number).padStart(2, '0')} served`,
     hero: '🍕',
     title: `${quality}% order match · +${payout} coins`,
-    copy: `${pizza.order.name} is out the door. This compact check compares the finished pizza with every kitchen word on the ticket.${atelierAdvanced ? ` Atelier level ${state.progression.atelierLevel} unlocked.` : ''}`,
+    copy: `${pizza.order.name} is served! Here’s how it matched the customer’s order.${atelierAdvanced ? ` Atelier level ${state.progression.atelierLevel} unlocked.` : ''}`,
     stats: scoreStats,
     actions: [
       { label: 'Next order', className: 'primary-button', action: () => { closeResult({ runDismiss: false }); startNextPizzaOrder() } },
@@ -3856,7 +3857,7 @@ function renderFashionModificationBench() {
     </div>
     <div class="fashion-mod-list">${available.map((item) => card(item)).join('')}</div>
     ${nextLocked.length ? `<details class="fashion-mod-locked"><summary>Later techniques <b>${compatible.length - available.length}</b></summary><div class="fashion-mod-list">${nextLocked.map((item) => card(item, true)).join('')}</div></details>` : ''}
-    <p class="fashion-mod-note">${chosen.length ? chosen.map((item) => `<b>${item.label}:</b> ${item.note}`).join(' ') : 'Choose a painted recut or attached detail. Unimplemented shape changes are kept off this bench; the finished-piece preview is the source of truth.'}</p>`
+    <p class="fashion-mod-note">${chosen.length ? chosen.map((item) => `<b>${item.label}:</b> ${item.note}`).join(' ') : 'Choose up to three changes, or keep the original design. The preview shows how your finished piece will look.'}</p>`
   bench.querySelectorAll('[data-fashion-modification]:not(:disabled)').forEach((button) => {
     button.addEventListener('click', () => {
       const id = button.dataset.fashionModification
@@ -3887,9 +3888,9 @@ function updateFashionContinuation() {
     if(!status.owned) {
       action={title:'Your pattern box is empty · Mara has a small daily selection',label:'Visit Mara’s pattern shop'}
       next=openFashionPatternShop
-    } else action={title:fashion.fabric ? `${fashion.schematic.name} · ${fashionProjectCost(fashion)} material coins` : '2 · Choose material in the project panel',
+    } else action={title:fashion.fabric ? `${fashion.schematic.name} · ${fashionProjectCost(fashion)} coins to start` : '2 · Choose your material',
       label:fashion.fabric ? 'Start cutting' : 'Choose material',disabled:!fashionCanAdvance()}
-  } else if(!fashion.completed && fashionCanAdvance()) action={title: fashion.step==='finish' ? 'Your garment is ready to reveal' : 'This assembly pass is complete',label:elements.fashionNextButton.textContent}
+  } else if(!fashion.completed && fashionCanAdvance()) action={title: fashion.step==='finish' ? 'Your garment is ready' : 'This step is complete',label:elements.fashionNextButton.textContent}
   renderWorkbenchAction('fashionActivity',action,next)
 }
 
@@ -3922,7 +3923,7 @@ function renderFashionPlanBoard() {
   if(!controls) {
     controls=document.createElement('div')
     controls.id='fashionPatternArchive';controls.className='fashion-archive-controls'
-    controls.innerHTML='<label>Sort <select aria-label="Sort patterns"><option value="newest">Newest first</option><option value="value">Catalogue value · high to low</option><option value="tier">Atelier tier · high to low</option><option value="name">Name · A–Z</option></select></label><label>Find <input type="search" aria-label="Search patterns" placeholder="Dress, leather, hat…"></label>'
+    controls.innerHTML='<label>Sort <select aria-label="Sort patterns"><option value="newest">Newest first</option><option value="value">Retail value · highest first</option><option value="tier">Pattern tier · highest first</option><option value="name">Name · A–Z</option></select></label><label>Find <input type="search" aria-label="Search patterns" placeholder="Dress, leather, hat…"></label>'
     elements.fashionPatternSelector.before(controls)
     controls.querySelector('select').addEventListener('change',event=>{state.patternLibrary.sort=event.target.value;renderFashion()})
     controls.querySelector('input').addEventListener('input',event=>{fashionPatternSearch=event.target.value;renderFashion()})
@@ -3935,14 +3936,15 @@ function renderFashionPlanBoard() {
   const patternCard = (schematic) => {
     return `<button class="fashion-pattern-chip ${fashion.schematic?.id === schematic.id ? 'is-active' : ''} ${schematic.isNew?'is-new':''}" type="button" aria-pressed="${fashion.schematic?.id===schematic.id}" data-fashion-schematic="${schematic.id}" ${fashion.step !== 'plan' ? 'disabled' : ''}>
       <span class="fashion-pattern-thumb" aria-hidden="true">${fashionProductPainting(fashionGarmentDraft({schematic,modifications:[]}),`pattern-card-${schematic.id}`)}</span>
-      <span><b>${schematic.name}${schematic.isNew?'<em class="pattern-new-badge">New</em>':''}</b><small>${schematic.slot} · ${schematic.materialUnits} material unit${schematic.materialUnits === 1 ? '' : 's'}</small><small class="pattern-purchase">Retail ${schematic.catalogueValue} ● · tier ${schematic.designTier}</small></span>
+      <span><b>${schematic.name}${schematic.isNew?'<em class="pattern-new-badge">New</em>':''}</b><small>${garmentSlotLabel(schematic.slot)} · ${schematic.materialUnits} material unit${schematic.materialUnits === 1 ? '' : 's'}</small><small class="pattern-purchase">Retail value ${schematic.catalogueValue} ● · Tier ${schematic.designTier}</small></span>
     </button>`
   }
   elements.fashionPatternSelector.innerHTML = patternsOnTable.map(patternCard).join('') || `<div class="fashion-pattern-empty">${fashionPatternSearch ? 'No owned patterns match this search.' : 'Your pattern box is empty. Buy a paper pattern from Mara to begin.'}</div>`
   const accentColors = ['#f4d8ad', '#e6b85d', '#b84d45', '#527b70', '#665078', '#eee8d4']
+  const accentNames = ['Cream', 'Gold', 'Rose', 'Sage', 'Plum', 'Ivory']
   const moods = ['classic', 'utility', 'romantic', 'bold']
-  elements.fashionStyleControls.innerHTML = `<span><small>Accent</small>${accentColors.map((color) => `<button class="fashion-color-dot ${fashion.accentColor === color ? 'is-active' : ''}" type="button" data-fashion-accent="${color}" style="--fashion-accent:${color}" aria-label="Use ${color} accent" ${fashion.step !== 'plan' ? 'disabled' : ''}></button>`).join('')}</span>
-    <span class="fashion-mood-row"><small>Design direction</small>${moods.map((mood) => `<button class="${fashion.styleMood === mood ? 'is-active' : ''}" type="button" data-fashion-mood="${mood}" ${fashion.step !== 'plan' ? 'disabled' : ''}>${mood}</button>`).join('')}</span>`
+  elements.fashionStyleControls.innerHTML = `<span><small>Accent</small>${accentColors.map((color,index) => `<button class="fashion-color-dot ${fashion.accentColor === color ? 'is-active' : ''}" type="button" data-fashion-accent="${color}" style="--fashion-accent:${color}" aria-label="${accentNames[index]} accent" ${fashion.step !== 'plan' ? 'disabled' : ''}></button>`).join('')}</span>
+    <span class="fashion-mood-row"><small>Design direction</small>${moods.map((mood) => `<button class="${fashion.styleMood === mood ? 'is-active' : ''}" type="button" data-fashion-mood="${mood}" ${fashion.step !== 'plan' ? 'disabled' : ''}>${mood[0].toUpperCase()+mood.slice(1)}</button>`).join('')}</span>`
   elements.fashionPatternSelector.querySelectorAll('[data-fashion-schematic]').forEach((button) => {
     button.addEventListener('click', () => {
       if(!state.patternLibrary.owned.includes(button.dataset.fashionSchematic)) return
@@ -3980,10 +3982,10 @@ function renderFashion() {
   const copy = {
     plan: fashion.alterationMode
       ? ['Alter', 'Choose up to three alterations. You will unpick, redraft, cut, and resew this wardrobe piece.', 'Start alterations']
-      : ['Plan', 'Choose a pattern from the library and cloth from the project panel, then start cutting below. Design options are optional.', 'Start cutting'],
+      : ['Plan', 'Choose a pattern you own, pick a suitable material, then select Start cutting. Add design options only if you want them.', 'Start cutting'],
     cut: ['Cut', 'Guide the shears around the dashed pattern. The blades cut where their tip travels.', 'Finish cutting'],
     sew: [operation.hand?'Hand-work':'Sew', `${operation.label} (${(fashion.seamIndex||0)+1}/${recipe.seams.length}). ${fashion.inputMode==='steady'?'Time each section with the marker below the work surface.':operation.hand?'Drag along the entire gold guide to work this join by hand.':'Hold the cloth to feed the machine; steer sideways to keep the guide under the needle.'}`, (fashion.seamIndex||0)<recipe.seams.length-1?'Next assembly pass':'Finish assembly'],
-    finish: ['Finish', 'Keep a clean finish or choose a detail and an attachment zone. Matching pairs can use the same detail. No decoration is required.', 'Reveal garment'],
+    finish: ['Finish', 'Choose a detail and where to place it, or leave your piece undecorated. You can apply the same detail to matching areas.', 'Finish garment'],
   }[fashion.step]
   elements.fashionVerb.textContent = copy[0]
   elements.fashionInstruction.textContent = copy[1]
@@ -4005,12 +4007,12 @@ function renderFashion() {
   }
   const hasPlanPattern=fashion.alterationMode || state.patternLibrary.owned.includes(fashion.schematic.id)
   elements.garmentName.textContent = fashion.step==='plan' && !hasPlanPattern ? 'Choose an owned pattern' : fashion.schematic.name
-  document.querySelector('#fashionSubtitle').textContent='Choose a catalogue construction, suitable materials and your own finish. Work every assembly pass; the painted preview follows the piece into your wardrobe.'
+  document.querySelector('#fashionSubtitle').textContent='Choose a pattern and cloth, then cut, sew, and finish a piece for your wardrobe.'
   elements.fashionTaskCopy.textContent = fashion.step === 'plan'
     ? fashion.alterationMode
-      ? `${fashion.baseGarment.name} is already constructed. Alteration costs cover notions and studio time; its original cloth is preserved.`
+      ? `Restyle ${fashion.baseGarment.name} while keeping its original cloth. Alteration costs cover supplies and studio time.`
       : `${fashion.schematic.note} This project needs ${fashion.schematic.materialUnits} material unit${fashion.schematic.materialUnits === 1 ? '' : 's'}.`
-    : `${recipe.allowance} Complete every join; quality rewards coverage and accuracy, not decoration count.`
+    : `${recipe.allowance} Follow each guide carefully. Neat cutting and sewing improve quality; extra decoration is optional.`
   let preview=document.querySelector('#fashionProductPreview')
   if(!preview) {preview=document.createElement('div');preview.id='fashionProductPreview';elements.fashionTaskCopy.after(preview)}
   preview.innerHTML=fashion.step==='plan' && !hasPlanPattern ? '<p class="fashion-empty-preview">Your selected pattern and fabric will be previewed here.</p>' : fashionProductPreview(fashion,'workshop-product')
@@ -4135,12 +4137,11 @@ function renderFashionTools() {
     const patternOwned=fashion.alterationMode || state.patternLibrary.owned.includes(fashion.schematic.id)
     const clothOnTable = !patternOwned ? [] : fashion.alterationMode ? [fashion.fabric] : state.fashionInventory.fabrics.filter(fabric=>compatibleFashionFabric(effectiveSchematic(fashion),fabric))
     clothContainer.innerHTML = clothOnTable.map((fabric) => {
-      const remaining = state.fashionInventory.remaining[fabric.id] || 0
       const compatible = fashion.alterationMode || compatibleFashionFabric(effectiveSchematic(fashion),fabric)
       const quote=fashionSupplyQuote(fabric,fashion.schematic.materialUnits,state.fashionInventory)
-      const detail = fashion.alterationMode ? 'Wardrobe piece · cloth already owned' : !compatible ? 'Not suitable for this construction' : `${quote.materialCost} coins per project · ${quote.onShelf?`${remaining} on shelf · 10% off`:'standard supply'}`
+      const detail = fashion.alterationMode ? 'Use the original cloth' : !compatible ? 'Not suitable for this pattern' : `${quote.materialCost} coins total · ${quote.onShelf?'10% off':'regular price'}`
       return `<button class="tool-chip ${fashion.fabric?.id === fabric.id ? 'is-active' : ''}" data-fabric="${fabric.id}" type="button" aria-pressed="${fashion.fabric?.id === fabric.id}" ${compatible && !fashion.alterationMode && patternOwned ? '' : 'disabled'}><span class="tool-swatch" style="--chip-color:${fabric.color};--chip-pattern:${fabric.pattern}"></span><span>${fabric.label}<small>${fabric.fiber} · ${detail}</small></span></button>`
-    }).join('') + `<p class="fashion-material-note">${!patternOwned ? 'Choose an owned pattern to see its suitable materials.' : 'Suitable cloth only · selected swatch updates your preview. Final quality depends on cloth and craftsmanship.'}</p>`
+    }).join('') + `<p class="fashion-material-note">${!patternOwned ? 'Choose a pattern you own to see suitable materials.' : 'Choose a material to preview it. Final quality depends on your cloth, cutting, and sewing.'}</p>`
     clothContainer.querySelectorAll('[data-fabric]').forEach((button) => {
       button.addEventListener('click', () => {
         fashion.fabric = state.fashionInventory.fabrics.find((fabric) => fabric.id === button.dataset.fabric)
@@ -4165,7 +4166,7 @@ function renderFashionTools() {
       })
     })
     const zones=document.createElement('div');zones.className='fashion-finish-zones'
-    zones.innerHTML=`<p>Attach selected detail to:</p>${fashionFinishZones(effectiveSchematic(fashion)).map(zone=>`<button type="button" data-fashion-zone="${zone.id}" aria-pressed="${fashion.finishing.some(d=>d.zone===zone.id)}">${zone.label}${fashion.finishing.some(d=>d.zone===zone.id)?' · attached':''}</button>`).join('')}<p>${fashion.finishing.length?'Details stay anchored to the painting in your wardrobe.':'Clean finish selected — no decoration required.'}</p>`
+    zones.innerHTML=`<p>Place your detail:</p>${fashionFinishZones(effectiveSchematic(fashion)).map(zone=>`<button type="button" data-fashion-zone="${zone.id}" aria-pressed="${fashion.finishing.some(d=>d.zone===zone.id)}">${zone.label}${fashion.finishing.some(d=>d.zone===zone.id)?' · added':''}</button>`).join('')}<p>${fashion.finishing.length?'Your details are included in the finished piece.':'No decoration added. A clean finish is fine, too.'}</p>`
     elements.fashionTools.append(zones)
     zones.querySelectorAll('[data-fashion-zone]').forEach(button=>button.addEventListener('click',()=>attachFashionFinish(button.dataset.fashionZone)))
   }
@@ -4295,7 +4296,7 @@ async function finishFashion() {
     kicker: 'Garment complete',
     hero: '✂',
     title: fashion.garment.name,
-    copy: `A one-off ${fashion.garment.cut} in ${fashion.fabric.fiber.toLowerCase()}, appraised at ${value} coins (display value, not a cash reward). ${alterations.length ? `${alterations.map((item) => item.label.toLowerCase()).join(', ')} are preserved on the piece. ` : ''}${fashion.finishing.length?'Your placed details stay attached to the painted garment.':'A deliberate clean finish — no unnecessary decorations.'}${atelierAdvanced ? ` Atelier level ${state.progression.atelierLevel} unlocked.` : ''}`,
+    copy: `Your handmade ${readableCut(fashion.garment.cut)} is ready, made with ${fashion.fabric.fiber.toLowerCase()}. Estimated value: ${value} coins; this is an appraisal, not money earned. ${alterations.length ? 'Your alterations are included. ' : ''}${fashion.finishing.length?'Finished with your chosen details.':'Finished with a clean, undecorated look.'}${atelierAdvanced ? ` Atelier level ${state.progression.atelierLevel} unlocked.` : ''}`,
     stats: [
       ['Cut', `${fashion.scores.cut}`],
       ['Seam', `${fashion.scores.sew}`],
@@ -4305,7 +4306,7 @@ async function finishFashion() {
     ],
     actions: [
       {
-        label: 'Wear it & open wardrobe',
+        label: 'Wear it now',
         className: 'primary-button plum-button',
         action: () => {
           state.outfit = fashion.garment
@@ -4314,7 +4315,7 @@ async function finishFashion() {
           openCompletedFashionWardrobe(fashion, true)
         },
       },
-      {label:'Keep in chest', className:'secondary-button', action:()=>{
+      {label:'Keep in wardrobe', className:'secondary-button', action:()=>{
         closeResult({runDismiss:false})
         openCompletedFashionWardrobe(fashion, false)
       }},

@@ -377,7 +377,7 @@ export function renderPlayerAvatarMarkup(profile = {}, appearance = {}, options 
   const lookDirection = options.lookDirection || options.facing
   return `<span class="hub-player-painted-avatar" data-equipment-rig="painted-paper-doll-v1" data-player-pose="stationary">${renderPaintedPaperDoll(profile, appearance, {
     className: 'hub-player-paper-doll',
-    label: `${profile.name || 'Player'} independently layered painted outfit`,
+    label: `${profile.name || 'Player'} avatar`,
     lookDirection,
   })}</span>`
 }
@@ -645,7 +645,7 @@ export function createActorDirector(layer, {
       const nextFigure = document.createRange().createContextualFragment(renderPaintedPaperDoll(playerProfile, playerAppearance, {
         id: paperDoll.dataset.paperDollId,
         className: 'hub-player-paper-doll',
-        label: `${playerProfile.name || 'Player'} independently layered painted outfit`,
+        label: `${playerProfile.name || 'Player'} avatar`,
         lookDirection: nextLook,
       }))
       // Gaze does not change the clothes. Keep their loaded external images.

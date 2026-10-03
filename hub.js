@@ -15,6 +15,7 @@ import { isFashionPlaytest } from './game-storage.js'
 import {economyJournalMarkup} from './economy-journal.js'
 import { COUNTER_SEATS } from './scene-character-layout.js'
 import { createGamePanel } from './game-panel.js'
+import { garmentSlotLabel, readableCut } from './ui-copy.js'
 
 export const HUB_LAUNCH_EVENT = 'slice-and-stitch:launch-minigame'
 export const HUB_RETURN_EVENT = 'slice-and-stitch:return-to-hub'
@@ -44,7 +45,7 @@ export const MINIGAME_STATIONS = Object.freeze({
   }),
   'dough-throw': Object.freeze({
     id: 'dough-throw',
-    title: 'Dough throwing',
+    title: 'Dough tossing',
     verb: 'Stretch the next crust',
     description: 'Turn a dough ball into an even base without tearing the center.',
     workshop: 'kitchen',
@@ -77,8 +78,8 @@ export const MINIGAME_STATIONS = Object.freeze({
   tailoring: Object.freeze({
     id: 'tailoring',
     title: 'Tailoring table',
-    verb: 'Make today\'s commission',
-    description: 'Choose an owned pattern and suitable material, cut the silhouette, sew its seam, and customize the finished piece.',
+    verb: 'Start a clothing project',
+    description: 'Choose a pattern you own and suitable cloth, then cut, sew, and finish your piece.',
     workshop: 'fashion',
   }),
 })
@@ -102,12 +103,12 @@ export const WORLD_SCENES = Object.freeze({
     id: 'restaurant',
     eyebrow: 'Pizzeria counter',
     title: 'Pull up a stool',
-    copy: 'Customers enter from the street, take one of five counter places, order at the bell, and leave after service.',
+    copy: 'Check the orders at the counter, then head to the kitchen to cook for your neighbors.',
     art: art.restaurant,
     artClass: 'restaurant-art',
     hotspots: Object.freeze([
       { id: 'restaurant-exit', label: 'Street door', hint: 'Step outside', x: 8, y: 35, w: 16, h: 58, walkTo: { x: 8, y: 86 }, action: { type: 'scene', target: 'street' }, exit: true },
-      { id: 'order-counter', label: 'Service counter', hint: 'Check the live queue', x: 53, y: 44, w: 70, h: 34, walkTo: { x: 53, y: 73 }, action: { type: 'panel', target: 'orders' }, featured: true },
+      { id: 'order-counter', label: 'Service counter', hint: 'View waiting orders', x: 53, y: 44, w: 70, h: 34, walkTo: { x: 53, y: 73 }, action: { type: 'panel', target: 'orders' }, featured: true },
       { id: 'kitchen-door', label: 'Kitchen', hint: 'Work the stations', x: 94, y: 38, w: 12, h: 52, walkTo: { x: 94, y: 84 }, action: { type: 'scene', target: 'kitchen' } },
     ]),
   }),
@@ -123,7 +124,7 @@ export const WORLD_SCENES = Object.freeze({
       { id: 'soda-fountain', label: 'Soda fountain', hint: 'Pour & fizz', icon: '◌', x: 16, y: 38, w: 13, h: 24, walkTo: { x: 16, y: 73 }, action: { type: 'minigame', target: 'soda-fountain' } },
       { id: 'sauce-pot', label: 'Sauce pot', hint: 'Stir & season', icon: '●', x: 29, y: 39, w: 13, h: 20, walkTo: { x: 29, y: 72 }, action: { type: 'minigame', target: 'sauce-pot' } },
       { id: 'pizza-counter', label: 'Pizza making', hint: 'Build the next order', icon: '◒', x: 49.5, y: 38, w: 28, h: 22, walkTo: { x: 50, y: 70 }, action: { type: 'minigame', target: 'pizza-making' }, featured: true },
-      { id: 'dough-table', label: 'Dough throwing', hint: 'Stretch the crust', icon: '○', x: 50, y: 67, w: 38, h: 34, walkTo: { x: 50, y: 82 }, action: { type: 'minigame', target: 'dough-throw' } },
+      { id: 'dough-table', label: 'Dough tossing', hint: 'Prepare pizza bases', icon: '○', x: 50, y: 67, w: 38, h: 34, walkTo: { x: 50, y: 82 }, action: { type: 'minigame', target: 'dough-throw' } },
       { id: 'dish-pit', label: 'Dish washing', hint: 'Scrub & rack', icon: '✓', x: 90, y: 59, w: 18, h: 32, walkTo: { x: 89, y: 82 }, action: { type: 'minigame', target: 'dish-washing' } },
       { id: 'kitchen-upgrades', label: 'Upgrade counter', hint: 'Buy tools for every station', icon: '⌁', x: 92, y: 14, w: 14, h: 18, walkTo: { x: 84, y: 76 }, action: { type: 'panel', target: 'upgrades' }, quiet: true },
     ]),
@@ -132,7 +133,7 @@ export const WORLD_SCENES = Object.freeze({
     id: 'tailor',
     eyebrow: 'Mara\'s tailor shop',
     title: 'Patterns, fabric, and a good pair of shears',
-    copy: 'Speak with Mara to browse supplies, or use the dress form to start a project.',
+    copy: 'Visit Mara for patterns and cloth, then use the cutting table to start a project.',
     art: art.tailor,
     artClass: 'tailor-art',
     hotspots: Object.freeze([
@@ -355,12 +356,12 @@ function shellMarkup() {
 function itemMarkup(item, { owned = false, equipped = false } = {}) {
   const set = item.setId ? FASHION_SETS[item.setId] : null
   const status = item.locked && !owned
-    ? `Level ${item.unlockLevel}`
+    ? `Atelier ${item.unlockLevel}`
     : owned
       ? equipped ? 'Wearing' : 'Wear'
       : item.availableToday ? 'Buy' : 'Not today'
   const disabled = (item.locked && !owned) || (!owned && !item.availableToday) || equipped
-  const detail = (item.detail || `${item.tags?.slice(0, 2).join(' · ') || item.cut} · ${item.cut}`)+(item.featured?' · 10% off today':'')
+  const detail = (item.detail || `${item.tags?.slice(0, 2).map(readableCut).join(' · ') || readableCut(item.cut)} · ${readableCut(item.cut)}`)+(item.featured?' · 10% off today':'')
   return `<article class="hub-shop-item ${item.locked ? 'is-locked' : ''} ${owned ? 'is-owned' : ''}" style="--garment-primary:${item.palette?.primary || '#76506f'};--garment-secondary:${item.palette?.secondary || '#f1ca68'}">
     <span class="hub-item-mark garment-mark" data-garment-cut="${item.cut || item.slot}" data-garment-slot="${item.slot}" aria-hidden="true"><i></i></span>
     <span><b>${item.name}</b><small>${detail}</small>${set ? `<em>${set.mark} ${set.name}</em>` : ''}</span>
@@ -373,10 +374,10 @@ function patternShopMarkup(inventory) {
   const owned=records.filter(pattern=>pattern.owned)
   const featuredIds=new Set(inventory.schematics.map(pattern=>pattern.id))
   const featured=records.filter(pattern=>!pattern.owned && pattern.unlocked && featuredIds.has(pattern.id))
-  const cards=patterns=>patterns.map(pattern=>`<article class="${pattern.owned?'is-owned':''}" data-pattern-shop-record><span class="pattern-paper" data-silhouette="${pattern.silhouette}" aria-hidden="true"></span><span><b>${pattern.name}</b><small>${pattern.slot} · ${pattern.materialUnits} material unit${pattern.materialUnits===1?'':'s'} · ${pattern.owned?'owned forever':`${pattern.price} coins, one-time`}</small></span><button type="button" ${pattern.owned?'data-tailor-pattern':'data-buy-pattern'}="${pattern.id}" ${!pattern.owned && !pattern.available?'disabled':''}>${pattern.owned?'Craft this':`Buy · ${pattern.price} ●`}</button></article>`).join('')
+  const cards=patterns=>patterns.map(pattern=>`<article class="${pattern.owned?'is-owned':''}" data-pattern-shop-record><span class="pattern-paper" data-silhouette="${pattern.silhouette}" aria-hidden="true"></span><span><b>${pattern.name}</b><small>${garmentSlotLabel(pattern.slot)} · ${pattern.materialUnits} material unit${pattern.materialUnits===1?'':'s'} · ${pattern.owned?'Reusable pattern':`${pattern.price} coins · buy once`}</small></span><button type="button" ${pattern.owned?'data-tailor-pattern':'data-buy-pattern'}="${pattern.id}" ${!pattern.owned && !pattern.available?'disabled':''}>${pattern.owned?'Use pattern':`Buy · ${pattern.price} ●`}</button></article>`).join('')
   return `<label class="hub-shop-search"><span>Find a pattern</span><input type="search" aria-label="Search purchasable and owned patterns" placeholder="Skirt, jacket, leather…"><small data-pattern-search-count></small></label>
     <span class="hub-shop-section-label">Today’s pattern shipment · ${featured.length} to buy</span><div class="hub-pattern-stock">${featured.length?cards(featured):'<p>You own every pattern in today’s shipment. Come back after dawn for new designs.</p>'}</div>
-    <p class="economy-small">A small shipment of ${inventory.schematics.length} designs arrives each day. Purchases do not refill it. Higher atelier tiers enter future shipments as you progress.</p>
+    <p class="economy-small">New designs arrive each morning. Raise your atelier level to find more advanced patterns in future shipments.</p>
     <span class="hub-shop-section-label">My patterns · ${owned.length}</span><div class="hub-pattern-stock">${owned.length?cards([...owned].sort((a,b)=>b.acquiredOrder-a.acquiredOrder)):'<p>Purchased patterns appear in your crafting box, highlighted as New.</p>'}</div>`
 }
 
@@ -728,8 +729,8 @@ function initHub() {
 
     drawerContent.innerHTML = `<span class="hub-drawer-eyebrow">Kitchen station</span>
       <h2>${station.title}</h2><p>${station.description}</p>
-      <div class="hub-station-ready"><i aria-hidden="true">✓</i><span><b>Hub connection ready</b><small>This station now emits <code>${station.id}</code>. Its minigame can plug in without changing this room.</small></span></div>
-      <button class="hub-drawer-primary" type="button" data-close-drawer>Back to the kitchen</button>`
+      <div class="hub-station-ready"><span><b>This station is not available yet</b><small>Try another station, or come back later.</small></span></div>
+      <button class="hub-drawer-primary" type="button" data-close-drawer>Back to the room</button>`
     drawer.hidden = false
     sceneStage.classList.add('has-open-drawer')
     drawerContent.querySelector('h2')?.focus?.()
@@ -780,10 +781,10 @@ function initHub() {
       const materialArchive = FASHION_FABRICS.filter((fabric) => !liveFabricIds.has(fabric.id))
       drawerContent.innerHTML = `<span class="hub-drawer-eyebrow">${catalog.eyebrow}</span><h2 tabindex="-1">${catalog.title}</h2><p>${catalog.copy}</p>
         <div class="hub-shop-summary"><span><b>${(liveInventory.patterns || []).filter(pattern=>pattern.owned).length}</b><small>patterns owned</small></span><span><b>${liveInventory.fabrics.length}</b><small>cloth types</small></span><span><b>${liveInventory.level}</b><small>atelier level</small></span></div>
-        <p>Buy a paper pattern once and keep it forever. Pattern prices are about 12% of a ready-made piece; material is paid separately when you start cutting.</p>
+        <p>Buy a pattern once and use it as often as you like. Pay for cloth at the cutting table when you start your project.</p>
         ${patternShopMarkup(liveInventory)}
-        <span class="hub-shop-section-label">Cloth cabinet · base prices per unit</span><div class="hub-fabric-stock">${liveInventory.fabrics.map((fabric) => `<article style="--fabric-color:${fabric.color};--fabric-pattern:${fabric.pattern}"><i aria-hidden="true"></i><span><b>${fabric.label}</b><small>${fabric.fiber} · ${fabric.featured && fabric.remaining>0 ? `${fabric.remaining} shelf units · 10% off` : 'standard supply · always available'}</small></span><strong>${fabric.cost} ● / unit</strong></article>`).join('')}</div>
-        <details class="hub-material-archive"><summary>Material archive <b>${materialArchive.length}</b></summary><p>Premium cloth and hides become available at their matching atelier level. All unlocked materials can be ordered at the cutting table.</p><div class="hub-fabric-stock">${materialArchive.map((fabric) => `<article class="${fabric.unlockLevel > liveInventory.level ? 'is-locked' : ''}" style="--fabric-color:${fabric.color};--fabric-pattern:${fabric.pattern}"><i aria-hidden="true"></i><span><b>${fabric.label}</b><small>${fabric.fiber} · ${fabric.unlockLevel > liveInventory.level ? `atelier ${fabric.unlockLevel}` : 'unlocked, not stocked today'}</small></span><strong>${fabric.unlockLevel > liveInventory.level ? 'Locked' : `${fabric.cost} ●`}</strong></article>`).join('')}</div></details>
+        <span class="hub-shop-section-label">Cloth cabinet · base prices per unit</span><div class="hub-fabric-stock">${liveInventory.fabrics.map((fabric) => `<article style="--fabric-color:${fabric.color};--fabric-pattern:${fabric.pattern}"><i aria-hidden="true"></i><span><b>${fabric.label}</b><small>${fabric.fiber} · ${fabric.featured && fabric.remaining>0 ? `${fabric.remaining} shelf unit${fabric.remaining===1?'':'s'} · 10% off` : 'standard supply · always available'}</small></span><strong>${fabric.cost} ● / unit</strong></article>`).join('')}</div>
+        <details class="hub-material-archive"><summary>More materials <b>${materialArchive.length}</b></summary><p>Raise your atelier level to unlock premium cloth and leather. Order any unlocked material at the cutting table.</p><div class="hub-fabric-stock">${materialArchive.map((fabric) => `<article class="${fabric.unlockLevel > liveInventory.level ? 'is-locked' : ''}" style="--fabric-color:${fabric.color};--fabric-pattern:${fabric.pattern}"><i aria-hidden="true"></i><span><b>${fabric.label}</b><small>${fabric.fiber} · ${fabric.unlockLevel > liveInventory.level ? `Atelier ${fabric.unlockLevel}` : 'Available at the cutting table'}</small></span><strong>${fabric.unlockLevel > liveInventory.level ? 'Locked' : `${fabric.cost} ●`}</strong></article>`).join('')}</div></details>
         <button class="hub-drawer-primary" type="button" data-launch-tailoring>Open the cutting table</button>`
     }
     drawer.dataset.panel = catalogId
@@ -823,7 +824,7 @@ function initHub() {
     }
     if(panelId==='day-journal') {
       characterCreator.close();drawer.classList.remove('is-character-creator')
-      drawerContent.innerHTML=economyJournalMarkup(window.sliceAndStitchEconomy?.getJournal?.(),isFashionPlaytest())
+      drawerContent.innerHTML=economyJournalMarkup(window.sliceAndStitchEconomy?.getJournal?.(),isFashionPlaytest(),window.sliceAndStitchCoop?.getSnapshot?.())
       drawer.dataset.panel=panelId;drawer.hidden=false;sceneStage.classList.add('has-open-drawer')
       drawerContent.querySelector('h2')?.focus();return
     }
@@ -836,7 +837,7 @@ function initHub() {
     if (panelId === 'orders') {
       const shift = pizzeriaShift.snapshot()
       const queued = shift.queue.map((customer, index) => `<li class="${customer.status === 'preparing' ? 'is-current' : ''}"><span>${index + 1}</span><div><b>${customer.name}</b><small>${customer.status === 'preparing' ? 'Order in the kitchen' : 'Waiting at the counter'}</small></div></li>`).join('')
-      drawerContent.innerHTML = `<span class="hub-drawer-eyebrow">Front counter</span><h2 tabindex="-1">Today\'s order line</h2><p>The room itself shows who is waiting. This board adds the service details without covering the restaurant.</p><div class="hub-order-panel"><strong>${shift.queue.length}<small>orders waiting</small></strong><strong>${shift.dirtyDishes}<small>dirty dishes</small></strong></div><ol class="hub-order-list">${queued || '<li class="is-empty"><div><b>The counter is clear</b><small>The next neighbor is on the way.</small></div></li>'}</ol><div class="hub-drawer-button-row"><button class="hub-drawer-primary" type="button" data-map-scene="kitchen">Head through to the kitchen</button><button class="hub-drawer-secondary" type="button" data-open-upgrades>Equipment counter</button></div>`
+      drawerContent.innerHTML = `<span class="hub-drawer-eyebrow">Front counter</span><h2 tabindex="-1">Waiting orders</h2><p>Orders are served in queue order. Head to the kitchen to prepare the next pizza.</p><div class="hub-order-panel"><strong>${shift.queue.length}<small>orders waiting</small></strong><strong>${shift.dirtyDishes}<small>dirty dishes</small></strong></div><ol class="hub-order-list">${queued || '<li class="is-empty"><div><b>The counter is clear</b><small>The next neighbor is on the way.</small></div></li>'}</ol><div class="hub-drawer-button-row"><button class="hub-drawer-primary" type="button" data-map-scene="kitchen">Go to the kitchen</button><button class="hub-drawer-secondary" type="button" data-open-upgrades>Equipment counter</button></div>`
     } else if (panelId === 'wardrobe') {
       drawer.dataset.panel = 'character-creator'
       drawer.classList.add('is-character-creator')
@@ -852,7 +853,7 @@ function initHub() {
         if (requirement.metric === 'upgrade') return requirement.complete ? 'Equipment installed' : 'Install the named counter upgrade'
         return `${requirement.current}/${requirement.target} ${requirement.label}`
       }).join(' · ') || 'Every atelier milestone is complete.'
-      drawerContent.innerHTML = `<span class="hub-drawer-eyebrow">Equipment counter</span><h2 tabindex="-1">Tools for every station</h2><p>Lifetime service income opens clothing collections; crafting can bring them forward. Equipment is optional and improves the station named below.</p>
+      drawerContent.innerHTML = `<span class="hub-drawer-eyebrow">Equipment counter</span><h2 tabindex="-1">Tools for every station</h2><p>Earn service coins to unlock new clothing collections. Good crafting can unlock them sooner. These optional tools make each station easier to use.</p>
         <div class="hub-upgrade-status"><span><b>Atelier ${snapshot?.atelierLevel || 1}/12</b><small>${next ? `Next: ${next.label}` : 'Master atelier complete'}</small></span><span><b>${snapshot?.balance ?? 0} ●</b><small>${requirements}</small></span></div>
         <div class="hub-milestone-rail" aria-label="Atelier milestone progress">${milestones.map((milestone) => `<i class="${milestone.level <= (snapshot?.atelierLevel || 1) ? 'is-complete' : milestone.level === next?.level ? 'is-next' : milestone.complete ? 'is-achieved' : ''}" title="Level ${milestone.level}: ${milestone.label}">${milestone.level}</i>`).join('')}</div>
         <div class="hub-counter-upgrades">${(snapshot?.upgrades || []).map((upgrade) => `<article class="${upgrade.owned ? 'is-owned' : upgrade.available ? 'is-available' : 'is-locked'}"><i aria-hidden="true">${upgrade.icon}</i><span><small>${upgrade.station} · atelier ${upgrade.atelierLevel}</small><b>${upgrade.name}</b><p>${upgrade.effect}</p></span><button type="button" data-buy-upgrade="${upgrade.id}" ${upgrade.available ? '' : 'disabled'}>${upgrade.owned ? 'Installed' : upgrade.available ? `${upgrade.cost} ●` : upgrade.reason}</button></article>`).join('')}</div>`
@@ -881,8 +882,8 @@ function initHub() {
     const members=online ? (room.members || []).filter(m=>m.sessionId===room.state?.sessionId) : []
     if(online && !members.some(m=>m.playerId===me)) members.unshift({playerId:me,profile:characterStore.snapshot().profile})
     const safe=value=>String(value || 'Player').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
-    drawerContent.innerHTML=`<span class="hub-drawer-eyebrow">A fresh morning</span><h2 tabindex="-1">Rest until tomorrow</h2><p>Refresh Mara’s daily pattern shipment and cloth shelf. Your money, owned patterns, clothes, supplies and unfinished projects stay safe. Sleeping does not earn income or put out burning sauce.</p>
-      ${online?`<ul class="coop-members">${members.map(m=>`<li><i aria-hidden="true">${sleeping[m.playerId]?'☾':'○'}</i>${safe(m.profile?.name)}<small>${sleeping[m.playerId]?'In bed':'Still awake'}</small></li>`).join('')}</ul><p>Every connected player must be in bed before the next morning begins. Leaving home cancels your bedtime vote.</p>`:'<p>Wake up at 06:00 on the next day. No need to wait for the clock.</p>'}
+    drawerContent.innerHTML=`<span class="hub-drawer-eyebrow">A fresh morning</span><h2 tabindex="-1">Rest until tomorrow</h2><p>Wake up to a fresh shipment of patterns and cloth at Mara’s. Your money, clothes, supplies, and unfinished projects stay safe. Sleeping earns no coins and does not rescue burning sauce.</p>
+      ${online?`<ul class="coop-members">${members.map(m=>`<li><i aria-hidden="true">${sleeping[m.playerId]?'☾':'○'}</i>${safe(m.profile?.name)}<small>${sleeping[m.playerId]?'In bed':'Still awake'}</small></li>`).join('')}</ul><p>Everyone connected must go to bed to start the next day. Leaving home wakes you up.</p>`:'<p>Skip ahead to 06:00 tomorrow.</p>'}
       <button type="button" class="hub-drawer-primary" ${online && !room.ready?'disabled':''} ${sleeping[me]?'data-wake-up':'data-go-to-bed'}>${sleeping[me]?'Wake up · cancel bedtime':'☾ Go to bed'}</button>`
   }
   document.addEventListener('slice-and-stitch:sleep-status',()=>{if(!drawer.hidden && drawer.dataset.panel==='bed') renderBed()})
@@ -999,7 +1000,7 @@ function initHub() {
     const patternButton = event.target.closest('[data-tailor-pattern]')
     if (patternButton) {
       if(!window.sliceAndStitchFashion?.selectSchematic?.(patternButton.dataset.tailorPattern)) {
-        showToast('Finish or release your current project before selecting another pattern.');return
+        showToast('Finish or discard your current project before selecting another pattern.');return
       }
       openWorkshop('fashion', navigator.current())
       return
@@ -1011,7 +1012,7 @@ function initHub() {
       buyPatternButton.disabled=false
       if(!result?.ok) {showToast(result?.reason || 'This pattern is not available yet.');return}
       syncProgress();openShop('tailor-shop')
-      showToast(`${result.pattern.name} is New in your pattern box. Open the cutting table to craft it.`)
+      showToast(`${result.pattern.name} added to My pattern box. It’s marked New at the cutting table.`)
       return
     }
     const upgradeButton = event.target.closest('[data-buy-upgrade]')

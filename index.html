@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#f5c982" />
     <meta
       name="description"
-      content="Slice & Stitch — playable pizza, fashion, prep, and service minigame prototype."
+      content="Slice & Stitch — make pizzas, craft your own clothes, and share a little town with friends."
     />
-    <title>Slice &amp; Stitch — Workshop Prototype</title>
+    <title>Slice &amp; Stitch</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="fashion-workshop.css" />
     <link rel="stylesheet" href="hub.css" />
@@ -33,7 +33,7 @@
          hub only reveals this shell when a player enters a work station. -->
     <main class="app-shell" hidden>
       <header class="topbar">
-        <a class="brand" href="./index.html" aria-label="Slice and Stitch prototype home">
+        <a class="brand" href="./index.html" aria-label="Slice and Stitch home">
           <span class="brand-stamp" aria-hidden="true"><i>✂</i><b>◆</b></span>
           <span>
             <span class="eyebrow">A kitchen &amp; clothier story</span>
@@ -69,7 +69,7 @@
             </div>
           </div>
 
-          <nav class="workshop-tabs" aria-label="Prototype activities">
+          <nav class="workshop-tabs" aria-label="Work stations">
             <button class="workshop-tab is-active" data-workshop="pizza" type="button">
               <span class="tab-icon" aria-hidden="true">◒</span>
               <span><b>Pizza shift</b><small>Cook an order</small></span>
@@ -90,7 +90,7 @@
             <p id="phaseCopy">A gentle first order. The kitchen is all pale gold and cool shadows.</p>
           </div>
 
-          <button class="quiet-button" id="resetProgressButton" type="button">Reset prototype</button>
+          <button class="quiet-button" id="resetProgressButton" type="button">Reset progress</button>
         </aside>
 
         <section class="workspace" aria-live="polite">
@@ -153,7 +153,7 @@
                     <span class="ticket-heading-actions"><button data-open-recipe-book type="button">Recipe book</button><b id="pizzaOrderNumber">Order 01</b></span>
                   </div>
                   <div class="ticket-items" id="ticketItems"></div>
-                  <p>Read the kitchen words here. Exact targets live in the recipe book.</p>
+                  <p>Follow the order above. Open the recipe book for exact amounts.</p>
                 </section>
                 <div class="tool-dock" id="pizzaTools"></div>
               </div>
@@ -217,13 +217,13 @@
                   <span class="ticket-pin plum-pin" aria-hidden="true"></span>
                   <span class="mini-label">Studio project</span>
                   <strong id="garmentName">Service apron</strong>
-                  <p id="fashionTaskCopy">Start with an everyday pattern. Better fabric costs more but raises the garment's potential.</p>
+                  <p id="fashionTaskCopy">Choose a pattern you own and suitable cloth. Better material can improve the finished piece.</p>
                 </div>
                 <div class="quality-estimate" id="qualityEstimate">
                   <span><i aria-hidden="true">▧</i> Material <b id="materialRating">—</b></span>
                   <span><i aria-hidden="true">◎</i> Precision <b id="precisionRating">—</b></span>
                   <span><i aria-hidden="true">✦</i> Finish <b id="finishRating">—</b></span>
-                  <span><i aria-hidden="true">◆</i> Value <b id="valueRating">—</b></span>
+                  <span><i aria-hidden="true">◆</i> Appraisal <b id="valueRating">—</b></span>
                 </div>
                 <div class="instruction-card plum-card">
                   <span class="step-number" id="fashionStepNumber">1</span>
@@ -241,9 +241,9 @@
           <section class="activity kitchen-activity" id="kitchenActivity" aria-labelledby="kitchenTitle" hidden>
             <header class="activity-heading">
               <div>
-                <span class="section-kicker">Kitchen rhythm · Four prototypes</span>
+                <span class="section-kicker">Kitchen prep &amp; service</span>
                 <h1 id="kitchenTitle">Prep &amp; service stations</h1>
-                <p>Short, tactile jobs that can interrupt or support the main pizza shift.</p>
+                <p>Prepare dough and sauce, then earn extra coins from dishes and drinks.</p>
               </div>
               <div class="station-phase-stamp" id="kitchenPhaseStamp">Morning prep</div>
             </header>
@@ -256,8 +256,8 @@
               </button>
               <button class="station-card" data-kitchen-game="doughToss" type="button">
                 <span class="station-card-icon dough-icon" aria-hidden="true">◯</span>
-                <span><b>Dough tossing</b><small>Shape five pizza skins</small></span>
-                <em data-kitchen-status="doughToss">0/5 doughs</em>
+                <span><b>Dough tossing</b><small>Prepare five pizza bases</small></span>
+                <em data-kitchen-status="doughToss">0/5 bases</em>
               </button>
               <button class="station-card" data-kitchen-game="dishwashing" type="button">
                 <span class="station-card-icon dish-icon" aria-hidden="true">◌</span>

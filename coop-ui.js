@@ -5,6 +5,7 @@ import { createRoomCode, validRoomCode } from './online-room.js'
 import { CoopController } from './coop-controller.js'
 import { enterSavedRoom, savedRooms, readJSON, roomSaveKey } from './coop-saves.js'
 import { positionRoomPlayers } from './coop-positions.js'
+import { sceneLabel } from './ui-copy.js'
 
 const escape=value=>String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
 const storage=baseGameStorage()
@@ -51,19 +52,19 @@ function render() {
   if(signature===dialogSignature) return
   dialogSignature=signature
   const header=`<button type="button" class="dialog-close" data-close-room aria-label="Close online rooms">×</button><span class="result-kicker">Kitchen & clothier · together</span><h2 id="coop-title">${active?'Your shared room':'Play together'}</h2>`
-  const warnings=`<p class="coop-save-note">Room progress autosaves on this device, separately from solo play. The host must stay connected. No account or cloud saves; download a backup before changing devices or clearing browser data.</p>`
+  const warnings=`<p class="coop-save-note">This room saves automatically in your browser, separately from your solo game. The host must be online for everyone to play. Saves are not stored in a cloud account. ${active?.role==='guest'?'Ask the host to keep a backup before changing devices or clearing browser data.':'Download a backup before changing devices or clearing browser data.'}</p>`
   if(active) {
     dialog.innerHTML=header+`<div class="coop-room-code"><small>Invite code</small><strong>${escape(active.roomCode)}</strong><button type="button" data-copy-invite>Copy invite</button></div>
-      <p class="coop-state" role="status">${escape(errorMessage || (ready?'Connected · shared till, patterns, clothing and supplies':status==='connecting'?'Connecting…':'Waiting for the host'))}</p>
-      <ul class="coop-members">${participants.map(m=>`<li><i aria-hidden="true">●</i>${escape(m.profile?.name || 'Player')}<small>${m.role==='host'?'Host':escape(m.sceneId || 'Joining')}</small></li>`).join('')}</ul>
-      <p class="coop-autosave">${controller?.saved===false?'⚠ Browser storage is full or unavailable. Download a backup now.':state?`Saved locally · Day ${state.clock.day} · ${state.coins} coins`:'Awaiting the shared save'}</p>
-      <div class="coop-button-row"><button type="button" class="primary-button" ${ready?'data-close-room':'data-room-reconnect'} ${busy?'disabled':''}>${ready?'Back to game':'Retry connection'}</button>${active.role==='host'?'<button type="button" class="secondary-button" data-room-backup>Download backup</button>':''}<button type="button" class="secondary-button" data-room-leave>Leave to solo game</button></div>
+      <p class="coop-state" role="status">${escape(errorMessage || (ready?'Connected · money, patterns, clothes, and supplies are shared':status==='connecting'?'Connecting…':'Waiting for the host'))}</p>
+      <ul class="coop-members">${participants.map(m=>`<li><i aria-hidden="true">●</i>${escape(m.profile?.name || 'Player')}<small>${m.role==='host'?'Host':sceneLabel(m.sceneId)}</small></li>`).join('')}</ul>
+      <p class="coop-autosave">${controller?.saved===false?`⚠ This browser cannot save right now. ${active.role==='host'?'Download a backup now.':'Ask the host to download a backup.'}`:state?`Saved in this browser · Day ${state.clock.day} · ${state.coins} coins`:'Loading the shared save…'}</p>
+      <div class="coop-button-row"><button type="button" class="primary-button" ${ready?'data-close-room':'data-room-reconnect'} ${busy?'disabled':''}>${ready?'Back to game':'Retry connection'}</button>${active.role==='host'?'<button type="button" class="secondary-button" data-room-backup>Download backup</button>':''}<button type="button" class="secondary-button" data-room-leave>Return to solo game</button></div>
       ${backupText?`<details class="coop-backup-copy" open><summary>Backup text · if downloads are blocked</summary><p>Save this text as a .json file, then restore it from Play together.</p><textarea readonly aria-label="Room backup JSON">${escape(backupText)}</textarea><button type="button" data-copy-backup>Copy backup text</button></details>`:''}`+warnings
   } else {
     const rooms=savedRooms(storage)
     const invite=new URLSearchParams(location.search).get('room') || ''
-    dialog.innerHTML=header+`<p>Up to ${MAX_ROOM_PLAYERS} players. Make pizzas and clothes together; the room shares money, patterns, garments, supplies and upgrades.</p>
-      <div class="coop-start"><section><h3>Host a room</h3><p>Start a separate cooperative copy of your current solo game. Your solo save stays untouched.</p><button class="primary-button" type="button" data-room-host ${busy?'disabled':''}>Create room</button></section>
+    dialog.innerHTML=header+`<p>Make pizzas and clothes with up to ${MAX_ROOM_PLAYERS} players. Share money, patterns, clothes, supplies, and upgrades. Each player keeps their own character and outfit.</p>
+      <div class="coop-start"><section><h3>Host a room</h3><p>Start a shared copy of your current game. Your solo save stays unchanged.</p><button class="primary-button" type="button" data-room-host ${busy?'disabled':''}>Create room</button></section>
       <form data-room-join><h3>Join a friend</h3><label for="coop-code">Six-character room code</label><input id="coop-code" name="code" maxlength="6" autocomplete="off" autocapitalize="characters" pattern="[A-HJ-NP-Za-hj-np-z2-9]{6}" required value="${escape(invite)}" placeholder="ABC234"><button class="primary-button" type="submit" ${busy?'disabled':''}>Join room</button></form></div>
       <p class="coop-state" role="status">${escape(busy?'Connecting…':errorMessage)}</p>
       ${rooms.length?`<h3>Saved rooms</h3><div class="coop-saved-rooms">${rooms.map(room=>`<button type="button" data-room-resume="${room.roomCode}" ${busy?'disabled':''}><b>${room.roomCode}</b><span>${room.role==='host'?'Resume as host':'Rejoin friend'} · Day ${readJSON(storage,roomSaveKey(room.roomCode)).clock.day}</span></button>`).join('')}</div>`:''}

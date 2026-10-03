@@ -12,15 +12,16 @@ import { renderPaintedGarmentThumbnail } from './character-v3/painted-wardrobe.j
 import { PAINTED_OUTFIT_SKIN_PALETTES, paintedOutfitSkinGroup } from './character-v3/painted-outfit.js'
 import { renderPaintedPaperDoll } from './character-v3/painted-paper-doll.js'
 import { selectWardrobeGarments, wardrobeTryOnState, addWardrobeTryOn, wardrobeFittingSlot, WARDROBE_THEMES, WARDROBE_PAGE_SIZE } from './wardrobe-browser.js'
+import { readableCut } from './ui-copy.js'
 
 export const CHARACTER_CHANGED_EVENT = 'slice-and-stitch:character-changed'
 const SLOT_COPY = Object.freeze({
-  top: ['Tops', 'Torso and sleeves'],
+  top: ['Tops & dresses', 'Shirts, blouses & dresses'],
   outerwear: ['Outerwear', 'Over your shirt'],
-  bottom: ['Bottoms', 'Hips and legs'],
-  apron: ['Aprons', 'Chest and waist'],
-  shoes: ['Shoes', 'Left and right foot'],
-  accessory: ['Details', 'Head, neck, or shoulder'],
+  bottom: ['Bottoms', 'Trousers, skirts & shorts'],
+  apron: ['Aprons', 'Ready for the workroom'],
+  shoes: ['Shoes', 'Find your favorite pair'],
+  accessory: ['Accessories', 'Hats, jewelry, scarves & bags'],
 })
 
 const CREATOR_PANELS = Object.freeze([
@@ -84,7 +85,7 @@ function choiceButtons(field, options, current, { swatches = false, colorOnly = 
 function garmentCard(garment, equipped, { owned = true, trying = false, preview = !owned } = {}) {
   return `<button class="character-garment ${equipped ? 'is-equipped' : ''} ${!owned ? 'is-catalogue' : ''} ${trying ? 'is-trying' : ''}" type="button" ${preview ? 'data-preview-garment' : 'data-equip-garment'}="${escapeHtml(garment.id)}" aria-pressed="${equipped || trying}">
     <span class="character-garment-art">${renderPaintedGarmentThumbnail(garment)}</span>
-    <span class="character-garment-copy"><b>${escapeHtml(garment.name)}</b><small>${escapeHtml(garment.cut.replaceAll('-', ' '))}</small><em>${preview ? `${trying ? 'Trying on' : 'Try on'} · ${owned ? 'In your chest' : `${garment.price || 0} coins · Lv ${garment.unlockLevel || 1}`}` : equipped ? 'Wearing' : garment.source === 'crafted' ? 'Handmade' : `Quality ${garment.quality}`}</em></span>
+    <span class="character-garment-copy"><b>${escapeHtml(garment.name)}</b><small>${escapeHtml(readableCut(garment.cut))}</small><em>${preview ? `${trying ? 'Trying on' : 'Try on'} · ${owned ? 'Owned' : `${garment.price || 0} coins · Atelier ${garment.unlockLevel || 1}`}` : equipped ? 'Wearing' : garment.source === 'crafted' ? 'Handmade' : `Quality ${garment.quality}/100`}</em></span>
     <i class="character-equipped-mark" aria-hidden="true">✓</i>
   </button>`
 }
@@ -101,7 +102,7 @@ function equippedMarkup(state) {
 }
 
 function bodyPanel(profile) {
-  return `<div class="character-panel-heading"><span>Shared animation rig</span><h3>Fine-tune the silhouette</h3><p>Body changes stay intentionally subtle so every outfit and animation keeps a polished, consistent fit.</p></div>
+  return `<div class="character-panel-heading"><span>Your silhouette</span><h3>Find your fit</h3><p>Choose a frame and height for your character.</p></div>
     <fieldset><legend>Body frame</legend><div class="character-choice-grid">${choiceButtons('frame', CHARACTER_OPTIONS.frames, profile.frame)}</div></fieldset>
     <fieldset><legend>Height</legend><div class="character-choice-grid">${choiceButtons('height', CHARACTER_OPTIONS.heights, profile.height)}</div></fieldset>`
 }
@@ -109,7 +110,7 @@ function bodyPanel(profile) {
 function facePanel(profile, previewLook) {
   const requestedSkin = identityOption('skinTones', profile.skinTone)?.color
   const skinGroup = paintedOutfitSkinGroup({ skin: requestedSkin })
-  return `<div class="character-panel-heading"><span>Your character's identity</span><h3>Build a recognizable face</h3><p>Skin uses the same light, warm, or deep painted palette as the body. Features and gaze remain independently editable and animatable.</p></div>
+  return `<div class="character-panel-heading"><span>Make it yours</span><h3>Choose your features</h3><p>Pick a skin tone, shape your features, and find an expression you like. You can change your look at the mirror anytime.</p></div>
     <fieldset><legend>Skin tone</legend><div class="character-choice-grid skin-bucket-grid">${choiceButtons('skinTone', CREATOR_SKIN_CHOICES, skinGroup, { swatches: true, colorOnly: true })}</div></fieldset>
     <fieldset><legend>Face shape</legend><div class="character-choice-grid">${choiceButtons('faceShape', CHARACTER_OPTIONS.faceShapes, profile.faceShape)}</div></fieldset>
     <fieldset><legend>Eye shape</legend><div class="character-choice-grid">${choiceButtons('eyeShape', CHARACTER_OPTIONS.eyeShapes, profile.eyeShape)}</div></fieldset>
@@ -119,14 +120,14 @@ function facePanel(profile, previewLook) {
     <fieldset><legend>Mouth</legend><div class="character-choice-grid">${choiceButtons('mouthStyle', CHARACTER_OPTIONS.mouthStyles, profile.mouthStyle)}</div></fieldset>
     <fieldset><legend>Complexion detail</legend><div class="character-choice-grid">${choiceButtons('complexionDetail', CHARACTER_OPTIONS.complexionDetails, profile.complexionDetail)}</div></fieldset>
     <fieldset><legend>Facial hair</legend><div class="character-choice-grid">${choiceButtons('facialHair', CHARACTER_OPTIONS.facialHair, profile.facialHair)}</div></fieldset>
-    <fieldset><legend>Resting expression</legend><div class="character-choice-grid">${choiceButtons('face', CHARACTER_OPTIONS.faces, profile.face)}</div></fieldset>
-    <fieldset><legend>Gaze test</legend><div class="character-facing-strip">${FACING_OPTIONS.map((option) => `<button class="${option.id === previewLook ? 'is-active' : ''}" type="button" data-character-look="${option.id}" title="${option.label}" aria-label="Look ${option.label.toLowerCase()}">${option.mark}</button>`).join('')}</div></fieldset>`
+    <fieldset><legend>Expression</legend><div class="character-choice-grid">${choiceButtons('face', CHARACTER_OPTIONS.faces, profile.face)}</div></fieldset>
+    <fieldset><legend>Preview direction</legend><div class="character-facing-strip">${FACING_OPTIONS.map((option) => `<button class="${option.id === previewLook ? 'is-active' : ''}" type="button" data-character-look="${option.id}" title="${option.label}" aria-label="Look ${option.label.toLowerCase()}">${option.mark}</button>`).join('')}</div></fieldset>`
 }
 
 function hairPanel(profile) {
   const shortCuts = CURATED_CREATOR_HAIR_STYLES.filter((style) => style.traditional === 'masculine')
   const styledHair = CURATED_CREATOR_HAIR_STYLES.filter((style) => style.traditional === 'feminine')
-  return `<div class="character-panel-heading"><span>Curated silhouettes</span><h3>Choose one complete hairstyle</h3><p>Eleven representative painted styles replace the separate texture-and-cut grids: four short cuts and seven longer, curly, braided, or tied looks.</p></div>
+  return `<div class="character-panel-heading"><span>A finishing touch</span><h3>Find your hairstyle</h3><p>Try a cut, curls, braids, or an updo, then choose your color.</p></div>
     <fieldset><legend>Short cuts</legend><div class="character-choice-grid hair-grid-short">${choiceButtons('hairStyle', shortCuts, profile.hairStyle)}</div></fieldset>
     <fieldset><legend>Long, curly &amp; styled</legend><div class="character-choice-grid hair-grid-styled">${choiceButtons('hairStyle', styledHair, profile.hairStyle)}</div></fieldset>
     <fieldset><legend>Hair color</legend><div class="character-choice-grid swatch-grid">${choiceButtons('hairColor', CHARACTER_OPTIONS.hairColors, profile.hairColor, { swatches: true })}</div></fieldset>`
@@ -161,23 +162,22 @@ function clothesPanel(state, view) {
   const optionalEquippedId = fittedProfile.equipped[activeSlot]
   const setBonuses = wardrobeSetBonuses(state)
   const equippedAccessories = Object.entries(fittedProfile.accessories || {}).map(([zone, id]) => ({ zone, garment: findGarment(state, id) })).filter((entry) => entry.garment)
-  return `<div class="character-panel-heading character-clothes-heading"><span>Threads collected, stories made</span><h3>Your clothing chest</h3><p>Open a drawer, find a favorite, and layer it your way. Only collected pieces and catalogue designs unlocked at your atelier level are shown. Try on unlocked designs, then collect them at the boutique or make your own.</p></div>
+  return `<div class="character-panel-heading character-clothes-heading"><span>Find your next look</span><h3>Your wardrobe</h3><p>Wear pieces you own, or try on unlocked designs from the catalogue. Buy new clothes at the boutique or make them at the tailor shop.</p></div>
     <div class="wardrobe-tools"><label class="wardrobe-search"><span>Find a piece</span><input type="search" value="${escapeHtml(view.search)}" data-wardrobe-search placeholder="Search name, color, fabric, style…" aria-label="Search clothing" /></label><div class="wardrobe-filter-row"><label>Browse<select data-wardrobe-filter="scope"><option value="owned" ${view.scope === 'owned' ? 'selected' : ''}>In my chest</option><option value="catalogue" ${view.scope === 'catalogue' ? 'selected' : ''}>Unlocked catalogue · try on</option></select></label><label>Collection<select data-wardrobe-filter="theme">${WARDROBE_THEMES.map(([key, label]) => `<option value="${key}" ${view.theme === key ? 'selected' : ''}>${label}</option>`).join('')}</select></label><label>Sort<select data-wardrobe-filter="sort">${[['name','Name'],['quality','Quality'],['price','Price'],['handmade','Handmade first']].map(([key,label]) => `<option value="${key}" ${view.sort === key ? 'selected' : ''}>${label}</option>`).join('')}</select></label></div></div>
     <nav class="character-slot-tabs wardrobe-slot-tabs" aria-label="Garment slots"><button type="button" data-garment-slot="all" aria-pressed="${activeSlot === 'all'}" class="${activeSlot === 'all' ? 'is-active' : ''}"><b>All pieces</b><small>The whole chest</small></button>${GARMENT_SLOTS.map((slot) => `<button class="${slot === activeSlot ? 'is-active' : ''}" type="button" data-garment-slot="${slot}" aria-pressed="${slot === activeSlot}"><b>${SLOT_COPY[slot][0]}</b><small>${SLOT_COPY[slot][1]}</small></button>`).join('')}</nav>
     ${activeSlot === 'accessory' ? `<div class="character-accessory-zones">${ACCESSORY_EQUIPMENT_ZONES.map((zone) => { const entry = equippedAccessories.find((item) => item.zone === zone); return `<span class="${entry ? 'is-filled' : ''}"><small>${zone}</small><b>${escapeHtml(entry?.garment?.name || 'Empty')}</b>${entry ? `<button type="button" data-unequip-slot="accessory:${zone}" aria-label="Remove ${escapeHtml(entry.garment.name)}">×</button>` : ''}</span>` }).join('')}</div>` : ''}
     <div data-wardrobe-results>${wardrobeResults(state, { ...view, slot: activeSlot })}</div>
-    ${['apron', 'outerwear'].includes(activeSlot) ? `<button class="character-garment is-remove ${optionalEquippedId ? '' : 'is-equipped'}" type="button" data-unequip-slot="${activeSlot}" aria-pressed="${!optionalEquippedId}"><span aria-hidden="true">×</span><b>Wear none</b><small>${activeSlot === 'outerwear' ? 'Keep your shirt; remove the outer layer' : 'Clear this optional layer'}</small></button>` : ''}
+    ${['apron', 'outerwear'].includes(activeSlot) ? `<button class="character-garment is-remove ${optionalEquippedId ? '' : 'is-equipped'}" type="button" data-unequip-slot="${activeSlot}" aria-pressed="${!optionalEquippedId}"><span aria-hidden="true">×</span><b>${activeSlot === 'outerwear' ? 'Remove outerwear' : 'Remove apron'}</b><small>Your other clothes stay on</small></button>` : ''}
     <div class="character-set-strip">${setBonuses.length ? setBonuses.map((set) => `<span class="${set.active ? 'is-active' : ''}"><i>${set.mark}</i><b>${escapeHtml(set.name)}</b><small>${set.count}/3 · ${set.complete ? set.full : set.active ? set.twoPiece : 'Add one more piece'}</small></span>`).join('') : '<span><i>◇</i><b>No set started</b><small>Mix freely, or collect two matching pieces for a bonus.</small></span>'}</div>
-    <div class="character-fashion-bridge"><span aria-hidden="true">✂</span><span><b>Make something original</b><small>Tailored pieces keep their cut, cloth, finishing, alterations, quality, and provenance.</small></span><span class="character-fashion-actions">${alterable ? `<button type="button" data-alter-garment="${equippedGarment.id}">Alter selected</button>` : ''}<button type="button" data-start-tailoring>${view.fashionProject?.started && !view.fashionProject?.completed ? 'Resume project' : 'New project'}</button></span></div>`
+    <div class="character-fashion-bridge"><span aria-hidden="true">✂</span><span><b>Make something original</b><small>Choose your own cloth and details at the cutting table.</small></span><span class="character-fashion-actions">${alterable ? `<button type="button" data-alter-garment="${equippedGarment.id}">Alter this piece</button>` : ''}<button type="button" data-start-tailoring>${view.fashionProject?.started && !view.fashionProject?.completed ? 'Resume project' : 'New project'}</button></span></div>`
 }
 
 function detailsPanel(state) {
   const activeSets = wardrobeSetBonuses(state).filter((set) => set.active)
-  return `<div class="character-panel-heading"><span>Identity</span><h3>Inspect the saved recipe</h3><p>This same saved recipe drives the creator portrait, neighborhood avatar, and customer system.</p></div>
-    <div class="character-modular-contract"><span><i>1</i><b>One skull</b><small>All parts share a 240 × 240 coordinate space.</small></span><span><i>2</i><b>Independent slots</b><small>Face, eyes, brows, nose, mouth, complexion, hair, and palettes swap separately.</small></span><span><i>3</i><b>One collar</b><small>The jaw and neck anchor is identical for every outfit.</small></span></div>
+  return `<div class="character-panel-heading"><span>Personal touches</span><h3>A little about you</h3><p>Choose your pronouns and see how your wardrobe is growing.</p></div>
     <fieldset><legend>Pronouns</legend><div class="character-choice-grid">${choiceButtons('pronouns', CHARACTER_OPTIONS.pronouns, state.profile.pronouns)}</div></fieldset>
-    <div class="character-rig-card"><span><small>Identity controls</small><b>${Object.values(CHARACTER_OPTIONS).reduce((total, options) => total + options.length, 0)}</b></span><span><small>Equipment anchors</small><b>${GARMENT_SLOTS.length - 1 + ACCESSORY_EQUIPMENT_ZONES.length}</b></span><span><small>Handmade pieces</small><b>${state.customGarments.length}</b></span><span><small>Active set bonuses</small><b>${activeSets.length}</b></span></div>
-    <div class="character-layer-map"><b>Live layer stack</b><p>Rear hair → painted body and clothes → shared neck → ears → face → complexion → eyes → brows → nose → mouth → facial hair → front hair → accessories</p><span>Personal avatars and procedural NPCs serialize the same recipe. There are no per-head offsets or hidden portrait crops.</span></div>`
+    <div class="character-rig-card"><span><small>Clothes collected</small><b>${state.wardrobe.length}</b></span><span><small>Handmade pieces</small><b>${state.customGarments.length}</b></span><span><small>Accessories worn</small><b>${Object.values(state.profile.accessories || {}).filter(Boolean).length}</b></span><span><small>Active set bonuses</small><b>${activeSets.length}</b></span></div>
+    <div class="character-layer-map"><b>Your look, your way</b><p>Mix your favorites freely. Wear two pieces from the same set for a bonus, or three for the full benefit.</p><span>Your appearance is saved in this browser. Come back to the mirror whenever you want a change.</span></div>`
 }
 
 function panelMarkup(panel, state, view, previewLook) {
@@ -196,7 +196,7 @@ function creatorMarkup(state, view) {
   const faceFocus = view.previewMode === 'face'
   return `<section class="character-creator" aria-labelledby="characterCreatorTitle">
     <header class="character-creator-heading">
-      <div><span class="hub-drawer-eyebrow">Modular cartoon character studio</span><h2 id="characterCreatorTitle" tabindex="-1">Create your character</h2><p>Build feature by feature. Every face and hair part shares one coordinate system, while the painted wardrobe remains completely independent.</p></div>
+      <div><span class="hub-drawer-eyebrow">Make yourself at home</span><h2 id="characterCreatorTitle" tabindex="-1">Create your character</h2><p>Choose your features, find a hairstyle, and put together a look you love.</p></div>
       <span class="character-save-note"><i aria-hidden="true">✓</i> Saved locally</span>
     </header>
 
@@ -210,20 +210,20 @@ function creatorMarkup(state, view) {
         </div>
         <div class="character-preview-scene is-portrait ${faceFocus ? 'is-face-focus' : 'is-full-look'}">
           <div class="character-preview-actor character-stationary-avatar">
-            ${renderPaintedPaperDoll(profile, appearance, { className: 'character-paper-doll', label: `${profile.name} independently layered painted outfit`, lookDirection: view.look })}
+            ${renderPaintedPaperDoll(profile, appearance, { className: 'character-paper-doll', label: `${profile.name} outfit preview`, lookDirection: view.look })}
           </div>
-          <span class="character-preview-scale">Layered fit · top · outerwear · bottom · apron · shoes · details</span>
+          <span class="character-preview-scale">Your outfit preview</span>
         </div>
-        <div class="character-preview-caption"><label class="character-preview-name"><small>Character name</small><span><input type="text" maxlength="24" value="${escapeHtml(profile.name)}" data-character-name aria-label="Character name" /><button type="button" data-save-character-name>Save</button></span></label><span><small>Build</small><b>Custom modular</b></span></div>
+        <div class="character-preview-caption"><label class="character-preview-name"><small>Character name</small><span><input type="text" maxlength="24" value="${escapeHtml(profile.name)}" data-character-name aria-label="Character name" /><button type="button" data-save-character-name>Save</button></span></label><span><small>Style</small><b>Made by you</b></span></div>
         ${trying ? `<div class="wardrobe-try-on" role="status"><b>Fitting-room outfit</b><span>Preview only · Your worn outfit is unchanged.</span><div class="wardrobe-fitting-pieces">${view.tryOnIds.map((id) => `<button type="button" data-wardrobe-untry="${escapeHtml(id)}" aria-label="Stop trying on ${escapeHtml(findGarment(state, id)?.name || 'this piece')}">${escapeHtml(findGarment(state, id)?.name || 'Catalogue piece')} <i aria-hidden="true">×</i></button>`).join('')}${view.tryOnEmptySlots.map((slot) => `<span>Without ${escapeHtml(slot.replace('accessory:', ''))}</span>`).join('')}</div><button type="button" data-wardrobe-restore>Restore worn outfit</button></div>` : ''}
-        <div class="character-fit-note"><b>Universal part and wardrobe fit</b><span>Every head uses the same eye line, jaw, neck, and collar anchor. Every outfit uses the same torso, hip, apron, foot, and accessory anchors.</span></div>
+        <div class="character-fit-note"><b>Layer your look</b><span>Wear a jacket over your top, add an apron for work, and finish with your favorite accessories.</span></div>
         <div class="character-equipped" aria-label="${trying ? 'Fitting-room layers' : 'Worn layers'}">${equippedMarkup(fitted)}</div>
       </section>
 
       <section class="character-controls" data-character-panel-content>${panelMarkup(view.panel, state, view, view.look)}</section>
     </div>
 
-    <footer class="character-creator-actions"><button type="button" class="character-reset" data-reset-character>Reset character</button><span>Appearance saves immediately; use Save beside a new name.</span><button type="button" class="hub-drawer-primary character-done" data-character-done>Done</button></footer>
+    <footer class="character-creator-actions"><button type="button" class="character-reset" data-reset-character>Reset character</button><span>Your look saves automatically. Use Save to confirm a new name.</span><button type="button" class="hub-drawer-primary character-done" data-character-done>Done</button></footer>
   </section>`
 }
 

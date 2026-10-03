@@ -76,7 +76,7 @@ export class CoopController {
     if(type==='hello' && this.isHost && this.ready) {
       if(!id(payload.playerId)) return
       if(payload.sessionId && payload.sessionId!==this.state.sessionId) {this.transport.send('room-error',{target:connectionId,reason:'This code belongs to a different saved session.'}).catch(()=>{});return}
-      if(!this.allowedPlayers.has(payload.playerId) && this.allowedPlayers.size>=MAX_ROOM_PLAYERS) {this.transport.send('room-error',{target:connectionId,reason:`This prototype supports ${MAX_ROOM_PLAYERS} players per room.`}).catch(()=>{});return}
+      if(!this.allowedPlayers.has(payload.playerId) && this.allowedPlayers.size>=MAX_ROOM_PLAYERS) {this.transport.send('room-error',{target:connectionId,reason:`This room is full. Up to ${MAX_ROOM_PLAYERS} players can join.`}).catch(()=>{});return}
       const existing=this.members.find(m=>m.playerId===payload.playerId && m.connectionId!==connectionId)
       if(existing) {this.transport.send('room-error',{target:connectionId,reason:'This character is already connected in another tab. Use one play window per character.'}).catch(()=>{});return}
       this.allowedPlayers.add(payload.playerId)
@@ -149,7 +149,7 @@ export class CoopController {
     const promise=new Promise(done=>{resolve=done})
     const timer=setTimeout(()=>{
       this.pending.delete(command.id)
-      resolve({ok:false,reason:'The host has not confirmed this yet. Reconnect, then retry; the same receipt will not charge twice.'})
+      resolve({ok:false,reason:'The host has not confirmed this action yet. Reconnect and check your progress before trying again.'})
     },12000)
     this.pending.set(command.id,{resolve,promise,timer})
     if(this.isHost) this.queue=this.queue.then(()=>this.commit(command)).catch(error=>{this.finishRequest(command.id,{ok:false,reason:error.message})})

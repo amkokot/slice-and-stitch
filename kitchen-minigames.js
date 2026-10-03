@@ -14,7 +14,7 @@ export const KITCHEN_GAME_META = {
   },
   doughToss: {
     name: 'Dough tossing',
-    short: 'Shape five pizza skins',
+    short: 'Prepare five pizza bases',
     icon: '◯',
   },
   dishwashing: {
@@ -415,7 +415,7 @@ function instructionsFor(id, snapshot, phase) {
       }
       return {
         verb: 'Keep watch',
-        instruction: 'The tomato pot heats while you are working in the restaurant. Stir ¾ of a full turn to lower the heat. New batch starts another batch.',
+        instruction: 'Stir ¾ of a full turn to cool the tomato sauce. Keep an eye on it during service. Select New batch when you need more sauce.',
         progress: snapshot.hold.label,
       }
     }
@@ -431,7 +431,7 @@ function instructionsFor(id, snapshot, phase) {
     }
     if (snapshot.stage === 'simmer') return {
       verb: 'Simmer',
-      instruction: 'Click the big bubbles before they boil over. The smaller ones can burble safely.',
+      instruction: 'Pop the large bubbles before they boil over. Leave the small bubbles to simmer.',
       progress: `${snapshot.bubblesLeft} bubbles left`,
     }
     return {
@@ -441,26 +441,26 @@ function instructionsFor(id, snapshot, phase) {
     }
   }
   if (id === 'doughToss') {
-    if(snapshot.stock >= 10) return {verb:'Prep stock full',instruction:'Ten dough skins are ready. Use some at the pizza counter before tossing another skin.',progress:'10 skins ready'}
+    if(snapshot.stock >= 10) return {verb:'Prep stock full',instruction:'Ten pizza bases are ready. Use some at the pizza counter before preparing more.',progress:'10 bases ready'}
     if (snapshot.completed) return {
       verb: 'Rack filled',
-      instruction: 'Five pizza skins have been added to prep stock. Each skin becomes available as soon as you finish it.',
-      progress: '5/5 doughs',
+      instruction: 'Five pizza bases are ready. Each base becomes available as soon as you finish it.',
+      progress: '5/5 bases',
     }
     if (snapshot.stage === 'airborne') return {
       verb: 'Catch',
       instruction: 'Let the dough settle into the hands. A centered toss lands smooth; a sideways one wrinkles.',
-      progress: `${snapshot.completedCount}/5 doughs`,
+      progress: `${snapshot.completedCount}/5 bases`,
     }
     if (snapshot.stage === 'landing') return {
       verb: snapshot.lastOutcome || 'Catch',
       instruction: 'The dough settles and stretches across the hands before the next toss.',
-      progress: `${snapshot.completedCount}/5 doughs`,
+      progress: `${snapshot.completedCount}/5 bases`,
     }
     return {
       verb: 'Toss',
-      instruction: 'Drag the dough upward and release. Three clean tosses usually shape one pizza skin.',
-      progress: `${snapshot.completedCount}/5 doughs`,
+      instruction: 'Drag the dough upward, then release to toss it. Three clean catches usually make one pizza base.',
+      progress: `${snapshot.completedCount}/5 bases`,
     }
   }
   if (id === 'dishwashing') {
@@ -1255,7 +1255,7 @@ function drawDrink(context, state, art, now) {
     fillRounded(context, 205, 215, 390, 170, 24, '#fff0c8', '#4d332c', 6)
     drawLabel(context, state.stage === 'empty' ? 'No soda orders waiting' : 'Drinks served!', 400, 270, { size: 27, serif: true })
     const average = state.scores.length ? Math.round(state.scores.reduce((sum, score) => sum + score, 0) / state.scores.length) : 0
-    drawLabel(context, state.stage === 'empty' ? 'Serve a pizza to create an order' : `${average} average pour`, 400, 324, { size: 18 })
+    drawLabel(context, state.stage === 'empty' ? 'Serve a pizza to get a drink order' : `Average pour: ${average}/100`, 400, 324, { size: 18 })
   }
 }
 

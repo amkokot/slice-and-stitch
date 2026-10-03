@@ -34,7 +34,7 @@ test('wardrobe controller searches, pages and previews without publishing a char
   try {
     creator = createCharacterCreator({ container, store, getAtelierLevel:()=>12 })
     creator.open({ panel: 'clothes' })
-    assert.match(markup, /Your clothing chest/)
+    assert.match(markup, /Your wardrobe/)
     assert.match(markup, /data-garment-slot="all" aria-pressed="true"/)
     assert.match(markup, /is-full-look/)
     const saved = JSON.stringify(store.snapshot())
