@@ -60,6 +60,10 @@ export class CoopController {
       for(const member of this.members) if(member.sessionId===this.state?.sessionId && this.allowedPlayers.size<MAX_ROOM_PLAYERS) this.allowedPlayers.add(member.playerId)
       const lost=Object.values(this.state?.stations || {}).filter(owner=>!connected.has(owner.playerId))
       for(const owner of lost) this.commit({id:crypto.randomUUID(),playerId:owner.playerId,type:'release-station',data:{}})
+      const sleepVotes=this.state?.sleeping || {}
+      if(Object.keys(sleepVotes).some(id=>!connected.has(id)) || (connected.size && [...connected].every(id=>sleepVotes[id]))) {
+        this.queue=this.queue.then(()=>this.commit({id:crypto.randomUUID(),playerId:this.playerId,type:'reconcile-sleep',data:{}})).catch(()=>{})
+      }
       const otherHost=this.members.find(m=>m.role==='host' && m.connectionId!==this.connectionId)
       if(otherHost) {this.ready=false;this.onStatus('error',this,'This room code already has another host. Start a new room instead.');this.close();return}
     }
@@ -111,6 +115,10 @@ export class CoopController {
     if(!wasReady && this.connected && this.transport) queueMicrotask(()=>this.retryOutbox())
   }
   async commit(command,target) {
+    if(['go-to-bed','reconcile-sleep'].includes(command.type)) {
+      const players=[this.playerId,...this.members.filter(m=>m.connected!==false && m.sessionId===this.state.sessionId && this.allowedPlayers.has(m.playerId)).map(m=>m.playerId)]
+      command={...command,data:{...command.data,players:[...new Set(players)]}}
+    }
     const result=applyRoomCommand(this.state,command)
     if(result.ok) {
       this.adopt(result.state)

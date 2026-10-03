@@ -165,6 +165,7 @@ export const WORLD_SCENES = Object.freeze({
     hotspots: Object.freeze([
       { id: 'home-wardrobe', label: 'Wardrobe', hint: 'Create and dress your character', x: 31, y: 39, w: 28, h: 38, walkTo: { x: 31, y: 78 }, action: { type: 'panel', target: 'wardrobe' }, featured: true },
       { id: 'home-mirror', label: 'Mirror', hint: 'Edit your character', x: 14, y: 53, w: 16, h: 34, walkTo: { x: 14, y: 78 }, action: { type: 'panel', target: 'wardrobe' } },
+      { id: 'home-bed', label: 'Go to bed', hint: 'Sleep until the next morning', icon: '☾', x: 83, y: 83, w: 31, h: 25, walkTo: { x: 75, y: 87 }, action: { type: 'panel', target: 'bed' } },
       { id: 'home-exit', label: 'Balcony door', hint: 'Go downstairs', x: 74, y: 42, w: 25, h: 54, walkTo: { x: 75, y: 80 }, action: { type: 'scene', target: 'street' }, exit: true },
     ]),
   }),
@@ -814,6 +815,12 @@ function initHub() {
 
   function openPanel(panelId, creatorPanel = 'clothes', garmentId = null) {
     if(panelId==='wardrobe') publishActivity(navigator.current(),creatorPanel==='face'?'mirror':'wardrobe')
+    if(panelId==='bed') {
+      publishActivity('home','bed')
+      characterCreator.close();drawer.classList.remove('is-character-creator')
+      drawer.dataset.panel='bed';drawer.hidden=false;sceneStage.classList.add('has-open-drawer')
+      renderBed();return
+    }
     if(panelId==='day-journal') {
       characterCreator.close();drawer.classList.remove('is-character-creator')
       drawerContent.innerHTML=economyJournalMarkup(window.sliceAndStitchEconomy?.getJournal?.(),isFashionPlaytest())
@@ -867,6 +874,19 @@ function initHub() {
     if (action.type === 'panel') openPanel(action.target, hotspotId === 'home-mirror' ? 'face' : 'clothes')
   }
 
+  function renderBed() {
+    const room=window.sliceAndStitchCoop?.getSnapshot?.()
+    const online=Boolean(room?.active),sleeping=room?.state?.sleeping || {}
+    const me=room?.playerId || playerAccount().id
+    const members=online ? (room.members || []).filter(m=>m.sessionId===room.state?.sessionId) : []
+    if(online && !members.some(m=>m.playerId===me)) members.unshift({playerId:me,profile:characterStore.snapshot().profile})
+    const safe=value=>String(value || 'Player').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
+    drawerContent.innerHTML=`<span class="hub-drawer-eyebrow">A fresh morning</span><h2 tabindex="-1">Rest until tomorrow</h2><p>Refresh Mara’s daily pattern shipment and cloth shelf. Your money, owned patterns, clothes, supplies and unfinished projects stay safe. Sleeping does not earn income or put out burning sauce.</p>
+      ${online?`<ul class="coop-members">${members.map(m=>`<li><i aria-hidden="true">${sleeping[m.playerId]?'☾':'○'}</i>${safe(m.profile?.name)}<small>${sleeping[m.playerId]?'In bed':'Still awake'}</small></li>`).join('')}</ul><p>Every connected player must be in bed before the next morning begins. Leaving home cancels your bedtime vote.</p>`:'<p>Wake up at 06:00 on the next day. No need to wait for the clock.</p>'}
+      <button type="button" class="hub-drawer-primary" ${online && !room.ready?'disabled':''} ${sleeping[me]?'data-wake-up':'data-go-to-bed'}>${sleeping[me]?'Wake up · cancel bedtime':'☾ Go to bed'}</button>`
+  }
+  document.addEventListener('slice-and-stitch:sleep-status',()=>{if(!drawer.hidden && drawer.dataset.panel==='bed') renderBed()})
+
   function hotspotFromControl(control) {
     const scene = WORLD_SCENES[navigator.current()]
     const hotspotId = control?.dataset.hotspot
@@ -913,6 +933,15 @@ function initHub() {
 
   gameFrame.panel.addEventListener('click', async (event) => {
     if(onboarding && !event.target.closest('.character-creator')) return
+    const bedtimeButton=event.target.closest('[data-go-to-bed],[data-wake-up]')
+    if(bedtimeButton) {
+      bedtimeButton.disabled=true
+      const result=await (bedtimeButton.hasAttribute('data-wake-up')?window.sliceAndStitchClock.wakeUp():window.sliceAndStitchClock.goToBed())
+      if(!result.ok) showToast(result.reason)
+      else if(result.advanced) {closeDrawer();showToast(`Good morning · Day ${result.day}. New patterns and cloth are at Mara’s.`)}
+      else renderBed()
+      return
+    }
     if(event.target.closest('[data-day-journal]')) {openPanel('day-journal');return}
     if(event.target.closest('[data-journal-clock-toggle]')) {await window.sliceAndStitchClock?.togglePause();openPanel('day-journal');return}
     if(event.target.closest('[data-test-clock-advance]')) {window.sliceAndStitchClock?.advanceForTest();openPanel('day-journal');return}
@@ -1051,6 +1080,7 @@ function initHub() {
   document.addEventListener('slice-and-stitch:time-changed',event=>{
     syncProgress()
     if(!event.detail?.newDay) return
+    if(!drawer.hidden && drawer.dataset.panel==='bed') {renderBed();showToast(`Good morning · Day ${event.detail.day}. The daily shipment has refreshed.`)}
     if(!drawer.hidden && SHOP_CATALOGS[drawer.dataset.panel]) openShop(drawer.dataset.panel)
     if(!drawer.hidden && drawer.dataset.panel==='day-journal') openPanel('day-journal')
     if(!shell.hidden) showToast(`Day ${event.detail.day} · new shelf offers. Your current projects are safe.`)

@@ -1,4 +1,4 @@
-import { createGameClock, advanceGameClock } from './game-clock.js'
+import { createGameClock, advanceGameClock, nextGameDay } from './game-clock.js'
 import { createProgressionState, purchaseUpgrade, recordPizzaResult, recordGarmentResult, recordServiceIncome } from './progression.js'
 import { createPatternLibrary, purchasePattern, markPatternUsed } from './pattern-library.js'
 import { fashionInventoryFor } from './fashion-workflow.js'
@@ -29,7 +29,7 @@ export function createSharedSession(seed={}, {roomCode,sessionId,hostPlayerId}={
     reservations:reservation && hostPlayerId ? {[hostPlayerId]:reservation} : {},
     projects:seed.fashionProject?.materialConsumed && !seed.fashionProject.completed && hostPlayerId
       ? {[seed.fashionProject.projectId]:{playerId:hostPlayerId,schematicId:seed.fashionProject.schematic.id,paidCost:seed.fashionProject.paidCost || 0}} : {},
-    stations:{},completedPizzas:{},receipts:[],savedAt:Date.now()}
+    stations:{},sleeping:{},completedPizzas:{},receipts:[],savedAt:Date.now()}
 }
 
 export function validSharedSession(state,roomCode) {
@@ -52,12 +52,33 @@ export function applyRoomCommand(current,command) {
   const duplicate=current.receipts.find(record=>record.id===command.id && record.playerId===command.playerId)
   if(duplicate) return {...copy(duplicate.result),state:current,duplicate:true}
   const state=copy(current),data=command.data || {},playerId=command.playerId
+  state.sleeping ||= {}
+  if(state.sleeping[playerId] && !['go-to-bed','wake-up','reconcile-sleep','release-station','set-clock-paused'].includes(command.type)) return fail('You are waiting in bed. Wake up before continuing work.')
   let result={ok:true},spent=0
   const localKitchen=()=>({...state.kitchenService,reservation:state.reservations[playerId] || null})
   const saveKitchen=next=>{state.kitchenService={...next,reservation:null}}
   const character=()=>createCharacterState({wardrobe:state.wardrobe,customGarments:state.customGarments})
   const saveCharacter=next=>{state.wardrobe=[...next.wardrobe];state.customGarments=copy(next.customGarments)}
   switch(command.type) {
+    case 'go-to-bed':
+    case 'reconcile-sleep': {
+      if(command.type==='reconcile-sleep' && playerId!==state.hostPlayerId) return fail('Only the host checks the bedtime roll call.')
+      if(command.type==='go-to-bed' && data.day!==state.clock.day) return fail('A new morning has already started. Your old bedtime request was not repeated.')
+      const players=[...new Set((Array.isArray(data.players)?data.players:[]).filter(identifier))]
+      if(!players.includes(state.hostPlayerId) || !players.includes(playerId) || players.length>MAX_ROOM_PLAYERS) return fail('The connected room roster is required before sleeping.')
+      if(command.type==='go-to-bed') state.sleeping[playerId]=true
+      for(const id of Object.keys(state.sleeping)) if(!players.includes(id)) delete state.sleeping[id]
+      for(const [id,owner] of Object.entries(state.stations)) if(state.sleeping[owner.playerId]) delete state.stations[id]
+      const allSleeping=players.every(id=>state.sleeping[id])
+      if(allSleeping) {
+        state.clock=nextGameDay(state.clock)
+        state.ledger=rollDayLedger(state.ledger,state.clock.day,state.coins)
+        state.fashionInventory=fashionInventoryFor(state.clock.day,state.reputation,state.progression.atelierLevel)
+        state.sleeping={};state.stations={}
+      }
+      result={ok:true,advanced:allSleeping,day:state.clock.day};break
+    }
+    case 'wake-up':delete state.sleeping[playerId];break
     case 'buy-pattern': {
       const purchase=purchasePattern(state.patternLibrary,data.id,state.progression.atelierLevel,state.coins,state.fashionInventory)
       if(!purchase.ok) return fail(purchase.reason)
@@ -186,6 +207,7 @@ export function advanceSharedTime(current,seconds,{kitchenActive=false}={}) {
   state.kitchenService=advanceKitchenHeat(state.kitchenService,number(seconds,0,10)*1000,
     {running:kitchenActive && !state.clock.paused,diffuser:state.progression.ownedUpgrades.includes('sauce-diffuser')})
   if(state.clock.day!==current.clock.day) {
+    state.sleeping={}
     state.fashionInventory=fashionInventoryFor(state.clock.day,state.reputation,state.progression.atelierLevel)
     state.ledger=rollDayLedger(state.ledger,state.clock.day,state.coins)
   }

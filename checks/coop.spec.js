@@ -10,6 +10,7 @@ import { activeSession, gameStorage, setActiveSession, scopedGameStorage } from 
 import { playerAccount } from '../player-account.js'
 import { positionRoomPlayers, ROOM_SCENES, STATION_SPOTS } from '../coop-positions.js'
 import { CoopController } from '../coop-controller.js'
+import { nextGameDay } from '../game-clock.js'
 import { createChannelTopic, validRoomCode } from '../online-room.js'
 
 class MemoryStorage {
@@ -149,6 +150,39 @@ test('pagehide cannot leak a departing room save into solo or overwrite rejoined
   solo.setItem('progress','solo-pagehide')
   assert.equal(room.getItem('progress'),'joint-pagehide')
 })
+test('sleep starts tomorrow without granting income, losing work, or extinguishing the pot',()=>{
+  const clock=nextGameDay({day:4,elapsedSeconds:825,paused:true})
+  assert.deepEqual(clock,{day:5,elapsedSeconds:0,paused:false})
+  let state=fresh({coins:184,kitchenService:{doughs:2,sauces:{tomato:4},burning:true},patternLibrary:{owned:['service-apron']}})
+  state.projects['paid-project']={playerId:'host',paidCost:10,schematicId:'service-apron'}
+  const original=structuredClone(state)
+  state=run(state,'go-to-bed',{day:1,players:['host']})
+  assert.equal(state.clock.day,2);assert.equal(state.clock.elapsedSeconds,0)
+  assert.equal(state.coins,184);assert.deepEqual(state.projects,original.projects)
+  assert.deepEqual(state.kitchenService,original.kitchenService)
+  assert.deepEqual(state.patternLibrary.owned,original.patternLibrary.owned)
+  assert.equal(state.ledger.history.length,1)
+  assert.equal(applyRoomCommand(state,command('go-to-bed',{day:1,players:['host']})).ok,false)
+})
+test('every connected player must sleep; cancelling or an awake host prevents a day skip',()=>{
+  let state=fresh(),roster=['host','guest']
+  state=run(state,'go-to-bed',{day:1,players:roster},'guest')
+  assert.equal(state.clock.day,1);assert.equal(state.sleeping.guest,true)
+  assert.equal(applyRoomCommand(state,command('claim-station',{station:'pizza'},'guest')).ok,false)
+  state=run(state,'wake-up',{},'guest')
+  assert.equal(state.sleeping.guest,undefined)
+  state=run(state,'go-to-bed',{day:1,players:roster})
+  assert.equal(state.clock.day,1)
+  state=run(state,'go-to-bed',{day:1,players:roster},'guest')
+  assert.equal(state.clock.day,2);assert.deepEqual(state.sleeping,{})
+})
+test('an awake player disconnecting no longer blocks sleeping players, but guests cannot alter the roll call',()=>{
+  let state=fresh()
+  state=run(state,'go-to-bed',{day:1,players:['host','guest']})
+  assert.equal(applyRoomCommand(state,command('reconcile-sleep',{players:['guest']},'guest')).ok,false)
+  state=run(state,'reconcile-sleep',{players:['host']})
+  assert.equal(state.clock.day,2)
+})
 
 class FakeNetwork {
   rooms=[]
@@ -173,6 +207,10 @@ test('connected host and guest converge, concurrent purchases serialize, and rej
     const results=await Promise.all([host.transact('buy-pattern',{id:pattern.id}),guest.transact('buy-pattern',{id:pattern.id})])
     assert.equal(results.filter(r=>r.ok).length,1)
     assert.deepEqual(guest.state,host.state)
+    await guest.transact('go-to-bed',{day:1,players:['guest']})
+    assert.equal(host.state.clock.day,1,'the host ignores a guest-supplied roster')
+    await host.transact('go-to-bed',{day:1})
+    assert.equal(host.state.clock.day,2);assert.equal(guest.state.clock.day,2)
     const coins=host.state.coins
     await guest.close()
     assert.equal(host.state.coins,coins)

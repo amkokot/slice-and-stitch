@@ -10,6 +10,8 @@ const escape=value=>String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':
 const storage=baseGameStorage()
 let controller=null,busy=false,status='solo',errorMessage='',localActivity={sceneId:location.hash.slice(1)||'street',activity:'idle',visible:!document.hidden}
 let dialogSignature=''
+let sleepSignature=''
+let backupText=''
 const panel=document.querySelector('.game-panel')
 const button=document.createElement('button')
 button.type='button';button.className='coop-hud-button';button.dataset.onlineRooms='';button.textContent='Play together'
@@ -45,7 +47,7 @@ function render() {
   panel.dataset.roomReady=active?String(ready):'solo'
   if(!dialog.open) return
   const participants=[controller?.presence(),...(controller?.members || []).filter(m=>m.playerId!==controller?.playerId)].filter(Boolean)
-  const signature=JSON.stringify([active,ready,busy,status,errorMessage,controller?.saved,state?.coins,state?.clock.day,participants,active?null:savedRooms(storage)])
+  const signature=JSON.stringify([active,ready,busy,status,errorMessage,controller?.saved,state?.coins,state?.clock.day,participants,Boolean(backupText),active?null:savedRooms(storage)])
   if(signature===dialogSignature) return
   dialogSignature=signature
   const header=`<button type="button" class="dialog-close" data-close-room aria-label="Close online rooms">×</button><span class="result-kicker">Kitchen & clothier · together</span><h2 id="coop-title">${active?'Your shared room':'Play together'}</h2>`
@@ -55,7 +57,8 @@ function render() {
       <p class="coop-state" role="status">${escape(errorMessage || (ready?'Connected · shared till, patterns, clothing and supplies':status==='connecting'?'Connecting…':'Waiting for the host'))}</p>
       <ul class="coop-members">${participants.map(m=>`<li><i aria-hidden="true">●</i>${escape(m.profile?.name || 'Player')}<small>${m.role==='host'?'Host':escape(m.sceneId || 'Joining')}</small></li>`).join('')}</ul>
       <p class="coop-autosave">${controller?.saved===false?'⚠ Browser storage is full or unavailable. Download a backup now.':state?`Saved locally · Day ${state.clock.day} · ${state.coins} coins`:'Awaiting the shared save'}</p>
-      <div class="coop-button-row"><button type="button" class="primary-button" data-room-reconnect ${busy?'disabled':''}>${ready?'Reconnect':'Retry connection'}</button>${active.role==='host'?'<button type="button" class="secondary-button" data-room-backup>Download backup</button>':''}<button type="button" class="secondary-button" data-room-leave>Leave to solo game</button></div>`+warnings
+      <div class="coop-button-row"><button type="button" class="primary-button" ${ready?'data-close-room':'data-room-reconnect'} ${busy?'disabled':''}>${ready?'Back to game':'Retry connection'}</button>${active.role==='host'?'<button type="button" class="secondary-button" data-room-backup>Download backup</button>':''}<button type="button" class="secondary-button" data-room-leave>Leave to solo game</button></div>
+      ${backupText?`<details class="coop-backup-copy" open><summary>Backup text · if downloads are blocked</summary><p>Save this text as a .json file, then restore it from Play together.</p><textarea readonly aria-label="Room backup JSON">${escape(backupText)}</textarea><button type="button" data-copy-backup>Copy backup text</button></details>`:''}`+warnings
   } else {
     const rooms=savedRooms(storage)
     const invite=new URLSearchParams(location.search).get('room') || ''
@@ -79,8 +82,12 @@ async function connectActive() {
     const account=playerAccount(storage)
     controller=new CoopController({roomCode:active.roomCode,role:active.role,playerId:account.id,
       connectionId:connectionId(active.roomCode),profile:profile(),seed:readJSON(storage,roomSaveKey(active.roomCode)),storage,
-      onState:(state,room)=>{window.sliceAndStitchCoopGame.applyShared(state,room.playerId);redrawPlayers()},
-      onMembers:()=>redrawPlayers(),
+      onState:(state,room)=>{
+        window.sliceAndStitchCoopGame.applyShared(state,room.playerId);redrawPlayers()
+        const signature=JSON.stringify([state.clock.day,state.sleeping])
+        if(signature!==sleepSignature) {sleepSignature=signature;document.dispatchEvent(new CustomEvent('slice-and-stitch:sleep-status'))}
+      },
+      onMembers:()=>{redrawPlayers();document.dispatchEvent(new CustomEvent('slice-and-stitch:sleep-status'))},
       onStatus:(value,room,message)=>{status=value;if(value==='ready') errorMessage='';else if(message) errorMessage=message;render()},
     })
     await controller.connect()
@@ -115,9 +122,11 @@ function downloadBackup() {
   if(!state) return
   const account=playerAccount(storage)
   const backup={kind:'slice-and-stitch-room',version:1,state,player:account,privateSave:window.sliceAndStitchCoopGame.getSave()}
-  const url=URL.createObjectURL(new Blob([JSON.stringify(backup,null,2)],{type:'application/json'}))
-  const link=document.createElement('a');link.href=url;link.download=`slice-and-stitch-${state.roomCode}-day-${state.clock.day}.json`;link.click()
+  backupText=JSON.stringify(backup,null,2)
+  const url=URL.createObjectURL(new Blob([backupText],{type:'application/json'}))
+  const link=document.createElement('a');link.href=url;link.download=`slice-and-stitch-${state.roomCode}-day-${state.clock.day}.json`;document.body.append(link);link.click();link.remove()
   setTimeout(()=>URL.revokeObjectURL(url),1000)
+  dialogSignature='';render()
 }
 
 window.sliceAndStitchCoop=Object.freeze({
@@ -125,7 +134,7 @@ window.sliceAndStitchCoop=Object.freeze({
   get isHost() {return Boolean(controller?.isHost)},
   transact:(type,data,key)=>controller?.transact(type,data,key) || Promise.resolve({ok:false,reason:'The room is not connected yet.'}),
   enterStation:station=>controller?.transact('claim-station',{station}) || Promise.resolve({ok:false,reason:'Wait for the room to reconnect.'}),
-  getSnapshot:()=>({active:activeSession(),ready:Boolean(controller?.ready),state:stateCopy(),members:controller?.members || []}),
+  getSnapshot:()=>({active:activeSession(),playerId:controller?.playerId,ready:Boolean(controller?.ready),state:stateCopy(),members:controller?.members || []}),
 })
 button.addEventListener('click',show)
 notice.addEventListener('click',event=>{if(event.target.closest('[data-room-reconnect]')) connectActive();if(event.target.closest('[data-open-room]')) show()})
@@ -147,6 +156,9 @@ dialog.addEventListener('click',async event=>{
     window.sliceAndStitchCoopGame.save();await controller?.close();setActiveSession(null,storage);location.reload()
   }
   if(target.closest('[data-room-backup]')) downloadBackup()
+  if(target.closest('[data-copy-backup]')) {
+    try {await navigator.clipboard.writeText(backupText);target.textContent='Backup copied'} catch {target.textContent='Select and copy the text above'}
+  }
   if(target.closest('[data-copy-invite]')) {
     const invite=new URL(location.href);invite.searchParams.set('room',activeSession().roomCode)
     try {await navigator.clipboard.writeText(invite.href);target.textContent='Invite copied'} catch {target.textContent='Use the room code above'}
@@ -174,6 +186,7 @@ dialog.addEventListener('change',async event=>{
 document.addEventListener('slice-and-stitch:player-activity',async event=>{
   const previous=localActivity.activity
   localActivity={...localActivity,...event.detail}
+  if(controller?.ready && controller.state.sleeping?.[controller.playerId] && event.detail.activity!=='bed') await controller.transact('wake-up',{})
   if(controller?.ready && previous==='saucePot' && event.detail.activity!=='saucePot') controller.transact('release-station',{})
   await controller?.updatePresence(localActivity).catch(()=>{})
   redrawPlayers()

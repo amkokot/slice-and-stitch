@@ -43,7 +43,7 @@ import { constructionRecipe, currentFashionSeam, effectiveSchematic, compatibleF
   fashionFinishScore, fashionGarmentDraft, constructionTraceScore, traceCompletion } from './fashion-construction.js'
 import { fashionProductPreview, fashionProductPainting } from './fashion-workshop-preview.js'
 import { gameStorage, isFashionPlaytest, activeSession } from './game-storage.js'
-import {createGameClock, clockSnapshot, advanceGameClock} from './game-clock.js'
+import {createGameClock, clockSnapshot, advanceGameClock, nextGameDay} from './game-clock.js'
 import {ECONOMY_BALANCE, pizzaEarnings, dishEarnings, sodaEarnings, incomeForecast, garmentSetEffects, orderGarmentTipBonus, reputationAward, loyaltyTipBonus,
   fashionSupplyQuote, fashionProjectQuote, createDayLedger, recordDayActivity, rollDayLedger} from './economy.js'
 import { fashionInventoryFor, restoreFashionProject, steadyHandOffset, steadyHandSection, steadyHandAccuracy, fashionPassScore, STEADY_HAND_SECTIONS } from './fashion-workflow.js'
@@ -1138,8 +1138,8 @@ function renderUpgradeCounter() {
     </article>`
   }).join('')
   elements.upgradeCounterGrid.querySelectorAll('[data-counter-upgrade]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const result = window.sliceAndStitchProgression.buyUpgrade(button.dataset.counterUpgrade)
+    button.addEventListener('click', async () => {
+      const result = await window.sliceAndStitchProgression.buyUpgrade(button.dataset.counterUpgrade)
       if (!result.ok) button.textContent = result.reason
     })
   })
@@ -1212,6 +1212,13 @@ function resumeClockForWork() {
 
 window.sliceAndStitchClock=Object.freeze({
   getSnapshot:()=>clockSnapshot(state.clock),
+  async goToBed() {
+    pauseFashionWork();persistProgress()
+    if(coopActive()) {const result=await roomCommand('go-to-bed',{day:state.clock.day});roomWarning(result);return result}
+    clockLastTick=performance.now();setGameClock(nextGameDay(state.clock));persistProgress()
+    return {ok:true,advanced:true,day:state.clock.day}
+  },
+  wakeUp:()=>coopActive()?roomCommand('wake-up',{}):Promise.resolve({ok:true}),
   async togglePause() {if(coopActive()) {const result=await roomCommand('set-clock-paused',{paused:!state.clock.paused});roomWarning(result);return} tickDayClock();setGameClock({...state.clock,paused:!state.clock.paused});persistProgress()},
   advanceForTest() {
     if(!isFashionPlaytest() || coopActive()) return false

@@ -32,6 +32,8 @@ Only coarse activity/presence and semantic results are sent: purchases, material
 
 ### Saves and resuming with a friend
 
+Click the bed at home to skip to the next morning. This refreshes the day's pattern shipment and discounted cloth shelf, but does not grant money, advance atelier skill, consume unfinished work or rescue burning sauce. In a room, every currently connected player must go to bed. The bedside roll call shows who is awake, and Wake up cancels your vote. Leaving home/starting another interaction wakes you too. Disconnected players are removed from the roll call by the host; guests cannot choose who counts. A sleeping player cannot work or spend until they wake up. The automatic 24-minute cycle still runs normally.
+
 - Character identity is personal. Solo and each cooperative room use separate browser save namespaces.
 - Every connected browser autosaves a recent room snapshot. The host's current state is authoritative when guests rejoin; guest snapshots never overwrite it.
 - To resume together, the original host chooses their saved room under Play together. Friends choose Rejoin or use its invite code. No offline days or heat accumulate while the room is closed.

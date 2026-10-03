@@ -13,6 +13,7 @@ export const STATION_SPOTS=Object.freeze({
   drinkPour:{sceneId:'kitchen',point:[16,74]},fashion:{sceneId:'tailor',point:[58,82]},
   'tailor-shop':{sceneId:'tailor',point:[37,81]},'boutique-shop':{sceneId:'boutique',point:[64,81]},
   wardrobe:{sceneId:'home',point:[31,80]},mirror:{sceneId:'home',point:[14,80]},
+  bed:{sceneId:'home',point:[75,87]},
 })
 
 // Allocate all players together in a stable order. Active stations get priority;

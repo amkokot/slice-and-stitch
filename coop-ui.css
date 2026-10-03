@@ -24,6 +24,8 @@
 .coop-saved-rooms button { display: grid; gap: 4px; text-align: left; border: 1px solid #ccb090; color: #654651; background: #fff9e8; }
 .coop-saved-rooms span { font-size: 11px; }
 .coop-import { font-size: 12px; display: grid; gap: 8px; margin-top: 15px; }
+.coop-backup-copy { margin-top: 15px; font-size: 12px; }
+.coop-backup-copy textarea { width: 100%; height: 95px; font-size: 10px; border: 1px solid #cbb494; border-radius: 7px; background: #fffdf3; padding: 8px; }
 .coop-connection-notice { position: absolute; z-index: 90; bottom: 14px; left: 14px; right: 14px; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 12px; color: #fff4d9; background: #604359f0; box-shadow: 0 5px 15px #39263640; font-size: 12px; }
 .coop-connection-notice:not([hidden]) { display: flex; }.coop-connection-notice span { flex: 1; }
 .coop-connection-notice button { padding: 8px 12px; border: 0; border-radius: 7px; background: #f7dfae; color: #604359; cursor: pointer; }

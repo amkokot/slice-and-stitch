@@ -34,3 +34,7 @@ export function advanceGameClock(clock, seconds) {
   const elapsed = clean.elapsedSeconds + Math.max(0, finite(seconds))
   return {...clean, day:clean.day + Math.floor(elapsed/DAY_SECONDS), elapsedSeconds:elapsed % DAY_SECONDS}
 }
+
+export function nextGameDay(clock) {
+  return {...createGameClock(clock),day:createGameClock(clock).day+1,elapsedSeconds:0,paused:false}
+}

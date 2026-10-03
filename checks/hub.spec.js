@@ -19,7 +19,7 @@ import {
 import { createTownPopulation } from '../town-life.js'
 
 test('every scene hotspot points to a known scene, station, panel, or catalog', () => {
-  const panels = new Set(['upgrades', 'wardrobe', 'map', 'orders', ...Object.keys(SHOP_CATALOGS)])
+  const panels = new Set(['upgrades', 'wardrobe', 'map', 'orders', 'bed', ...Object.keys(SHOP_CATALOGS)])
   Object.values(WORLD_SCENES).forEach((scene) => {
     scene.hotspots.forEach(({ action }) => {
       if (action.type === 'scene') assert.ok(WORLD_SCENES[action.target], `${scene.id} -> ${action.target}`)
